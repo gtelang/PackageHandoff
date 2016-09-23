@@ -1,2 +1,1 @@
-code/app/*.hs linguist-language=Haskell
-code/src/*.hs linguist-language=Haskell
+code/* linguist-language=Haskell
