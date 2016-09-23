@@ -2,4 +2,6 @@ codeHaskell-pho/*.hs  linguist-language=Haskell
 codeHaskell-pho/*.hs  linguist-language=Haskell
 codeHaskell-pho/*.cpp  linguist-language=C++
 codeHaskell-pho/*.hpp  linguist-language=C++
-*  linguist-vendored                     
+*.html  linguist-vendored                     
+*.css   linguist-vendored
+*.js    linguist-vendored
