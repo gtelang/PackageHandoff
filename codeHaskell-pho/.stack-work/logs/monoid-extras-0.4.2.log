@@ -1,0 +1,56 @@
+Configuring monoid-extras-0.4.2...
+Building monoid-extras-0.4.2...
+Preprocessing library monoid-extras-0.4.2...
+[ 1 of 12] Compiling Data.Monoid.WithSemigroup ( src/Data/Monoid/WithSemigroup.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/WithSemigroup.o )
+[ 2 of 12] Compiling Data.Monoid.Recommend ( src/Data/Monoid/Recommend.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/Recommend.o )
+[ 3 of 12] Compiling Data.Monoid.Inf  ( src/Data/Monoid/Inf.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/Inf.o )
+[ 4 of 12] Compiling Data.Monoid.Endomorphism ( src/Data/Monoid/Endomorphism.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/Endomorphism.o )
+[ 5 of 12] Compiling Data.Monoid.Deletable ( src/Data/Monoid/Deletable.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/Deletable.o )
+[ 6 of 12] Compiling Data.Monoid.Cut  ( src/Data/Monoid/Cut.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/Cut.o )
+[ 7 of 12] Compiling Data.Monoid.Action ( src/Data/Monoid/Action.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/Action.o )
+[ 8 of 12] Compiling Data.Monoid.SemiDirectProduct ( src/Data/Monoid/SemiDirectProduct.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/SemiDirectProduct.o )
+[ 9 of 12] Compiling Data.Monoid.SemiDirectProduct.Strict ( src/Data/Monoid/SemiDirectProduct/Strict.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/SemiDirectProduct/Strict.o )
+[10 of 12] Compiling Data.Monoid.Coproduct ( src/Data/Monoid/Coproduct.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/Coproduct.o )
+[11 of 12] Compiling Data.Monoid.MList ( src/Data/Monoid/MList.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/MList.o )
+[12 of 12] Compiling Data.Monoid.Split ( src/Data/Monoid/Split.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Monoid/Split.o )
+Running Haddock for monoid-extras-0.4.2...
+Preprocessing library monoid-extras-0.4.2...
+Haddock coverage:
+ 100% (  2 /  2) in 'Data.Monoid.WithSemigroup'
+ 100% (  3 /  3) in 'Data.Monoid.Recommend'
+  15% (  2 / 13) in 'Data.Monoid.Inf'
+  Missing documentation for:
+    Inf (src/Data/Monoid/Inf.hs:45)
+    Pos (src/Data/Monoid/Inf.hs:42)
+    Neg (src/Data/Monoid/Inf.hs:43)
+    PosInf (src/Data/Monoid/Inf.hs:49)
+    NegInf (src/Data/Monoid/Inf.hs:50)
+    minimum (src/Data/Monoid/Inf.hs:78)
+    maximum (src/Data/Monoid/Inf.hs:81)
+    posInfty (src/Data/Monoid/Inf.hs:84)
+    negInfty (src/Data/Monoid/Inf.hs:85)
+    posFinite (src/Data/Monoid/Inf.hs:86)
+    negFinite (src/Data/Monoid/Inf.hs:87)
+ 100% (  2 /  2) in 'Data.Monoid.Endomorphism'
+ 100% (  6 /  6) in 'Data.Monoid.Deletable'
+ 100% (  3 /  3) in 'Data.Monoid.Cut'
+ 100% (  2 /  2) in 'Data.Monoid.Action'
+  75% (  6 /  8) in 'Data.Monoid.SemiDirectProduct'
+  Missing documentation for:
+    Module header
+    unSemi (src/Data/Monoid/SemiDirectProduct.hs:30)
+  88% (  7 /  8) in 'Data.Monoid.SemiDirectProduct.Strict'
+  Missing documentation for:
+    unSemi (src/Data/Monoid/SemiDirectProduct/Strict.hs:33)
+ 100% (  9 /  9) in 'Data.Monoid.Coproduct'
+  82% (  9 / 11) in 'Data.Monoid.MList'
+  Missing documentation for:
+    ::: (src/Data/Monoid/MList.hs:61)
+    *: (src/Data/Monoid/MList.hs:63)
+ 100% (  4 /  4) in 'Data.Monoid.Split'
+Documentation created:
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/monoid-extras/index.html,
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/monoid-extras/monoid-extras.txt
+Installing library in
+/home/gaurish/.stack/snapshots/x86_64-linux/lts-7.0/8.0.1/lib/x86_64-linux-ghc-8.0.1/monoid-extras-0.4.2-LjGObJRfuUu4gkxpds80ad
+Registering monoid-extras-0.4.2...

@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Package Handoff</title>
+<!-- 2016-09-22 Thu 12:10 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Gaurish" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<style>pre.src {background-color: #303030; color: #e5e5e5;} </style>
+<style>pre.src {background-color: #303030; color: #e5e5e5;} </style>
+<link rel="stylesheet" type="text/css" href="org-style.css"/>
+<style> blockquote {background:#EEEEEE; padding: 3px 13px}</style>
+<script type="text/javascript" src="org-info.js">
+/**
+ *
+ * @source: org-info.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in org-info.js.
+ *
+ * Copyright (C) 2012-2013 Free Software Foundation, Inc.
+ *
+ *
+ * The JavaScript code in this tag is free software: you can
+ * redistribute it and/or modify it under the terms of the GNU
+ * General Public License (GNU GPL) as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option)
+ * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+ *
+ * As additional permission under GNU GPL version 3 section 7, you
+ * may distribute non-source (e.g., minimized or compacted) forms of
+ * that code without the copy of the GNU GPL normally required by
+ * section 4, provided you include this license notice and a URL
+ * through which recipients can access the Corresponding Source.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in org-info.js.
+ *
+ */
+</script>
+
+<script type="text/javascript">
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+
+<!--/*--><![CDATA[/*><!--*/
+org_html_manager.set("TOC_DEPTH", "3");
+org_html_manager.set("LINK_HOME", "");
+org_html_manager.set("LINK_UP", "");
+org_html_manager.set("LOCAL_TOC", "1");
+org_html_manager.set("VIEW_BUTTONS", "0");
+org_html_manager.set("MOUSE_HINT", "underline");
+org_html_manager.set("FIXED_TOC", "0");
+org_html_manager.set("TOC", "0");
+org_html_manager.set("VIEW", "info");
+org_html_manager.setup();  // activate after the parameters are set
+/*]]>*///-->
+</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Package Handoff</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a></li>
+<li><a href="#sec-2">2. Theory</a></li>
+<li><a href="#sec-3">3. Experiments</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Functional Specifications</a></li>
+<li><a href="#sec-3-2">3.2. Generic Todo List for a new probX file.</a></li>
+<li><a href="#sec-3-3">3.3. Source Code</a>
+<ul>
+<li><a href="#sec-3-3-1">3.3.1. Package Handoff Utility Toolkit</a></li>
+<li><a href="#sec-3-3-2">3.3.2. Single Package Routing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Questions</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+An interesting Euclidean Steiner-Tree like question was posed by Prof. Mitchell while discussing
+a paper by Craig Tovey giving heuristics for transporting multiple packages from their sources
+to destinations along a graph with \(r\) co-ordinating carrier robots.
+</p>
+
+<blockquote>
+<p>
+There are \(m\) mobile carrier-robots located initially at \(\{(x^{r}_j, y^{r}_j)\}_{j=1}^m \subseteq \mathbb{R}^2\).
+For each \(j\), where \(1 \leq j \leq m\), robot \(r_j\) is able to move in any direction with a maximum speed \(v_j\).
+If two robots meet at a point in the course of their motion, they can exchange an arbitrary number of
+items they each carry. For simplicity, each of the \(m\) robots can be assumed to have infinite fuel and
+an infinite weight-carrying capacity.
+</p>
+
+<p>
+If you are given \(n\) stationary packages tagged \(p_1, p_2, \ldots p_n\) located respectively at
+\(\{(x^{s}_i, y^{s}_i)\}_{i=1}^n\) all of which must get to their destinations \(\{(x^{t}_i, y^{t}_i)\}_{i=1}^n\)
+using the \(m\) robots, how can you construct a schedule for the robots to transport
+all packages to their destinations "quickly" ?
+</p>
+</blockquote>
+
+<p>
+Depending on the interpretation of "quick", we get different cost criteria. e.g. <i><b>min-sum</b></i>:
+the sum of the travel times of the packages and <i><b>min-max</b></i>: the time required for the last package
+to get to its destination.
+</p>
+
+<p>
+A nice real world instance of this problem is one where a taxi-service must co-ordinate
+its fleet of cabs to transport passengers located at different points on the map, to
+their destinations.
+</p>
+
+<p>
+Here are a few variants or special cases of the above problem that might be of indepenedent interest.
+</p>
+
+<ul class="org-ul">
+<li>What if only one package needs to be transported i.e. \(n=1\) ? In this case, min-sum and
+min-max yield the same cost function.
+</li>
+<li>What if \(n=1\) <i>and</i> the package must move along a straight-line from its source all the way
+to its destination. This is also an interesting question for the multiple-robot case.
+i.e. all packages must move along a straight line from their origin to their destination.
+</li>
+<li>What if \(n=2\)?
+</li>
+<li>What if every robot could travel with the same maximum speed \(v_j=V\) but has only limited fuel.
+Two additional sub-constraints might be of interest.
+<ul class="org-ul">
+<li>What if every robot is constrained to move back into its original position after it does
+all its handoffs as required by the schedule.
+</li>
+<li>What if a robot is allowed to move only along the horizontal and vertical directions?
+</li>
+</ul>
+</li>
+<li>Is there a continuous version of this problem? By that I mean, could robots be thought of
+as distributed uniformly throughout the domain?
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Theory</h2>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Experiments</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+I've created a git repository named <b><a href="https://github.com/gtelang/packagehandoff">packagehandoff</a></b> which contains the Haskell code for experimenting
+with various heuristics to solve this problem efficiently. The code will also be useful for creating
+screen-shots of different kinds of point-clouds.
+</p>
+
+<p>
+The base of the code, is similar to that of Pulleys and r-Gather in Python. 
+Here I plan to principally use Haskell, since it supports some really interesting libraries
+like reactive-banana, gloss, Diagrams, lenses, the FGL, GSL bindings the parallelism it offers and of course
+as a design langauge using its type-system. Besides, gloss apparently performs extremely well under threading,
+so that will allow us to visualize a much larger animation set than Python.
+</p>
+
+<ul class="org-ul">
+<li>To build the code do <code>stack build</code>
+</li>
+<li>To run the code do   <code>stack exec main</code>
+</li>
+</ul>
+
+<p>
+Because you are using stack, if the dependencies used in Haskell libraries are not
+available on the computer, then they will automatically be installed for you. Beware
+this might take some time, since the number of packages used by this package indirectly
+is very large. Thus Joe/Jie will be able to run these libraries if they simply download
+the Haskell environment and stack onto their linux machines.
+</p>
+
+<p>
+The most important libraries for performing geometric computations will be
+</p>
+<ol class="org-ol">
+<li>Reactive Banana
+</li>
+<li>CGAL (via C-wrappers)
+</li>
+<li>GSL  (via C-wrappers)
+</li>
+<li>Diagrams (for its computations)
+</li>
+<li>Shewchuk's predicates (directly via the FFI)
+</li>
+<li>Cplex-interface (for optimization)
+</li>
+<li>GLPK-interface  (for linear programming)
+</li>
+<li>FGL (native Haskell) and iGraph (C bindings via FFI)
+</li>
+<li>GeoSteiner (C bindings via the FFI)
+</li>
+<li>Liquid-Haskell and the Dependent Types Extension (to give stronger types for special heuristics)
+</li>
+</ol>
+
+<p>
+Different heuristics for both single and multi-package routine
+will be implemented atop the following interactive system.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Functional Specifications</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Just like in the Pulley/rGathers codes, the events will be grouped into major <b>modes</b>:
+</p>
+<ul class="org-ul">
+<li>Robot input
+</li>
+<li>Fuel input
+</li>
+<li>Package input
+</li>
+<li>Scheduling algorithm input
+</li>
+</ul>
+
+<p>
+<b>The current mode of the visualization thus becomes a state-variable!</b> By default, i.e
+when you start the canvas for the first time around, it will be in robot input mode.
+Modes will consist of an additive type!!! Key-presses <b><font color = "red">r, f, p, s</font></b> 
+switches between them. <b>Within a mode, I will use the <font color = "red"> mouse buttons </font> to insert/modify data and <font color = "red"> Del </font> to delete data.</b> 
+If you press <b><font color = "red"> X </font></b>, you can stop the animation, and clear whatever
+"information" you have gathered about the algorithm. And finally, I will be using all of Diagrams' inbuilt data-types 
+for things such as points, vectors, planes and other things. 
+</p>
+
+<p>
+The schedule is calculated first and only then animated. 
+</p>
+
+<p>
+Here is a very high-overview of how the code works. The state variable contains the state of the packages 
+and robots. Three of <b>play</b>'s arguments are functions as shown by the arrows below. The whole simulation
+can be thought of as a left-right infinite tiling of this diagram, where each tile corresponds to a point in time.
+</p>
+
+
+
+<div class="figure">
+<p><img src="modes.png" alt="modes.png" />
+</p>
+</div>
+
+<dl class="org-dl">
+<dt> <font color = "blue">Robot Input mode</font> </dt><dd><ol class="org-ol">
+<li>To enter press <b>r</b> and show this on the screen.
+</li>
+<li>The user inputs robot positions by moving a disk over the screen.
+<ol class="org-ol">
+<li>The <b>disk-center</b> correponds to where the robot will be placed.
+</li>
+<li>The <b>disk-radius</b>  corresponds to the maximum speed with which a robot can move.
+</li>
+</ol>
+</li>
+<li>Each disk is selectable and movable and deletable, and can be resized with the scroll wheel.
+On being selected a disk changes color. Multiple disks can be selected and changed at the same time.
+</li>
+<li>A ticker at the top tells what the (speed) disk size is as you move the scroll wheel up
+and down. The index of the robot is also displayed.
+</li>
+</ol>
+</dd>
+
+<dt> <font color = "blue"> Fuel input mode </font> </dt><dd><ol class="org-ol">
+<li>To enter these, press <b>f</b>. Again disks are created, and their size correponds to the amount
+of fuel that they have.
+</li>
+<li>While the robots are moving you should be able to press a key to see the amount of fuel remaining
+Maybe  ahistogram can be shown on the side, with the fuel going down.
+</li>
+</ol>
+</dd>
+
+<dt> <font color = "blue"> Package input mode </font> </dt><dd><ol class="org-ol">
+<li>To enter press <b>p</b> and show this on the screen
+</li>
+<li>Package, source and destination pairs are colored with the same color
+But with a different boundary color. The source has a thick white boundary,
+the target has a black boundary. All the faces will be transluscent so that we can
+visualize multiple circles at a particular point.
+</li>
+<li>When you click at a point on the screen in input mode, you get both the
+source and target paired as an arrow: source is the tail, and target is the tip.
+The tip and tail of this arrow can be moved around.
+</li>
+<li>The sources and targets of the arrows are selectable and deletable but with an
+important twist!! Whenever you select, s or t, you can see a light pink arrow
+stretching from the source to its target, with a little piece of text on top
+of the middle of the arrow indicating the length. This length changes  dynamically
+as we change the positions of the source and target.
+</li>
+<li>Deleting the source and or target, deletes the entire arrow.
+</li>
+</ol>
+</dd>
+
+<dt> <font color = "blue">  Choose Scheduling Algorithm </font> </dt><dd><ol class="org-ol">
+<li>To enter press <b>a</b> followed by a number corresponding to the algorithm.
+The list of algorithms is displayed to the terminal. Everything will
+be managed with the play function. 
+</li>
+<li>The schedule is computed offline and then rendered. 
+<ul class="org-ul">
+<li>statically   
+</li>
+<li>dynamically
+</li>
+</ul>
+<p>
+Both can be supported with call-backs. 
+Suppose you are doing algorithm 1 for problem X
+Then, doing
+    a   (for algorithm mode) 
+    1   (algorithm number) 
+    s/d (for static or dynamic animation of the schedule after being computed offline)
+</p>
+</li>
+
+<li>Every algorithm has its own .hs file. Inside this .hs file, you will need to provide 
+implementations of the other two arrows "<b>Render World</b>" and "<b>Handle Events</b>" you see in the diagram above. 
+</li>
+
+<li>Because of the stupid gloss problem (but see <a href="http://stackoverflow.com/a/39622163/505306">this</a>!), <b>you will have to do the animation last</b>. Once you compute 
+the schedule, you should also write out a YAML file containing the schedule. The YAML file 
+will have a very similar nesting to the record file, and hence will be useful by itself also
+After writing out the file, start the animation. 
+</li>
+</ol>
+</dd>
+</dl>
+
+<p>
+The layout of the code files will be as follows:
+</p>
+
+<dl class="org-dl">
+<dt> Main.hs </dt><dd>All setup, profiling work goes here, when your program starts
+maturing, start having independent org files for the main.hs files
+which setup different sorts of experiments. This imports algorithmX
+and calls it via play in addition to any other profiling steps.
+</dd>
+<dt> ProbX.hs </dt><dd>Implementation of the arrows <b>Render World</b>, <b>Step World</b>, <b>Handle Events</b> 
+for problemX in Figure 1. Try to export as little as possible. Just 
+the arrows, and State should be sufficient. Other helper functions 
+will not be needed for export. All algorithms to solve variant X of the package 
+hand-off problem goes into <b>probX.hs</b>. Every problem will have its own 
+customized game-state, input interaction, and algorithms to solve/approximate it. 
+Every probX variant gets its own section in this Org file. Thus different variants 
+are kept independent of each other.
+
+<p>
+Since all algorithms will be coded in literate-style, you will not need to have too many
+files to partition your code. This literate document weaves all those files and code-blocks 
+together.
+</p>
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Generic Todo List for a new probX file.</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>Multi-package routing schedules should have interesting invariants that should be testable with 
+quickcheck. The main robot-scheduler algorithm should be completely disjoint from gloss for exactly 
+this reason. At most it will be called from the event-handler function.
+
+<p>
+<b>Lenses will be very useful here! The world data-structure is already getting very nested</b>
+</p>
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li><code>[X]</code> Add ProbX.hs to the list of library files in the *.yaml, *.cabal files
+</li>
+<li><code>[X]</code> Add a haddock doc-string at the top of the file explaining which variant of the package-handoff you are solving.
+</li>
+<li><code>[&#xa0;]</code> Inside <font color = "red"> Main.hs </font> 
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> World State  
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Current Mode - rfps
+Each mode has its own event handler function. 
+The global event handler, checks the current mode 
+and then activates the appropriate event handler depending 
+on the mode.
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Robot input.   (Position and Velocity)
+</li>
+<li><code>[&#xa0;]</code> Fuel input .   (Set to ∞ by default) 
+</li>
+<li><code>[&#xa0;]</code> Package input. (Source, target)
+</li>
+<li><code>[&#xa0;]</code> Scheduling Algorithm input
+</li>
+</ul>
+</li>
+</ul>
+<p>
+The schedule is computed offline before the animation begins. 
+Only after the schedule is fully constructed do we animate it.     
+</p>
+</li>
+</ul>
+</li>
+
+<li><code>[&#xa0;]</code> Inside<font color = "red"> ProbX.hs </font> 
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span style="color: #808080; font-style: italic;">-- </span><span style="color: #808080; font-style: italic;">called by one of the branches of handle event. The function may fail to find a schedule.</span>
+<span style="color: #cae682;">schedulingAlgorithm</span> <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Robots</span> <span style="color: #cae682;">-&gt;</span> <span style="color: #92a65e; font-weight: bold;">Packages</span> <span style="color: #cae682;">-&gt;</span> <span style="color: #92a65e; font-weight: bold;">Maybe</span> <span style="color: #92a65e; font-weight: bold;">Schedule</span>
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> ROBOTS Where each robot consits of 
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Initial position    x<sub>0</sub>
+</li>
+<li><code>[&#xa0;]</code> Max Velocity        v<sub>0</sub> 
+</li>
+<li id="Initial Fuel amount f<sub>0</sub>"><code>[&#xa0;]</code> initialized to +∞ by default.
+</li>
+</ul>
+</li>
+
+<li><code>[&#xa0;]</code> PACKAGES Where each package consists of 
+<ul class="org-ul">
+<li><code>[&#xa0;]</code> Source.  
+</li>
+<li><code>[&#xa0;]</code> Target
+</li>
+</ul>
+</li>
+
+<li><code>[&#xa0;]</code> SCHEDULE A list where every entry is a recored showing the schedule of a single robot. 
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span style="color: #8c8c8c;">{</span>
+   rendezvous point x_i            <span style="color: #cae682;">,</span>         <span style="color: #808080; font-style: italic;">-- </span><span style="color: #808080; font-style: italic;">rendezvous point i=1,2,3.... i=0 correponds to the inital point.</span>
+   intransit<span style="color: #cae682;">-</span>packages<span style="color: #cae682;">-</span>x_<span style="color: #93a8c6;">(</span>i<span style="color: #cae682;">-</span><span style="color: #e5786d;">1</span><span style="color: #93a8c6;">)</span><span style="color: #cae682;">-</span>x_i  <span style="color: #cae682;">,</span>         <span style="color: #808080; font-style: italic;">-- </span><span style="color: #808080; font-style: italic;">packages carried inside the open-interval.</span>
+   total<span style="color: #cae682;">-</span>wait<span style="color: #cae682;">-</span>time <span style="color: #cae682;">@</span> x_i           <span style="color: #cae682;">,</span>         <span style="color: #808080; font-style: italic;">-- </span><span style="color: #808080; font-style: italic;">time to wait at the rendezvous point</span>
+   <span style="color: #93a8c6;">[</span> give<span style="color: #cae682;">-</span>packages<span style="color: #cae682;">-</span>to  <span style="color: #cae682;">,</span>idrobot <span style="color: #93a8c6;">]</span> <span style="color: #cae682;">@</span> x_i      <span style="color: #808080; font-style: italic;">-- </span><span style="color: #808080; font-style: italic;">Give packages to the specified robots at rendezvous points</span>
+   <span style="color: #93a8c6;">[</span> take<span style="color: #cae682;">-</span>packages<span style="color: #cae682;">-</span>from<span style="color: #cae682;">,</span>idrobot <span style="color: #93a8c6;">]</span> <span style="color: #cae682;">@</span> x_i      <span style="color: #808080; font-style: italic;">-- </span><span style="color: #808080; font-style: italic;">(Possibly redundant) Take packages from the specified robots at rendezvous points</span>
+<span style="color: #8c8c8c;">}</span>
+</pre>
+</div>
+
+<p>
+The calculated schedule list can be easily used to calculate a "new"-robot list 
+of the original robots where the robots have changed their position and/or lessened 
+their fuel. It is good to decouple the computed schedule from the actual robot list
+so that you can use compare different schedules directly, and possibly make interesting 
+uses of currying.
+</p>
+</li>
+</ul>
+</li>
+
+<li><code>[&#xa0;]</code> A routine to read and write the state to a YAML file for post-processing.
+It should basically pickle the damned world state.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Source Code</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> Package Handoff Utility Toolkit</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span style="color: #e5786d;">{-# LANGUAGE UnicodeSyntax #-}</span>
+<span style="color: #e5786d;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
+
+<span style="color: #ff9966;">{- | This module contains basic data-structures and routines common</span>
+<span style="color: #ff9966;">   to all package-handoff problem variants.</span>
+<span style="color: #ff9966;">-}</span>
+<span style="color: #8ac6f2; font-weight: bold;">module</span> <span style="color: #92a65e; font-weight: bold;">PackageHandoffPrelude</span> <span style="color: #8ac6f2; font-weight: bold;">where</span>
+
+
+<span style="color: #8ac6f2; font-weight: bold;">type</span> <span style="color: #92a65e; font-weight: bold;">Robots</span>   <span style="color: #cae682;">=</span> <span style="color: #8c8c8c;">[</span><span style="color: #92a65e; font-weight: bold;">Robot</span><span style="color: #8c8c8c;">]</span>
+<span style="color: #8ac6f2; font-weight: bold;">type</span> <span style="color: #92a65e; font-weight: bold;">Packages</span> <span style="color: #cae682;">=</span> <span style="color: #8c8c8c;">[</span><span style="color: #92a65e; font-weight: bold;">Package</span><span style="color: #8c8c8c;">]</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-3-3-2" class="outline-4">
+<h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> Single Package Routing</h4>
+<div class="outline-text-4" id="text-3-3-2">
+<div class="org-src-container">
+
+<pre class="src src-haskell"><span style="color: #e5786d;">{-# LANGUAGE UnicodeSyntax #-}</span>
+<span style="color: #e5786d;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
+
+<span style="color: #ff9966;">{- | This module contains scheduling algorithms and data-structures for </span>
+<span style="color: #ff9966;">     routing a single package from point A to point B, where the carrier-</span>
+<span style="color: #ff9966;">     robots have varying velocity and possibly limited fuel.</span>
+<span style="color: #ff9966;">-}</span>
+
+<span style="color: #8ac6f2; font-weight: bold;">module</span> <span style="color: #92a65e; font-weight: bold;">SinglePackageRouting</span> <span style="color: #8ac6f2; font-weight: bold;">where</span>
+
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.List</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">List</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Map</span>  <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Map</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Set</span>  <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Set</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Function</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Function</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Ord</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Control.Monad</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Monoid</span> 
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Diagrams.Prelude</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Colour.Palette.BrewerSet</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Graphics.Gloss</span>
+<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Graphics.Gloss.Interface.Pure.Game</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Questions</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li>Are gloss coordinates pixel coordinates? 
+How to translate between gloss numbers and true x-y numbers. 
+May need a dedicated function
+</li>
+<li>Why are gloss numbers single precision Float numbers? 
+</li>
+<li>Package handoff, even single package routing is NP-Complete?   
+By reduction from TSP 
+   Take an instance of TSP. You can convert it to an instance of 
+   your problem by tripling each point, and making exactly one 
+   of the robots super-duper fast and the others super-duper slow. 
+   Then if your algorithm was polynomial time, it would solve the TSP 
+which is known to be NP-complete. 
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Gaurish</p>
+<p class="date">Created: 2016-09-22 Thu 12:10</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

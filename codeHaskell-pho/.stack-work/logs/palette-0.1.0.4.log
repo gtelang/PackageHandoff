@@ -1,0 +1,28 @@
+Configuring palette-0.1.0.4...
+Building palette-0.1.0.4...
+Preprocessing library palette-0.1.0.4...
+[1 of 4] Compiling Data.Colour.Palette.Types ( src/Data/Colour/Palette/Types.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Colour/Palette/Types.o )
+[2 of 4] Compiling Data.Colour.Palette.BrewerSet ( src/Data/Colour/Palette/BrewerSet.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Colour/Palette/BrewerSet.o )
+[3 of 4] Compiling Data.Colour.Palette.Harmony ( src/Data/Colour/Palette/Harmony.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Colour/Palette/Harmony.o )
+[4 of 4] Compiling Data.Colour.Palette.ColorSet ( src/Data/Colour/Palette/ColorSet.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Data/Colour/Palette/ColorSet.o )
+Running Haddock for palette-0.1.0.4...
+Preprocessing library palette-0.1.0.4...
+Haddock coverage:
+  50% (  1 /  2) in 'Data.Colour.Palette.Types'
+  Missing documentation for:
+    Kolor (src/Data/Colour/Palette/Types.hs:19)
+  86% (  6 /  7) in 'Data.Colour.Palette.BrewerSet'
+  Missing documentation for:
+    Kolor (src/Data/Colour/Palette/Types.hs:19)
+  94% ( 17 / 18) in 'Data.Colour.Palette.Harmony'
+  Missing documentation for:
+    Kolor (src/Data/Colour/Palette/Types.hs:19)
+  94% ( 15 / 16) in 'Data.Colour.Palette.ColorSet'
+  Missing documentation for:
+    Kolor (src/Data/Colour/Palette/Types.hs:19)
+Documentation created:
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/palette/index.html,
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/palette/palette.txt
+Installing library in
+/home/gaurish/.stack/snapshots/x86_64-linux/lts-7.0/8.0.1/lib/x86_64-linux-ghc-8.0.1/palette-0.1.0.4-CFPZH0eZmMmCn8gpdGZWIT
+Registering palette-0.1.0.4...

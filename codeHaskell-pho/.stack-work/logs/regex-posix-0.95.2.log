@@ -1,0 +1,106 @@
+Configuring regex-posix-0.95.2...
+Building regex-posix-0.95.2...
+Preprocessing library regex-posix-0.95.2...
+[1 of 6] Compiling Text.Regex.Posix.Wrap ( .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Text/Regex/Posix/Wrap.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Text/Regex/Posix/Wrap.o )
+[2 of 6] Compiling Text.Regex.Posix.String ( Text/Regex/Posix/String.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Text/Regex/Posix/String.o )
+[3 of 6] Compiling Text.Regex.Posix.Sequence ( Text/Regex/Posix/Sequence.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Text/Regex/Posix/Sequence.o )
+[4 of 6] Compiling Text.Regex.Posix.ByteString ( Text/Regex/Posix/ByteString.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Text/Regex/Posix/ByteString.o )
+[5 of 6] Compiling Text.Regex.Posix.ByteString.Lazy ( Text/Regex/Posix/ByteString/Lazy.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Text/Regex/Posix/ByteString/Lazy.o )
+[6 of 6] Compiling Text.Regex.Posix ( Text/Regex/Posix.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Text/Regex/Posix.o )
+
+Text/Regex/Posix.hs:72:13: warning: [-Wdeprecations]
+    In the use of ‘versionTags’ (imported from Data.Version):
+    Deprecated: "See GHC ticket #2496"
+Running Haddock for regex-posix-0.95.2...
+Preprocessing library regex-posix-0.95.2...
+
+Text/Regex/Posix.hs:72:13: warning: [-Wdeprecations]
+    In the use of ‘versionTags’ (imported from Data.Version):
+    Deprecated: "See GHC ticket #2496"
+Haddock coverage:
+  40% ( 17 / 42) in 'Text.Regex.Posix.Wrap'
+  Missing documentation for:
+    RegOffsetT (Text/Regex/Posix/Wrap.hsc:166)
+    =~ (Text/Regex/Posix/Wrap.hsc:320)
+    =~~ (Text/Regex/Posix/Wrap.hsc:322)
+    wrapCompile (Text/Regex/Posix/Wrap.hsc:298)
+    wrapTest (Text/Regex/Posix/Wrap.hsc:303)
+    wrapCount (Text/Regex/Posix/Wrap.hsc:317)
+    unusedRegOffset (Text/Regex/Posix/Wrap.hsc:291)
+    compExtended (Text/Regex/Posix/Wrap.hsc:416)
+    compIgnoreCase (Text/Regex/Posix/Wrap.hsc:418)
+    compNoSub (Text/Regex/Posix/Wrap.hsc:420)
+    compNewline (Text/Regex/Posix/Wrap.hsc:422)
+    execNotBOL (Text/Regex/Posix/Wrap.hsc:411)
+    execNotEOL (Text/Regex/Posix/Wrap.hsc:413)
+    retBadbr (Text/Regex/Posix/Wrap.hsc:427)
+    retBadpat (Text/Regex/Posix/Wrap.hsc:429)
+    retBadrpt (Text/Regex/Posix/Wrap.hsc:431)
+    retEcollate (Text/Regex/Posix/Wrap.hsc:433)
+    retEctype (Text/Regex/Posix/Wrap.hsc:435)
+    retEescape (Text/Regex/Posix/Wrap.hsc:437)
+    retEsubreg (Text/Regex/Posix/Wrap.hsc:439)
+    retEbrack (Text/Regex/Posix/Wrap.hsc:441)
+    retEparen (Text/Regex/Posix/Wrap.hsc:443)
+    retEbrace (Text/Regex/Posix/Wrap.hsc:445)
+    retErange (Text/Regex/Posix/Wrap.hsc:447)
+    retEspace (Text/Regex/Posix/Wrap.hsc:449)
+  68% ( 17 / 25) in 'Text.Regex.Posix.String'
+  Missing documentation for:
+    unusedOffset (Text/Regex/Posix/String.hs:63)
+    compile (Text/Regex/Posix/String.hs:87)
+    compExtended (Text/Regex/Posix/Wrap.hsc:416)
+    compIgnoreCase (Text/Regex/Posix/Wrap.hsc:418)
+    compNoSub (Text/Regex/Posix/Wrap.hsc:420)
+    compNewline (Text/Regex/Posix/Wrap.hsc:422)
+    execNotBOL (Text/Regex/Posix/Wrap.hsc:411)
+    execNotEOL (Text/Regex/Posix/Wrap.hsc:413)
+  67% ( 16 / 24) in 'Text.Regex.Posix.Sequence'
+  Missing documentation for:
+    unusedOffset (Text/Regex/Posix/Sequence.hs:67)
+    compile (Text/Regex/Posix/Sequence.hs:91)
+    compExtended (Text/Regex/Posix/Wrap.hsc:416)
+    compIgnoreCase (Text/Regex/Posix/Wrap.hsc:418)
+    compNoSub (Text/Regex/Posix/Wrap.hsc:420)
+    compNewline (Text/Regex/Posix/Wrap.hsc:422)
+    execNotBOL (Text/Regex/Posix/Wrap.hsc:411)
+    execNotEOL (Text/Regex/Posix/Wrap.hsc:413)
+  68% ( 17 / 25) in 'Text.Regex.Posix.ByteString'
+  Missing documentation for:
+    unusedOffset (Text/Regex/Posix/ByteString.hs:143)
+    regexec (Text/Regex/Posix/ByteString.hs:124)
+    compExtended (Text/Regex/Posix/Wrap.hsc:416)
+    compIgnoreCase (Text/Regex/Posix/Wrap.hsc:418)
+    compNoSub (Text/Regex/Posix/Wrap.hsc:420)
+    compNewline (Text/Regex/Posix/Wrap.hsc:422)
+    execNotBOL (Text/Regex/Posix/Wrap.hsc:411)
+    execNotEOL (Text/Regex/Posix/Wrap.hsc:413)
+  68% ( 17 / 25) in 'Text.Regex.Posix.ByteString.Lazy'
+  Missing documentation for:
+    unusedOffset (Text/Regex/Posix/ByteString/Lazy.hs:140)
+    regexec (Text/Regex/Posix/ByteString/Lazy.hs:128)
+    compExtended (Text/Regex/Posix/Wrap.hsc:416)
+    compIgnoreCase (Text/Regex/Posix/Wrap.hsc:418)
+    compNoSub (Text/Regex/Posix/Wrap.hsc:420)
+    compNewline (Text/Regex/Posix/Wrap.hsc:422)
+    execNotBOL (Text/Regex/Posix/Wrap.hsc:411)
+    execNotEOL (Text/Regex/Posix/Wrap.hsc:413)
+  80% (  4 /  5) in 'Text.Regex.Posix'
+  Missing documentation for:
+    getVersion_Text_Regex_Posix (Text/Regex/Posix.hs:69)
+Warning: Text.Regex.Posix.Wrap: could not find link destinations for:
+    retNoMatch
+Warning: Text.Regex.Posix.String: could not find link destinations for:
+    retNoMatch
+Warning: Text.Regex.Posix.Sequence: could not find link destinations for:
+    retNoMatch
+Warning: Text.Regex.Posix.ByteString: could not find link destinations for:
+    retNoMatch
+Warning: Text.Regex.Posix.ByteString.Lazy: could not find link destinations for:
+    retNoMatch
+Documentation created:
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/regex-posix/index.html,
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/regex-posix/regex-posix.txt
+Installing library in
+/home/gaurish/.stack/snapshots/x86_64-linux/lts-7.0/8.0.1/lib/x86_64-linux-ghc-8.0.1/regex-posix-0.95.2-Fy6xYMm8dnjHHt23b8RdmR
+Registering regex-posix-0.95.2...

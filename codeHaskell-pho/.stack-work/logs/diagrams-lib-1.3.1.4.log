@@ -1,0 +1,489 @@
+Configuring diagrams-lib-1.3.1.4...
+Building diagrams-lib-1.3.1.4...
+Preprocessing library diagrams-lib-1.3.1.4...
+[ 1 of 72] Compiling Diagrams.Util    ( src/Diagrams/Util.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Util.o )
+[ 2 of 72] Compiling Diagrams.Transform ( src/Diagrams/Transform.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Transform.o )
+[ 3 of 72] Compiling Diagrams.ThreeD.Attributes ( src/Diagrams/ThreeD/Attributes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Attributes.o )
+[ 4 of 72] Compiling Diagrams.Query   ( src/Diagrams/Query.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Query.o )
+[ 5 of 72] Compiling Diagrams.Points  ( src/Diagrams/Points.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Points.o )
+[ 6 of 72] Compiling Diagrams.Parametric ( src/Diagrams/Parametric.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Parametric.o )
+[ 7 of 72] Compiling Diagrams.Parametric.Adjust ( src/Diagrams/Parametric/Adjust.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Parametric/Adjust.o )
+[ 8 of 72] Compiling Diagrams.TwoD.Segment.Bernstein ( src/Diagrams/TwoD/Segment/Bernstein.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Segment/Bernstein.o )
+[ 9 of 72] Compiling Diagrams.Names   ( src/Diagrams/Names.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Names.o )
+[10 of 72] Compiling Diagrams.Located ( src/Diagrams/Located.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Located.o )
+[11 of 72] Compiling Diagrams.Segment ( src/Diagrams/Segment.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Segment.o )
+[12 of 72] Compiling Diagrams.Tangent ( src/Diagrams/Tangent.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Tangent.o )
+[13 of 72] Compiling Diagrams.Trail   ( src/Diagrams/Trail.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Trail.o )
+[14 of 72] Compiling Diagrams.TrailLike ( src/Diagrams/TrailLike.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TrailLike.o )
+[15 of 72] Compiling Diagrams.CubicSpline.Internal ( src/Diagrams/CubicSpline/Internal.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/CubicSpline/Internal.o )
+[16 of 72] Compiling Diagrams.CubicSpline ( src/Diagrams/CubicSpline.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/CubicSpline.o )
+[17 of 72] Compiling Diagrams.Coordinates ( src/Diagrams/Coordinates.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Coordinates.o )
+[18 of 72] Compiling Diagrams.Attributes.Compile ( src/Diagrams/Attributes/Compile.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Attributes/Compile.o )
+[19 of 72] Compiling Diagrams.Attributes ( src/Diagrams/Attributes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Attributes.o )
+[20 of 72] Compiling Diagrams.Animation.Active ( src/Diagrams/Animation/Active.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Animation/Active.o )
+[21 of 72] Compiling Diagrams.Angle   ( src/Diagrams/Angle.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Angle.o )
+[22 of 72] Compiling Diagrams.Direction ( src/Diagrams/Direction.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Direction.o )
+[23 of 72] Compiling Diagrams.Combinators ( src/Diagrams/Combinators.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Combinators.o )
+[24 of 72] Compiling Diagrams.Envelope ( src/Diagrams/Envelope.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Envelope.o )
+[25 of 72] Compiling Diagrams.Trace   ( src/Diagrams/Trace.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Trace.o )
+[26 of 72] Compiling Diagrams.TwoD.Types ( src/Diagrams/TwoD/Types.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Types.o )
+[27 of 72] Compiling Diagrams.ThreeD.Types ( src/Diagrams/ThreeD/Types.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Types.o )
+[28 of 72] Compiling Diagrams.ThreeD.Light ( src/Diagrams/ThreeD/Light.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Light.o )
+[29 of 72] Compiling Diagrams.Transform.Matrix ( src/Diagrams/Transform/Matrix.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Transform/Matrix.o )
+[30 of 72] Compiling Diagrams.TwoD.Curvature ( src/Diagrams/TwoD/Curvature.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Curvature.o )
+[31 of 72] Compiling Diagrams.TwoD.Vector ( src/Diagrams/TwoD/Vector.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Vector.o )
+[32 of 72] Compiling Diagrams.ThreeD.Vector ( src/Diagrams/ThreeD/Vector.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Vector.o )
+[33 of 72] Compiling Diagrams.ThreeD.Camera ( src/Diagrams/ThreeD/Camera.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Camera.o )
+[34 of 72] Compiling Diagrams.ThreeD.Shapes ( src/Diagrams/ThreeD/Shapes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Shapes.o )
+[35 of 72] Compiling Diagrams.TwoD.Points ( src/Diagrams/TwoD/Points.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Points.o )
+[36 of 72] Compiling Diagrams.TwoD.Transform ( src/Diagrams/TwoD/Transform.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Transform.o )
+[37 of 72] Compiling Diagrams.ThreeD.Transform ( src/Diagrams/ThreeD/Transform.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Transform.o )
+[38 of 72] Compiling Diagrams.Transform.ScaleInv ( src/Diagrams/Transform/ScaleInv.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Transform/ScaleInv.o )
+[39 of 72] Compiling Diagrams.TwoD.Arc ( src/Diagrams/TwoD/Arc.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Arc.o )
+[40 of 72] Compiling Diagrams.TwoD.Ellipse ( src/Diagrams/TwoD/Ellipse.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Ellipse.o )
+[41 of 72] Compiling Diagrams.TwoD.Segment ( src/Diagrams/TwoD/Segment.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Segment.o )
+[42 of 72] Compiling Diagrams.Align   ( src/Diagrams/Align.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Align.o )
+[43 of 72] Compiling Diagrams.Path    ( src/Diagrams/Path.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Path.o )
+[44 of 72] Compiling Diagrams.Deform  ( src/Diagrams/Deform.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Deform.o )
+[45 of 72] Compiling Diagrams.TwoD.Deform ( src/Diagrams/TwoD/Deform.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Deform.o )
+[46 of 72] Compiling Diagrams.ThreeD.Deform ( src/Diagrams/ThreeD/Deform.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Deform.o )
+[47 of 72] Compiling Diagrams.LinearMap ( src/Diagrams/LinearMap.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/LinearMap.o )
+[48 of 72] Compiling Diagrams.ThreeD.Projection ( src/Diagrams/ThreeD/Projection.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Projection.o )
+[49 of 72] Compiling Diagrams.TwoD.Attributes ( src/Diagrams/TwoD/Attributes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Attributes.o )
+[50 of 72] Compiling Diagrams.TwoD.Text ( src/Diagrams/TwoD/Text.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Text.o )
+[51 of 72] Compiling Diagrams.TwoD.Path ( src/Diagrams/TwoD/Path.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Path.o )
+[52 of 72] Compiling Diagrams.TwoD.Model ( src/Diagrams/TwoD/Model.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Model.o )
+[53 of 72] Compiling Diagrams.TwoD.Offset ( src/Diagrams/TwoD/Offset.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Offset.o )
+[54 of 72] Compiling Diagrams.TwoD.Polygons ( src/Diagrams/TwoD/Polygons.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Polygons.o )
+[55 of 72] Compiling Diagrams.TwoD.Shapes ( src/Diagrams/TwoD/Shapes.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Shapes.o )
+[56 of 72] Compiling Diagrams.BoundingBox ( src/Diagrams/BoundingBox.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/BoundingBox.o )
+[57 of 72] Compiling Diagrams.Animation ( src/Diagrams/Animation.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Animation.o )
+[58 of 72] Compiling Diagrams.Backend.CmdLine ( src/Diagrams/Backend/CmdLine.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Backend/CmdLine.o )
+[59 of 72] Compiling Diagrams.Size    ( src/Diagrams/Size.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Size.o )
+[60 of 72] Compiling Diagrams.TwoD.Size ( src/Diagrams/TwoD/Size.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Size.o )
+[61 of 72] Compiling Diagrams.ThreeD.Size ( src/Diagrams/ThreeD/Size.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Size.o )
+[62 of 72] Compiling Diagrams.TwoD.Adjust ( src/Diagrams/TwoD/Adjust.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Adjust.o )
+[63 of 72] Compiling Diagrams.TwoD.Image ( src/Diagrams/TwoD/Image.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Image.o )
+[64 of 72] Compiling Diagrams.TwoD.Align ( src/Diagrams/TwoD/Align.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Align.o )
+[65 of 72] Compiling Diagrams.ThreeD.Align ( src/Diagrams/ThreeD/Align.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD/Align.o )
+[66 of 72] Compiling Diagrams.ThreeD  ( src/Diagrams/ThreeD.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/ThreeD.o )
+[67 of 72] Compiling Diagrams.TwoD.Arrowheads ( src/Diagrams/TwoD/Arrowheads.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Arrowheads.o )
+[68 of 72] Compiling Diagrams.TwoD.Arrow ( src/Diagrams/TwoD/Arrow.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Arrow.o )
+[69 of 72] Compiling Diagrams.TwoD.Combinators ( src/Diagrams/TwoD/Combinators.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD/Combinators.o )
+[70 of 72] Compiling Diagrams.TwoD    ( src/Diagrams/TwoD.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/TwoD.o )
+[71 of 72] Compiling Diagrams         ( src/Diagrams.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams.o )
+[72 of 72] Compiling Diagrams.Prelude ( src/Diagrams/Prelude.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Diagrams/Prelude.o )
+Running Haddock for diagrams-lib-1.3.1.4...
+Preprocessing library diagrams-lib-1.3.1.4...
+Haddock coverage:
+ 100% ( 15 / 15) in 'Diagrams.Util'
+ 100% ( 26 / 26) in 'Diagrams.Transform'
+  62% ( 16 / 26) in 'Diagrams.ThreeD.Attributes'
+  Missing documentation for:
+     (src/Diagrams/ThreeD/Attributes.hs:43)
+    _SurfaceColor (src/Diagrams/ThreeD/Attributes.hs:45)
+     (src/Diagrams/ThreeD/Attributes.hs:64)
+     (src/Diagrams/ThreeD/Attributes.hs:87)
+    _Ambient (src/Diagrams/ThreeD/Attributes.hs:89)
+    specularSize (src/Diagrams/ThreeD/Attributes.hs:112)
+    specularIntensity (src/Diagrams/ThreeD/Attributes.hs:112)
+    Highlight (src/Diagrams/ThreeD/Attributes.hs:114)
+     (src/Diagrams/ThreeD/Attributes.hs:117)
+    _Highlight (src/Diagrams/ThreeD/Attributes.hs:119)
+ 100% (  7 /  7) in 'Diagrams.Query'
+  80% (  8 / 10) in 'Diagrams.Points'
+  Missing documentation for:
+    _Point
+    lensP
+ 100% (  9 /  9) in 'Diagrams.Parametric'
+ 100% (  8 /  8) in 'Diagrams.Parametric.Adjust'
+  86% (  6 /  7) in 'Diagrams.TwoD.Segment.Bernstein'
+  Missing documentation for:
+    BernsteinPoly (src/Diagrams/TwoD/Segment/Bernstein.hs:33)
+ 100% ( 30 / 30) in 'Diagrams.Names'
+ 100% (  7 /  7) in 'Diagrams.Located'
+  94% ( 31 / 33) in 'Diagrams.Segment'
+  Missing documentation for:
+    oeOffset (src/Diagrams/Segment.hs:543)
+    oeEnvelope (src/Diagrams/Segment.hs:543)
+ 100% ( 11 / 11) in 'Diagrams.Tangent'
+ 100% ( 77 / 77) in 'Diagrams.Trail'
+ 100% ( 11 / 11) in 'Diagrams.TrailLike'
+ 100% (  5 /  5) in 'Diagrams.CubicSpline.Internal'
+ 100% (  3 /  3) in 'Diagrams.CubicSpline'
+ 100% (  3 /  3) in 'Diagrams.Coordinates'
+  67% (  2 /  3) in 'Diagrams.Attributes.Compile'
+  Missing documentation for:
+    SplitAttribute (src/Diagrams/Attributes/Compile.hs:37)
+  68% ( 55 / 81) in 'Diagrams.Attributes'
+  Missing documentation for:
+    ultraThin (src/Diagrams/Attributes.hs:103)
+    veryThin (src/Diagrams/Attributes.hs:103)
+    thin (src/Diagrams/Attributes.hs:103)
+    medium (src/Diagrams/Attributes.hs:103)
+    thick (src/Diagrams/Attributes.hs:103)
+    veryThick (src/Diagrams/Attributes.hs:103)
+    ultraThick (src/Diagrams/Attributes.hs:103)
+    none (src/Diagrams/Attributes.hs:103)
+    tiny (src/Diagrams/Attributes.hs:103)
+    verySmall (src/Diagrams/Attributes.hs:103)
+    small (src/Diagrams/Attributes.hs:103)
+    normal (src/Diagrams/Attributes.hs:103)
+    large (src/Diagrams/Attributes.hs:103)
+    veryLarge (src/Diagrams/Attributes.hs:103)
+    huge (src/Diagrams/Attributes.hs:103)
+    getLineWidth (src/Diagrams/Attributes.hs:145)
+    _LineWidth (src/Diagrams/Attributes.hs:132)
+    _LineWidthM (src/Diagrams/Attributes.hs:135)
+    getDashing (src/Diagrams/Attributes.hs:200)
+    someToAlpha (src/Diagrams/Attributes.hs:285)
+    _Opacity (src/Diagrams/Attributes.hs:332)
+    getOpacity (src/Diagrams/Attributes.hs:335)
+    getLineCap (src/Diagrams/Attributes.hs:371)
+    getLineJoin (src/Diagrams/Attributes.hs:401)
+    _LineMiterLimit (src/Diagrams/Attributes.hs:420)
+    getLineMiterLimit (src/Diagrams/Attributes.hs:426)
+  33% (  2 /  6) in 'Diagrams.Animation.Active'
+  Missing documentation for:
+     (src/Diagrams/Animation/Active.hs:59)
+     (src/Diagrams/Animation/Active.hs:62)
+     (src/Diagrams/Animation/Active.hs:65)
+     (src/Diagrams/Animation/Active.hs:68)
+ 100% ( 28 / 28) in 'Diagrams.Angle'
+ 100% (  9 /  9) in 'Diagrams.Direction'
+ 100% ( 25 / 25) in 'Diagrams.Combinators'
+ 100% ( 19 / 19) in 'Diagrams.Envelope'
+ 100% ( 16 / 16) in 'Diagrams.Trace'
+  71% ( 12 / 17) in 'Diagrams.TwoD.Types'
+  Missing documentation for:
+    P2 (src/Diagrams/TwoD/Types.hs:36)
+    T2 (src/Diagrams/TwoD/Types.hs:37)
+    r2Iso (src/Diagrams/TwoD/Types.hs:54)
+    p2Iso (src/Diagrams/TwoD/Types.hs:69)
+    r2PolarIso (src/Diagrams/TwoD/Types.hs:75)
+  68% ( 13 / 19) in 'Diagrams.ThreeD.Types'
+  Missing documentation for:
+    r3Iso (src/Diagrams/ThreeD/Types.hs:44)
+    p3Iso (src/Diagrams/ThreeD/Types.hs:67)
+    r3SphericalIso (src/Diagrams/ThreeD/Types.hs:80)
+    r3CylindricalIso (src/Diagrams/ThreeD/Types.hs:85)
+    P3 (src/Diagrams/ThreeD/Types.hs:41)
+    T3 (src/Diagrams/ThreeD/Types.hs:42)
+  71% (  5 /  7) in 'Diagrams.ThreeD.Light'
+  Missing documentation for:
+     (src/Diagrams/ThreeD/Light.hs:44)
+     (src/Diagrams/ThreeD/Light.hs:47)
+ 100% (  8 /  8) in 'Diagrams.Transform.Matrix'
+ 100% (  5 /  5) in 'Diagrams.TwoD.Curvature'
+  89% ( 16 / 18) in 'Diagrams.TwoD.Vector'
+  Missing documentation for:
+    signedAngleBetween (src/Diagrams/TwoD/Vector.hs:82)
+    signedAngleBetweenDirs (src/Diagrams/TwoD/Vector.hs:85)
+ 100% ( 11 / 11) in 'Diagrams.ThreeD.Vector'
+  45% (  9 / 20) in 'Diagrams.ThreeD.Camera'
+  Missing documentation for:
+    Camera (src/Diagrams/ThreeD/Camera.hs:47)
+    horizontalFieldOfView (src/Diagrams/ThreeD/Camera.hs:80)
+    verticalFieldOfView (src/Diagrams/ThreeD/Camera.hs:80)
+    orthoWidth (src/Diagrams/ThreeD/Camera.hs:95)
+    orthoHeight (src/Diagrams/ThreeD/Camera.hs:95)
+    camLoc (src/Diagrams/ThreeD/Camera.hs:48)
+    camForward (src/Diagrams/ThreeD/Camera.hs:144)
+    camUp (src/Diagrams/ThreeD/Camera.hs:147)
+    camRight (src/Diagrams/ThreeD/Camera.hs:150)
+    camLens (src/Diagrams/ThreeD/Camera.hs:154)
+    camAspect (src/Diagrams/ThreeD/Camera.hs:157)
+  67% (  6 /  9) in 'Diagrams.ThreeD.Shapes'
+  Missing documentation for:
+    Ellipsoid (src/Diagrams/ThreeD/Shapes.hs:44)
+    Box (src/Diagrams/ThreeD/Shapes.hs:72)
+    Frustum (src/Diagrams/ThreeD/Shapes.hs:109)
+ 100% (  3 /  3) in 'Diagrams.TwoD.Points'
+  98% ( 40 / 41) in 'Diagrams.TwoD.Transform'
+  Missing documentation for:
+    T2 (src/Diagrams/TwoD/Types.hs:37)
+  97% ( 36 / 37) in 'Diagrams.ThreeD.Transform'
+  Missing documentation for:
+    T3 (src/Diagrams/ThreeD/Types.hs:42)
+  57% (  4 /  7) in 'Diagrams.Transform.ScaleInv'
+  Missing documentation for:
+    scaleInvObj (src/Diagrams/Transform/ScaleInv.hs:84)
+    scaleInvDir (src/Diagrams/Transform/ScaleInv.hs:84)
+    scaleInvLoc (src/Diagrams/Transform/ScaleInv.hs:84)
+ 100% ( 10 / 10) in 'Diagrams.TwoD.Arc'
+ 100% (  6 /  6) in 'Diagrams.TwoD.Ellipse'
+ 100% ( 14 / 14) in 'Diagrams.TwoD.Segment'
+  93% ( 13 / 14) in 'Diagrams.Align'
+  Missing documentation for:
+    traceBoundary (src/Diagrams/Align.hs:90)
+ 100% ( 24 / 24) in 'Diagrams.Path'
+  50% (  2 /  4) in 'Diagrams.Deform'
+  Missing documentation for:
+    Module header
+    Deformable (src/Diagrams/Deform.hs:47)
+  71% (  5 /  7) in 'Diagrams.TwoD.Deform'
+  Missing documentation for:
+    Module header
+    facingY (src/Diagrams/TwoD/Deform.hs:37)
+  70% (  7 / 10) in 'Diagrams.ThreeD.Deform'
+  Missing documentation for:
+    Module header
+    facingY (src/Diagrams/TwoD/Deform.hs:37)
+    facingZ (src/Diagrams/ThreeD/Deform.hs:24)
+  83% ( 10 / 12) in 'Diagrams.LinearMap'
+  Missing documentation for:
+    AffineMappable (src/Diagrams/LinearMap.hs:143)
+    toAffineMap (src/Diagrams/LinearMap.hs:140)
+  95% ( 21 / 22) in 'Diagrams.ThreeD.Projection'
+  Missing documentation for:
+    lookingAt (src/Diagrams/ThreeD/Projection.hs:114)
+  79% ( 49 / 62) in 'Diagrams.TwoD.Attributes'
+  Missing documentation for:
+    _SC (src/Diagrams/TwoD/Attributes.hs:198)
+    _LG (src/Diagrams/TwoD/Attributes.hs:198)
+    _RG (src/Diagrams/TwoD/Attributes.hs:198)
+    _LineTexture (src/Diagrams/TwoD/Attributes.hs:274)
+    getLineTexture (src/Diagrams/TwoD/Attributes.hs:289)
+    lineTexture (src/Diagrams/TwoD/Attributes.hs:292)
+    lineTextureA (src/Diagrams/TwoD/Attributes.hs:295)
+    mkLineTexture (src/Diagrams/TwoD/Attributes.hs:286)
+    _lineTexture (src/Diagrams/TwoD/Attributes.hs:298)
+    _FillTexture (src/Diagrams/TwoD/Attributes.hs:340)
+    getFillTexture (src/Diagrams/TwoD/Attributes.hs:361)
+    fillTexture (src/Diagrams/TwoD/Attributes.hs:364)
+    mkFillTexture (src/Diagrams/TwoD/Attributes.hs:367)
+  90% ( 38 / 42) in 'Diagrams.TwoD.Text'
+  Missing documentation for:
+    _Font (src/Diagrams/TwoD/Text.hs:182)
+    _FontSize (src/Diagrams/TwoD/Text.hs:212)
+    _fontSizeR (src/Diagrams/TwoD/Text.hs:265)
+    _fontSizeU (src/Diagrams/TwoD/Text.hs:273)
+  98% ( 42 / 43) in 'Diagrams.TwoD.Path'
+  Missing documentation for:
+    _Clip (src/Diagrams/TwoD/Path.hs:386)
+  44% ( 11 / 25) in 'Diagrams.TwoD.Model'
+  Missing documentation for:
+    OriginOpts (src/Diagrams/TwoD/Model.hs:68)
+    oColor (src/Diagrams/TwoD/Model.hs:74)
+    oScale (src/Diagrams/TwoD/Model.hs:74)
+    oMinSize (src/Diagrams/TwoD/Model.hs:74)
+    EnvelopeOpts (src/Diagrams/TwoD/Model.hs:79)
+    eColor (src/Diagrams/TwoD/Model.hs:85)
+    eLineWidth (src/Diagrams/TwoD/Model.hs:85)
+    ePoints (src/Diagrams/TwoD/Model.hs:85)
+    TraceOpts (src/Diagrams/TwoD/Model.hs:90)
+    tColor (src/Diagrams/TwoD/Model.hs:97)
+    tScale (src/Diagrams/TwoD/Model.hs:97)
+    tMinSize (src/Diagrams/TwoD/Model.hs:97)
+    tPoints (src/Diagrams/TwoD/Model.hs:97)
+    showLabels (src/Diagrams/TwoD/Model.hs:165)
+  95% ( 20 / 21) in 'Diagrams.TwoD.Offset'
+  Missing documentation for:
+    offsetSegment (src/Diagrams/TwoD/Offset.hs:166)
+ 100% ( 23 / 23) in 'Diagrams.TwoD.Polygons'
+  83% ( 24 / 29) in 'Diagrams.TwoD.Shapes'
+  Missing documentation for:
+    RoundedRectOpts (src/Diagrams/TwoD/Shapes.hs:237)
+    radiusTL (src/Diagrams/TwoD/Shapes.hs:243)
+    radiusTR (src/Diagrams/TwoD/Shapes.hs:243)
+    radiusBL (src/Diagrams/TwoD/Shapes.hs:243)
+    radiusBR (src/Diagrams/TwoD/Shapes.hs:243)
+  97% ( 28 / 29) in 'Diagrams.BoundingBox'
+  Missing documentation for:
+    boundingBoxQuery (src/Diagrams/BoundingBox.hs:259)
+ 100% ( 10 / 10) in 'Diagrams.Animation'
+  71% ( 25 / 35) in 'Diagrams.Backend.CmdLine'
+  Missing documentation for:
+    width (src/Diagrams/Backend/CmdLine.hs:124)
+    height (src/Diagrams/Backend/CmdLine.hs:124)
+    output (src/Diagrams/Backend/CmdLine.hs:124)
+    selection (src/Diagrams/Backend/CmdLine.hs:135)
+    list (src/Diagrams/Backend/CmdLine.hs:135)
+    fpu (src/Diagrams/Backend/CmdLine.hs:143)
+    loop (src/Diagrams/Backend/CmdLine.hs:152)
+    src (src/Diagrams/Backend/CmdLine.hs:152)
+    interval (src/Diagrams/Backend/CmdLine.hs:152)
+    defaultLoopRender (src/Diagrams/Backend/CmdLine.hs:567)
+ 100% ( 16 / 16) in 'Diagrams.Size'
+ 100% ( 11 / 11) in 'Diagrams.TwoD.Size'
+ 100% (  8 /  8) in 'Diagrams.ThreeD.Size'
+ 100% (  4 /  4) in 'Diagrams.TwoD.Adjust'
+  75% (  9 / 12) in 'Diagrams.TwoD.Image'
+  Missing documentation for:
+    Embedded (src/Diagrams/TwoD/Image.hs:51)
+    External (src/Diagrams/TwoD/Image.hs:52)
+    Native (src/Diagrams/TwoD/Image.hs:53)
+  53% ( 17 / 32) in 'Diagrams.TwoD.Align'
+  Missing documentation for:
+    alignTL (src/Diagrams/TwoD/Align.hs:80)
+    alignTR (src/Diagrams/TwoD/Align.hs:80)
+    alignBL (src/Diagrams/TwoD/Align.hs:80)
+    alignBR (src/Diagrams/TwoD/Align.hs:80)
+    snugL (src/Diagrams/TwoD/Align.hs:55)
+    snugR (src/Diagrams/TwoD/Align.hs:62)
+    snugT (src/Diagrams/TwoD/Align.hs:70)
+    snugB (src/Diagrams/TwoD/Align.hs:77)
+    snugTL (src/Diagrams/TwoD/Align.hs:86)
+    snugTR (src/Diagrams/TwoD/Align.hs:86)
+    snugBL (src/Diagrams/TwoD/Align.hs:86)
+    snugBR (src/Diagrams/TwoD/Align.hs:86)
+    snugCenterX (src/Diagrams/TwoD/Align.hs:127)
+    snugCenterY (src/Diagrams/TwoD/Align.hs:134)
+    snugCenterXY (src/Diagrams/TwoD/Align.hs:141)
+  66% ( 25 / 38) in 'Diagrams.ThreeD.Align'
+  Missing documentation for:
+    snugXMin (src/Diagrams/ThreeD/Align.hs:54)
+    snugXMax (src/Diagrams/ThreeD/Align.hs:62)
+    snugYMin (src/Diagrams/ThreeD/Align.hs:71)
+    snugYMax (src/Diagrams/ThreeD/Align.hs:79)
+    snugZMin (src/Diagrams/ThreeD/Align.hs:88)
+    snugZMax (src/Diagrams/ThreeD/Align.hs:96)
+    snugCenterX (src/Diagrams/TwoD/Align.hs:127)
+    snugCenterY (src/Diagrams/TwoD/Align.hs:134)
+    snugCenterZ (src/Diagrams/ThreeD/Align.hs:115)
+    snugCenterXY (src/Diagrams/TwoD/Align.hs:141)
+    snugCenterXZ (src/Diagrams/ThreeD/Align.hs:122)
+    snugCenterYZ (src/Diagrams/ThreeD/Align.hs:130)
+    snugCenterXYZ (src/Diagrams/ThreeD/Align.hs:137)
+ 100% ( 10 / 10) in 'Diagrams.ThreeD'
+  88% ( 29 / 33) in 'Diagrams.TwoD.Arrowheads'
+  Missing documentation for:
+    noHead (src/Diagrams/TwoD/Arrowheads.hs:214)
+    noTail (src/Diagrams/TwoD/Arrowheads.hs:302)
+    arrowtailBlock (src/Diagrams/TwoD/Arrowheads.hs:264)
+    ArrowHT (src/Diagrams/TwoD/Arrowheads.hs:89)
+  91% ( 40 / 44) in 'Diagrams.TwoD.Arrow'
+  Missing documentation for:
+    arrowAt' (src/Diagrams/TwoD/Arrow.hs:493)
+    connectPerim' (src/Diagrams/TwoD/Arrow.hs:556)
+    connectOutside' (src/Diagrams/TwoD/Arrow.hs:577)
+    ArrowOpts (src/Diagrams/TwoD/Arrow.hs:147)
+ 100% ( 25 / 25) in 'Diagrams.TwoD.Combinators'
+  83% (300 /360) in 'Diagrams.TwoD'
+  Missing documentation for:
+    P2 (src/Diagrams/TwoD/Types.hs:36)
+    T2 (src/Diagrams/TwoD/Types.hs:37)
+    signedAngleBetween (src/Diagrams/TwoD/Vector.hs:82)
+    signedAngleBetweenDirs (src/Diagrams/TwoD/Vector.hs:85)
+    r2PolarIso (src/Diagrams/TwoD/Types.hs:75)
+    _Clip (src/Diagrams/TwoD/Path.hs:386)
+    RoundedRectOpts (src/Diagrams/TwoD/Shapes.hs:237)
+    radiusTL (src/Diagrams/TwoD/Shapes.hs:243)
+    radiusTR (src/Diagrams/TwoD/Shapes.hs:243)
+    radiusBL (src/Diagrams/TwoD/Shapes.hs:243)
+    radiusBR (src/Diagrams/TwoD/Shapes.hs:243)
+    arrowAt' (src/Diagrams/TwoD/Arrow.hs:493)
+    connectPerim' (src/Diagrams/TwoD/Arrow.hs:556)
+    connectOutside' (src/Diagrams/TwoD/Arrow.hs:577)
+    ArrowOpts (src/Diagrams/TwoD/Arrow.hs:147)
+    _fontSizeR (src/Diagrams/TwoD/Text.hs:265)
+    Embedded (src/Diagrams/TwoD/Image.hs:51)
+    External (src/Diagrams/TwoD/Image.hs:52)
+    Native (src/Diagrams/TwoD/Image.hs:53)
+    facingY (src/Diagrams/TwoD/Deform.hs:37)
+    alignTL (src/Diagrams/TwoD/Align.hs:80)
+    alignTR (src/Diagrams/TwoD/Align.hs:80)
+    alignBL (src/Diagrams/TwoD/Align.hs:80)
+    alignBR (src/Diagrams/TwoD/Align.hs:80)
+    snugL (src/Diagrams/TwoD/Align.hs:55)
+    snugR (src/Diagrams/TwoD/Align.hs:62)
+    snugT (src/Diagrams/TwoD/Align.hs:70)
+    snugB (src/Diagrams/TwoD/Align.hs:77)
+    snugTL (src/Diagrams/TwoD/Align.hs:86)
+    snugTR (src/Diagrams/TwoD/Align.hs:86)
+    snugBL (src/Diagrams/TwoD/Align.hs:86)
+    snugBR (src/Diagrams/TwoD/Align.hs:86)
+    snugCenterX (src/Diagrams/TwoD/Align.hs:127)
+    snugCenterY (src/Diagrams/TwoD/Align.hs:134)
+    snugCenterXY (src/Diagrams/TwoD/Align.hs:141)
+    _FillTexture (src/Diagrams/TwoD/Attributes.hs:340)
+    fillTexture (src/Diagrams/TwoD/Attributes.hs:364)
+    getFillTexture (src/Diagrams/TwoD/Attributes.hs:361)
+    _LineTexture (src/Diagrams/TwoD/Attributes.hs:274)
+    lineTexture (src/Diagrams/TwoD/Attributes.hs:292)
+    _lineTexture (src/Diagrams/TwoD/Attributes.hs:298)
+    lineTextureA (src/Diagrams/TwoD/Attributes.hs:295)
+    getLineTexture (src/Diagrams/TwoD/Attributes.hs:289)
+    _LG (src/Diagrams/TwoD/Attributes.hs:198)
+    _RG (src/Diagrams/TwoD/Attributes.hs:198)
+    _SC (src/Diagrams/TwoD/Attributes.hs:198)
+    OriginOpts (src/Diagrams/TwoD/Model.hs:68)
+    oColor (src/Diagrams/TwoD/Model.hs:74)
+    oScale (src/Diagrams/TwoD/Model.hs:74)
+    oMinSize (src/Diagrams/TwoD/Model.hs:74)
+    EnvelopeOpts (src/Diagrams/TwoD/Model.hs:79)
+    eColor (src/Diagrams/TwoD/Model.hs:85)
+    eLineWidth (src/Diagrams/TwoD/Model.hs:85)
+    ePoints (src/Diagrams/TwoD/Model.hs:85)
+    TraceOpts (src/Diagrams/TwoD/Model.hs:90)
+    tColor (src/Diagrams/TwoD/Model.hs:97)
+    tScale (src/Diagrams/TwoD/Model.hs:97)
+    tMinSize (src/Diagrams/TwoD/Model.hs:97)
+    tPoints (src/Diagrams/TwoD/Model.hs:97)
+    showLabels (src/Diagrams/TwoD/Model.hs:165)
+ 100% ( 61 / 61) in 'Diagrams'
+ 100% ( 33 / 33) in 'Diagrams.Prelude'
+Warning: Diagrams.Transform: could not find link destinations for:
+    ~
+Warning: Diagrams.Points: could not find link destinations for:
+    unsafeIndex unsafeRangeSize ~
+Warning: Diagrams.Parametric: could not find link destinations for:
+    ~
+Warning: Diagrams.Parametric.Adjust: could not find link destinations for:
+    ~
+Warning: Diagrams.Located: could not find link destinations for:
+    ~
+Warning: Diagrams.Segment: could not find link destinations for:
+    ~
+Warning: Diagrams.Trail: could not find link destinations for:
+    ~
+Warning: Diagrams.TrailLike: could not find link destinations for:
+    ~
+Warning: Diagrams.CubicSpline: could not find link destinations for:
+    ~
+Warning: Diagrams.Attributes: could not find link destinations for:
+    LineWidthM ~
+Warning: Diagrams.Direction: could not find link destinations for:
+    ~
+Warning: Diagrams.Envelope: could not find link destinations for:
+    ~
+Warning: Diagrams.Trace: could not find link destinations for:
+    ~
+Warning: Diagrams.TwoD.Types: could not find link destinations for:
+    unsafeIndex unsafeRangeSize D:R:MVectorsV20 MV_V2 D:R:VectorV20 V_V2
+Warning: Diagrams.ThreeD.Types: could not find link destinations for:
+    unsafeIndex unsafeRangeSize D:R:MVectorsV30 MV_V3 D:R:VectorV30 V_V3
+Warning: Diagrams.ThreeD.Camera: could not find link destinations for:
+    CameraLens
+Warning: Diagrams.Transform.ScaleInv: could not find link destinations for:
+    ~
+Warning: Diagrams.TwoD.Arc: could not find link destinations for:
+    ~
+Warning: Diagrams.TwoD.Ellipse: could not find link destinations for:
+    ~
+Warning: Diagrams.Align: could not find link destinations for:
+    ~
+Warning: Diagrams.Path: could not find link destinations for:
+    ~
+Warning: Diagrams.Deform: could not find link destinations for:
+    ~
+Warning: Diagrams.LinearMap: could not find link destinations for:
+    ~
+Warning: Diagrams.TwoD.Text: could not find link destinations for:
+    ~ FontSizeM
+Warning: Diagrams.TwoD.Path: could not find link destinations for:
+    ~
+Warning: Diagrams.BoundingBox: could not find link destinations for:
+    ~
+Warning: Diagrams.ThreeD.Align: could not find link destinations for:
+    ~
+Warning: Diagrams.TwoD: could not find link destinations for:
+    unsafeIndex unsafeRangeSize D:R:MVectorsV20 MV_V2 D:R:VectorV20 V_V2 ~
+Warning: Diagrams.Prelude: could not find link destinations for:
+    Id P Id ComplResult Stream StateL StateR StateL StateR State
+Documentation created:
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/diagrams-lib/index.html,
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/diagrams-lib/diagrams-lib.txt
+Installing library in
+/home/gaurish/.stack/snapshots/x86_64-linux/lts-7.0/8.0.1/lib/x86_64-linux-ghc-8.0.1/diagrams-lib-1.3.1.4-5KrQPZgfDl67Oaw6nHaBWv
+Registering diagrams-lib-1.3.1.4...

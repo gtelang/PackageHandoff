@@ -1,0 +1,23 @@
+Configuring hmatrix-glpk-0.5.0.0...
+Building hmatrix-glpk-0.5.0.0...
+Preprocessing library hmatrix-glpk-0.5.0.0...
+[1 of 2] Compiling Numeric.LinearProgramming ( src/Numeric/LinearProgramming.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Numeric/LinearProgramming.o )
+[2 of 2] Compiling Numeric.LinearProgramming.L1 ( src/Numeric/LinearProgramming/L1.hs, .stack-work/dist/x86_64-linux/Cabal-1.24.0.0/build/Numeric/LinearProgramming/L1.o )
+Running Haddock for hmatrix-glpk-0.5.0.0...
+Preprocessing library hmatrix-glpk-0.5.0.0...
+Haddock coverage:
+  40% (  4 / 10) in 'Numeric.LinearProgramming'
+  Missing documentation for:
+    simplex (src/Numeric/LinearProgramming.hs:140)
+    Optimization (src/Numeric/LinearProgramming.hs:126)
+    Constraints (src/Numeric/LinearProgramming.hs:122)
+    Bounds (src/Numeric/LinearProgramming.hs:129)
+    Bound (src/Numeric/LinearProgramming.hs:107)
+    Solution (src/Numeric/LinearProgramming.hs:114)
+ 100% (  6 /  6) in 'Numeric.LinearProgramming.L1'
+Documentation created:
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/hmatrix-glpk/index.html,
+.stack-work/dist/x86_64-linux/Cabal-1.24.0.0/doc/html/hmatrix-glpk/hmatrix-glpk.txt
+Installing library in
+/home/gaurish/Dropbox/MyWiki/research_projects/PackageHandoff/codeHaskell-pho/.stack-work/install/x86_64-linux/lts-7.0/8.0.1/lib/x86_64-linux-ghc-8.0.1/hmatrix-glpk-0.5.0.0-6ZcZI8gbClZDMn5V82w6Fq
+Registering hmatrix-glpk-0.5.0.0...
