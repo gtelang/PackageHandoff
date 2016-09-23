@@ -1,3 +1,2 @@
 code/app/*.hs linguist-language=Haskell
 code/src/*.hs linguist-language=Haskell
-code/src/*.cpp linguist-language=C++
