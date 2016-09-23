@@ -1,1 +1,4 @@
-code/* linguist-language=Haskell
+codeHaskell-pho/app/*.hs  linguist-language=Haskell
+codeHaskell-pho/src/*.hs  linguist-language=Haskell
+codeHaskell-pho/src/*.cpp  linguist-language=C++
+codeHaskell-pho/src/*.hpp  linguist-language=C++
