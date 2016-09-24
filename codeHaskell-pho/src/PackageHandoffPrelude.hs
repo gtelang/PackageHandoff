@@ -1,5 +1,6 @@
 
 {-# LANGUAGE NoMonomorphismRestriction #-}
+-- | Common Data-Structures and Functions.
 module PackageHandoffPrelude where
 import Diagrams.Prelude
 import qualified Data.Map as Map
@@ -28,21 +29,21 @@ data GlossCanvas = GlossCanvas{ currentMode :: Mode,
                                 schedule    :: Schedule
                               } deriving (Show)
 
-data Mode =   RobotInput    -- ^ Insert Robots onto the Canvas 'r 
-            | FuelInput     -- ^ Adjust the fuel for each robot. 'f'
+data Mode =   RobotInput    -- ^ Insert Robots onto Canvas        'r 
+            | FuelInput     -- ^ Adjust the fuel for each robot.  'f'
             | PackageInput  -- ^ Insert Packages onto the Canvas. 'p'
-            | AlgoInput     -- ^ Choose scheduling algorithm from the menu on the command-prompt. 'a'
+            | AlgoInput     -- ^ Choose scheduling algorithm.     'a'
             deriving (Show, Eq)
 
-data ScheduleSegment = ScheduleSegment 
-                         { head              :: Point V2 Double   , -- ^ Rendezvous or pick-up point 
-                           inTransitPackages :: [PkgIndex]        , -- ^ List of packages carried by a robot while moving to head
-                           waitTime          :: Double            , -- ^ Time of waiting at the head
-                           givePackagesTo    :: Map.Map PkgIndex [PkgIndex],  -- ^ Give packages to specified robots 
-                           takePackagesFrom  :: Map.Map PkgIndex [PkgIndex]   -- ^ Take packages from specified robots
-                         } deriving (Show)
+data Link = Link 
+           { head :: Point V2 Double         , -- ^ Rendezvous or pick-up point 
+             waitTime          :: Time       ,-- ^ Time of waiting at the head
+             inTransitPackages :: [PkgIndex] ,-- ^ List of packages carried while moving to head
+             givePackagesTo    :: Map.Map PkgIndex [PkgIndex],-- ^ Give packages to specified robots 
+             takePackagesFrom  :: Map.Map PkgIndex [PkgIndex] -- ^ Take packages from specified robots
+            } deriving (Show)
 
 -- | Schedule for a single robot.
-type Trajectory  = [ ScheduleSegment ] 
+type Trajectory  = [ Link ] 
 -- | Schedule for a collection of robots
 type Schedule    = [ Trajectory ]
