@@ -331,15 +331,3 @@ that link, and a description of the package-exchanges that must take place at th
 
 #+END_SRC
 
-* Questions
-- Are gloss coordinates pixel coordinates? 
-  How to translate between gloss numbers and true x-y numbers. 
-  May need a dedicated function
-- Why are gloss numbers single precision Float numbers? 
-- Package handoff, even single package routing is NP-Complete?   
-  By reduction from TSP 
-     Take an instance of TSP. You can convert it to an instance of 
-     your problem by tripling each point, and making exactly one 
-     of the robots super-duper fast and the others super-duper slow. 
-     Then if your algorithm was polynomial time, it would solve the TSP 
-  which is known to be NP-complete. 
