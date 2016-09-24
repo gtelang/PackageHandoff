@@ -13,7 +13,10 @@ The following installations instructions should work on any Linux distro. The co
 ## Prerequisites
 Before installing **packagehandoff**  you will need
  * [Stack](https://docs.haskellstack.org/en/stable/README/) 
- * GCC
+ * [GCC-6](http://askubuntu.com/a/746480) 
+     * sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
+     * sudo apt-get update
+     * sudo apt-get install gcc-6 g++-6
  * [GLPK] (https://www.gnu.org/software/glpk/)
  * [CGAL] (http://www.cgal.org/)
  * [Emacs] (https://www.gnu.org/software/emacs/) (Only for editing and tangling library code inside `PackageHandoff.org` ) 
