@@ -2,7 +2,8 @@
 
 This repository contains programs written in Haskell and C++ to solve Package handoff problems: think of a taxi-service co-ordinating its fleet of cabs to transport passengers calling in from different points of the map to their destinations. Or consider [Amazon drones](https://www.youtube.com/watch?v=gFj5SCdSYQg) with limited battery capcacity and varying maximum speeds working together to deliver multiple packages from warehouses to customers.
 
-More detailed introductory notes and explanations of the algorithms can be found in the accompanying [PackageHandoff.html](https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.html) file.  
+More detailed introductory notes and explanations of the algorithms can be found in 
+[PackageHandoff.html](https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.html).  
 
-All the programs have been weaved together in a literate style into
+All programs have been weaved together in a literate style into
 [PackageHandoff.org](https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.org) and tangled into [codeHaskell-pho](https://github.com/gtelang/packagehandoff/tree/master/codeHaskell-pho). 
