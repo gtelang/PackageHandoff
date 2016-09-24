@@ -30,7 +30,7 @@ Go up one level into **codeHaskell-pho**, and type
  stack build
 ```
 
-Now sit back and enjoy a mojito! Stack will take care of fetching the appropriate Haskell libraries (even the compiler!) if they have not been installed on your machine and then compiling the `.hs` packagehandoff source-code inside `src` and `app`. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
+Now sit back and enjoy a mojito! Stack will take care of fetching the appropriate Haskell libraries (even the Haskell compiler GHC!) if they have not been installed on your machine and then compiling the `.hs` packagehandoff source-code inside `src` and `app`. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
 
 ## Build and Run
 
