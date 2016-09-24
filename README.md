@@ -42,4 +42,4 @@ All "Main.hs" type file (i.e. those with `main::IO ()` functions) go here. These
 
 If you want to add implementations of new algorithms or bug-fixes to existing ones inside `PackageHandoff.org`, use Emacs's Org mode and tangle the file using `C-c C-v t`. 
 
-(TODOL Add more detailed instructions on how to edit the code)
+(TODO: Add more detailed instructions on how to edit the code)
