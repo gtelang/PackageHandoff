@@ -1,6 +1,7 @@
 
-{-# LANGUAGE NoMonomorphismRestriction #-}
 -- | Common Data-Structures and Functions.
+
+{-# LANGUAGE NoMonomorphismRestriction #-}
 module PackageHandoffPrelude where
 import Diagrams.Prelude
 import qualified Data.Map as Map
