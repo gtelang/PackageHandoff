@@ -31,7 +31,7 @@ Go up one level to **codeHaskell-pho**, and type
 ```
 Then sit back and enjoy a mojito! Stack will take care of fetching the appropriate haskell-related library dependencies (even the GHC compiler) if they have not been installed on your machine and compile the `.hs` packagehandoff files. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
 
-## Building and Running the Rxecutable
+## Building and Running the Executable
 
 That long build process you probably just witnessed, was due to the many dependencies that required to be installed on your virgin machine. If you make changes to the existing library code in **PackgeHandoff.org** or write your own `Main.hs` file inside *codeHaskell-pho/app*, type `stack build` at the command prompt to compile the code.  
 
