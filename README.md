@@ -22,5 +22,6 @@ before proceeding with the installation
 ### Building 
 After installing the aforementioned software, navigate to **codeHaskell-pho**, open up a shell-prompt and type
 ```zsh
-stack build
+[../codeHaskell-pho]: stack build
 ```
+And now, sit back and sip a mojito! stack will take care of fetching the appropriate haskell library dependencies (even the GHC compiler) if they have not been installed on your machine. **This process can take quite a while if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
