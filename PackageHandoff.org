@@ -53,23 +53,16 @@ Here are a few variants or special cases of the above problem that might be of i
 
 * Experiments
 
-I've created a git repository named *[[https://github.com/gtelang/packagehandoff][packagehandoff]]* which contains the Haskell code for experimenting
-with various heuristics to solve this problem efficiently. 
+I've created a Github repository, *[[https://github.com/gtelang/packagehandoff][packagehandoff]]* ,which contains the Haskell code for experimenting
+with various heuristics for solving package-handoff problems. That repository also contains a wiki 
+containing a motley collection of checklists, todos, braindumps and notes-to-self being made while 
+designing library.
 
-The base of the code, is similar to that of Pulleys and r-Gather in Python. 
-Here I plan to principally use Haskell. *Why? Because I want to learn Functional Programming by using it in a serious academic project. Only then will you truly grok FP Zen* 
-Besides Haskell also some really interesting libraries almost unique to Haskell like reactive-banana, gloss, Diagrams, lenses, 
-the FGL, GSL bindings the parallelism it offers and of course as a design langauge using its type-system. Besides, gloss 
-apparently performs extremely well under threading, so that will allow us to visualize a much larger animation set than Python.
-
-- To build the code do ~stack build~
-- To run the code do   ~stack exec main~
-
-Because you are using stack, if the dependencies used in Haskell libraries are not
-available on the computer, then they will automatically be installed for you. Beware
-this might take some time, since the number of packages used by this package indirectly
-is very large. Thus Joe/Jie will be able to run these libraries if they simply download
-the Haskell environment and stack onto their linux machines.
+The base of the code is similar to that of Pulleys and r-Gather in Python. 
+Here I plan to principally use Haskell. Besides Haskell also some really interesting libraries like quickcheck, 
+reactive-banana, gloss, Diagrams, lenses, the FGL and GSL bindings, the parallelism on offer and of course as 
+a design langauge for algorithms using its type-system. Besides, gloss apparently performs extremely well under 
+threading. 
 
 The most important libraries for performing geometric computations will be
 0. Reactive Banana
@@ -79,19 +72,12 @@ The most important libraries for performing geometric computations will be
 4. Shewchuk's predicates (directly via the FFI)
 5. Cplex-interface (for optimization)
 6. GLPK-interface  (for linear programming)
-7. FGL (native Haskell) and iGraph (C bindings via FFI)
+7. FGL (native Haskell), iGraph and the BGL( both with C bindings via FFI)
 8. GeoSteiner (C bindings via the FFI)
-9. Liquid-Haskell and the Dependent Types Extension (to give stronger types for special heuristics)
+9. Liquid-Haskell and the Dependent Types Extension (for stronger types)
 
-*IMPORTANT* :: Download and install the .so/.a  C/C++ libraries into a common folder 
-inside codeHaskell-pho. Provide a small readme file on how to compile these softwares to 
-a new machine. That would involve some sagi.  
- 
- Multi-package routing schedules should have interesting invariants that should be testable with 
-  quickcheck. The main robot-scheduler algorithm should be completely disjoint from gloss for exactly 
-  this reason. At most it will be called from the event-handler function.
- 
-Different heuristics for both single and multi-package routine will be implemented atop the following interactive system.
+Different heuristics for both single and multi-package routine will be implemented atop the following interactive system
+outline in the next section. 
 
 ** Functional Specifications
 Just like in the Pulley/rGathers codes, the events will be grouped into major *modes*:
