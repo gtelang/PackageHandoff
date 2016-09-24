@@ -20,12 +20,25 @@ Before installing *packagehandoff*
  
 ## Installation 
 
+#### The C++ part
+Navigate to **codeHaskell-pho/src** and type make. Some light editing might be required to the /Makefile/ depending especially on where the gcc executable and the *.so* and *.hpp* files of CGAL might be on your machine. For that, you might find the bash commands **`which gcc`** and **`locate libCGAL`** handy. 
+
 #### The Haskell part
 Having installed the prerequisites, navigate to **codeHaskell-pho**, open up a shell-prompt and type
 ```zsh
 [../codeHaskell-pho]: stack build
 ```
-Then sit back and enjoy a mojito! Stack will take care of fetching the appropriate haskell-related library dependencies (even the GHC compiler) if they have not been installed on your machine. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
+Then sit back and enjoy a mojito! Stack will take care of fetching the appropriate haskell-related library dependencies (even the GHC compiler) if they have not been installed on your machine and compile the `.hs` packagehandoff files. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
 
-### The C++ part
-Navigate to **codeHaskell-pho/src** and type make. Some light editing might be required to the /Makefile/ depending especially on where the gcc executable and the *.so* and *.hpp* files of CGAL might be on your machine. For that, you might find the bash commands **`which gcc`** and **`locate libCGAL`** handy. 
+## Running the code
+
+That long build process you probably just witnessed, was because there were many dependencies to install on your virgin machine. If you make changes to the library code inside **codeHaskell-pho/src** or write your own `Main.hs` file inside *codeHaskell-pho/app*, compile the code, type `stack build` at the command prompt. Since 
+
+`codeHaskell-pho/src` contains a `Main.hs` file which creates a [Gloss](http://gloss.ouroborus.net/) canvas on which you can interactively insert robots, adjust their fuel, insert packages and use one of the displayed algorithms to create and then animate the schedule. To execute the executable for this `Main.hs` function type **`stack exec main`** at the command-prompt. 
+
+
+
+
+All "Main.hs" files go here. These `Main.hs` files are consumers of the library code and are constantly in flux. Hence they are developed separately from the algorithms inside `PackageHandoff.org`. 
+
+
