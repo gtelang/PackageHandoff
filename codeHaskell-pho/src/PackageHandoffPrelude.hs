@@ -29,12 +29,20 @@ data GlossCanvas = GlossCanvas{ currentMode :: Mode,
                                 schedule    :: Schedule
                               } deriving (Show)
 
-data Mode =   RobotInput    -- ^ Insert Robots onto Canvas        'r 
-            | FuelInput     -- ^ Adjust the fuel for each robot.  'f'
-            | PackageInput  -- ^ Insert Packages onto the Canvas. 'p'
-            | AlgoInput     -- ^ Choose scheduling algorithm.     'a'
-            deriving (Show, Eq)
+-- | The Gloss Canvas is always in one of four modes
+ data Mode =   RobotInput    -- ^ Insert Robots onto Canvas        'r 
+             | FuelInput     -- ^ Adjust the fuel for each robot.  'f'
+             | PackageInput  -- ^ Insert Packages onto the Canvas. 'p'
+             | AlgoInput     -- ^ Choose scheduling algorithm.     'a'
+             deriving (Show, Eq)
 
+-- | Schedule for a single robot.
+type Trajectory  = [ Link ] 
+
+-- | Schedule for a collection of robots
+type Schedule    = [ Trajectory ] 
+
+-- | An element of a trajectory
 data Link = Link 
            { head :: Point V2 Double         , -- ^ Rendezvous or pick-up point 
              waitTime          :: Time       ,-- ^ Time of waiting at the head
@@ -42,8 +50,3 @@ data Link = Link
              givePackagesTo    :: Map.Map PkgIndex [PkgIndex],-- ^ Give packages to specified robots 
              takePackagesFrom  :: Map.Map PkgIndex [PkgIndex] -- ^ Take packages from specified robots
             } deriving (Show)
-
--- | Schedule for a single robot.
-type Trajectory  = [ Link ] 
--- | Schedule for a collection of robots
-type Schedule    = [ Trajectory ]

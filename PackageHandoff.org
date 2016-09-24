@@ -87,7 +87,10 @@ The most important libraries for performing geometric computations will be
 inside codeHaskell-pho. Provide a small readme file on how to compile these softwares to 
 a new machine. That would involve some sagi.  
  
-
+ Multi-package routing schedules should have interesting invariants that should be testable with 
+  quickcheck. The main robot-scheduler algorithm should be completely disjoint from gloss for exactly 
+  this reason. At most it will be called from the event-handler function.
+ 
 Different heuristics for both single and multi-package routine will be implemented atop the following interactive system.
 
 ** Functional Specifications
@@ -205,67 +208,6 @@ The layout of the code files will be as follows:
   files to partition your code. This literate document weaves all those files and code-blocks 
   together.
                
-** Generic Todo List for a new probX file.
-
-- Multi-package routing schedules should have interesting invariants that should be testable with 
-  quickcheck. The main robot-scheduler algorithm should be completely disjoint from gloss for exactly 
-  this reason. At most it will be called from the event-handler function.
- 
-  *Lenses will be very useful here! The world data-structure is already getting very nested*
-
-
-- [X] Add ProbX.hs to the list of library files in the *.yaml, *.cabal files
-- [X] Add a haddock doc-string at the top of the file explaining which variant of the package-handoff you are solving.
-- [-] Write data structures for 
-  - [X] A data-type for the four modes.
-  - [-] World State  
-    - [-] Current Mode 
-         Each mode has its own event handler function. 
-         The global event handler, checks the current mode 
-         and then activates the appropriate event handler depending 
-         on the mode.
-      - [ ] Robot input. (Position and velocity only)
-      - [ ] Fuel input . (Infinite for the default version of the problem) 
-      - [ ] Package input. (Source, target)
-      - [ ] Scheduling algorithm input
-    The schedule is computed offline before the animation begins. 
-    We will then use the schedule to run the animation.
-         
-    What the computed schedule looks like:
-    #+BEGIN_SRC haskell
-    -- Called by one of the branches of handle event. The function may fail to find a schedule.
-    schedulingAlgorithm :: Robots -> Packages -> Maybe Schedule 
-    #+END_SRC
-
-      - [X] ROBOTS Where each robot consits of 
-        - [X] Initial position    x_0
-        - [X] Max Velocity        v_0 
-        - [X] Initial Fuel amount f_0 :: initialized to INFINITY by default.
-
-      - [X] PACKAGES Where each package consists of 
-        - [X] Source.  
-        - [X] Target
-
-      - [X] SCHEDULE A list where every entry is a record looking like 
-             #+BEGIN_SRC haskell
-                  {
-                     rendezvous point x_i            ,         -- rendezvous point i=1,2,3.... i=0 correponds to the inital point.
-                     intransit-packages-x_(i-1)-x_i  ,         -- packages carried inside the open-interval.
-                     total-wait-time @ x_i           ,         -- time to wait at the rendezvous point
-                     [ give-packages-to  ,idrobot ] @ x_i      -- Give packages to the specified robots at rendezvous points
-                     [ take-packages-from,idrobot ] @ x_i      -- (Possibly redundant) Take packages from the specified robots at rendezvous points
-                  }
-             #+END_SRC
-       
-        The calculated schedule list can be easily used to calculate a "new"-robot list 
-        of the original robots where the robots have changed their position and/or lessened 
-        their fuel. It is good to decouple the computed schedule from the actual robot list
-        so that you can use compare different schedules directly, and possibly make interesting 
-        uses of currying.
-
-- [ ] A routine to read and write the state to a YAML file for post-processing.
-      It should basically pickle the damned world state.
-                 
 ** Source Code
 Each subsection here describes the source-code inside the file given by the subsection heading. 
 *** PackageHandoffPrelude.hs
@@ -341,6 +283,7 @@ mouse and key-press events. To switch between the 4 modes use the *r,f,p,a* keys
 world state to empty, use *X* (Note the caps)
 
 #+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
+ -- | The Gloss Canvas is always in one of four modes
   data Mode =   RobotInput    -- ^ Insert Robots onto Canvas        'r 
               | FuelInput     -- ^ Adjust the fuel for each robot.  'f'
               | PackageInput  -- ^ Insert Packages onto the Canvas. 'p'
@@ -355,6 +298,13 @@ of *Trajectory* s. Each *Link* is like a arrow in $\mathbb{R}^2$ tagged data suc
 that link, and a description of the package-exchanges that must take place at the link's *head*. 
 
 #+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
+  -- | Schedule for a single robot.
+  type Trajectory  = [ Link ] 
+
+  -- | Schedule for a collection of robots
+  type Schedule    = [ Trajectory ] 
+
+  -- | An element of a trajectory
   data Link = Link 
              { head :: Point V2 Double         , -- ^ Rendezvous or pick-up point 
                waitTime          :: Time       ,-- ^ Time of waiting at the head
@@ -362,11 +312,6 @@ that link, and a description of the package-exchanges that must take place at th
                givePackagesTo    :: Map.Map PkgIndex [PkgIndex],-- ^ Give packages to specified robots 
                takePackagesFrom  :: Map.Map PkgIndex [PkgIndex] -- ^ Take packages from specified robots
               } deriving (Show)
-
-  -- | Schedule for a single robot.
-  type Trajectory  = [ Link ] 
-  -- | Schedule for a collection of robots
-  type Schedule    = [ Trajectory ] 
 #+END_SRC
 
 **** *_Disk File IO_* 
