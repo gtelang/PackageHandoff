@@ -64,6 +64,29 @@ h4 {
 	line-height: 1.2857142857142858em;
 	margin-bottom: 1.2857142857142858em;
 }
+
+h5 {
+	margin: 0;
+	font-size: 1.14em;
+	line-height: 1.18em;
+	margin-bottom: 1.2857142857142858em;
+}
+
+h6 {
+	margin: 0;
+	font-size: 1.10em;
+	line-height: 1.2857142857142858em;
+	margin-bottom: 1.2857142857142858em;
+}
+
+
+
+
+
+
+
+
+
 p, ul, blockquote, pre, td, th, label {
 	margin: 0;
 	font-size: 1em;
