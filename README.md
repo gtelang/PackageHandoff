@@ -42,6 +42,6 @@ That long build process you probably just witnessed, was due to the many depende
 All "`Main.hs`-type" files (i.e. those with `main::IO ()` functions) go into `app`. These files are constantly in flux depending on the computational experiment; hence they are developed separately with their own literate files inside `app` .   
 ## Editing the Library Code
 
-If you want to add implementations of new algorithms or bug-fixes to existing ones inside `PackageHandoff.org`, use Emacs's Org mode and tangle the file using `C-c C-v t`. 
+If you want to add  new algorithms or bug-fixes to existing code inside `PackageHandoff.org`, do the editing with Emacs and tangle the file with `C-c C-v t`. 
 
 (TODO: Add more detailed instructions on how to edit the code)
