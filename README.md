@@ -10,7 +10,7 @@ All of the library code has been weaved into
 
 ## Prerequisites for Installation
 The code has been developed on an Ubuntu 14.04 machine. So I presume the procedure described below will best work on Linux
-systems. How these instructions work need to be modified for Windows and Mac OSX, I cannot say yet. 
+systems. I can't say yet, how these instructions work for Windows and Mac OSX, 
 
 Before installing **packagehandoff**  you will need
  * [Stack](https://docs.haskellstack.org/en/stable/README/) 
@@ -33,7 +33,7 @@ Then sit back and enjoy a mojito! Stack will take care of fetching the appropria
 
 ## Building and Running the Executable
 
-That long build process you probably just witnessed, was due to the many dependencies that required to be installed on your virgin machine. If you make changes to the existing library code in **PackgeHandoff.org** or write your own `Main.hs` file inside *codeHaskell-pho/app*, type `stack build` at the command prompt to compile the code.  
+That long build process you probably just witnessed, was due to the many dependencies that needed to be installed on your virgin machine. If you make changes to the existing library code in **PackgeHandoff.org** or write your own `Main.hs` file inside *codeHaskell-pho/app*, type `stack build` at the command prompt to compile the code.  
 
 `codeHaskell-pho/src` contains a `Main.hs` file which creates a [Gloss](http://gloss.ouroborus.net/) canvas onto which you can interactively insert robots, adjust their fuel, insert packages and use one of the displayed algorithms to create and then animate the schedule. To execute the executable for this `Main.hs` function type **`stack exec main`** at the command-prompt. 
 
