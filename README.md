@@ -14,6 +14,6 @@ systems. All bets are off for Windows/Mac OS. :-)
 
 ### Prerequisites
 You will need  
-1. [Stack](https://docs.haskellstack.org/en/stable/README/) 
-2. GCC
-3. [GLPK] (https://www.gnu.org/software/glpk/)
+ * [Stack](https://docs.haskellstack.org/en/stable/README/) 
+ * GCC
+ * [GLPK] (https://www.gnu.org/software/glpk/)
