@@ -8,25 +8,24 @@ More detailed introductory notes on this class of problems can be found in
 All of the library code has been weaved into
 [PackageHandoff.org](https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.org)  and tangled inside [codeHaskell-pho](https://github.com/gtelang/packagehandoff/tree/master/codeHaskell-pho). 
 
-## Installation
+## Prerequisites for Installation
 The code has been developed on an Ubuntu 14.04 machine. So I presume the procedure described below will best work on Linux
-systems. All bets are off for Windows/Mac OS. :-) 
+systems. How these instructions work need to be modified for Windows and Mac OSX, I cannot say yet. 
 
-### Prerequisites
-You will need  
+Before installing *packagehandoff*  
  * [Stack](https://docs.haskellstack.org/en/stable/README/) 
  * GCC
  * [GLPK] (https://www.gnu.org/software/glpk/)
  * [CGAL] (http://www.cgal.org/)
-before proceeding with the installation
-
-### Building 
+ 
+## Installation 
 
 #### The Haskell part
-After installing the aforementioned software, navigate to **codeHaskell-pho**, open up a shell-prompt and type
+Having installed the prerequisites, navigate to **codeHaskell-pho**, open up a shell-prompt and type
 ```zsh
 [../codeHaskell-pho]: stack build
 ```
 Then sit back and enjoy a mojito! Stack will take care of fetching the appropriate haskell-related library dependencies (even the GHC compiler) if they have not been installed on your machine. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
 
 ### The C++ part
+Navigate to **codeHaskell-pho/src** and type make. Some light editing might be required to the /Makefile/ depending especially on where the gcc executable and the *.so* and *.hpp* files of CGAL might be on your machine. For that, you might find the bash commands `which gcc` and `locate libCGAL` handy. 
