@@ -17,6 +17,7 @@ Before installing **packagehandoff**  you will need
      * sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
      * sudo apt-get update
      * sudo apt-get install gcc-6 g++-6
+    The installed gcc executable will be named `gcc-6`.
  * [GLPK] (https://www.gnu.org/software/glpk/)
  * [CGAL] (http://www.cgal.org/)
  * [Emacs] (https://www.gnu.org/software/emacs/) (Only for editing and tangling library code inside `PackageHandoff.org` ) 
@@ -24,7 +25,7 @@ Before installing **packagehandoff**  you will need
 ## Install 
 
 ####  *The C++ part*
-Having installed the prerequisites, navigate to **codeHaskell-pho/src** and type **`make`**. Light editing might be required to the `Makefile` depending especially on where the gcc executable and the *.so* and *.hpp* files of CGAL might be on your machine. For that, you might find the bash commands **`which gcc`** and **`locate libCGAL`** useful. 
+Having installed the prerequisites, navigate to **codeHaskell-pho/src** and type **`make`**. Light editing might be required to the `Makefile` depending especially on where the gcc executable and the *.so* and *.hpp* files of CGAL might be on your machine. For that, you might find the bash commands **`which gcc-6`** and **`locate libCGAL`** useful. 
 
 #### *The Haskell part*
 Go up one level into **codeHaskell-pho**, and type
@@ -37,7 +38,7 @@ Now sit back and enjoy a mojito! Stack will take care of fetching the appropriat
 
 ## Build and Run
 
-That long build process you probably just witnessed, was due to the many dependencies needed by your computer. If you make changes to the existing library code in **PackgeHandoff.org** or write your own `Main.hs` file inside *codeHaskell-pho/app*, type **`stack build`** at the command prompt to re-compile.  
+That long build process you just witnessed, was due to the many dependencies needed by your computer. If you make changes to the existing library code in **PackgeHandoff.org** or write your own `Main.hs` file inside *codeHaskell-pho/app*, type **`stack build`** at the command prompt to re-compile.  
 
 `codeHaskell-pho/app` contains `Main.hs` which creates a [Gloss](http://gloss.ouroborus.net/) canvas onto which you can interactively insert robots, adjust their fuel, place packages and use one of the algorithms displayed at the command prompty to generate and then animate the schedule. To execute the executable for this `Main.hs` function type **`stack exec main`** at the command-prompt. 
 
