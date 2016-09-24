@@ -267,70 +267,108 @@ The layout of the code files will be as follows:
       It should basically pickle the damned world state.
                  
 ** Source Code
-*** Package Handoff Utility Toolkit
-#+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
-  {-# LANGUAGE UnicodeSyntax #-}
-  {-# LANGUAGE NoMonomorphismRestriction #-}
+Each subsection here describes the source-code inside the file given by the subsection heading. 
+*** PackageHandoffPrelude.hs
+:+PROPERTIES:
+:TANGLE: codeHaskell-pho/src/PackageHandoffPrelude.hs
+:END:
 
-  {- | Data-structures and routines common to all 
-       package-handoff problem variants.
-  -}
+*PackageHandoffPrelude.hs* contains data-structures and routines common to all package-handoff 
+variants. This section describes the code therein. 
+
+First, import necessary libraries and make some descriptive type-synonyms. 
+ 
+#+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
+  {-# LANGUAGE NoMonomorphismRestriction #-}
   module PackageHandoffPrelude where
   import Diagrams.Prelude
   import qualified Data.Map as Map
-
-  -- | The global world state is always in one of these four modes
-  data Mode =   RobotInput    -- ^ Click points on the canvas to place robots
-              | FuelInput     -- ^ Adjust the fuel for each robot with the scroll wheel. 
-              | PackageInput  -- ^ Click source, target in pairs. 
-              | AlgoInput     -- ^ Choose scheduling algorithm
-              deriving (Show, Eq)
-
   -- TODO: Use Liquid Haskell to enforce ≥ 0 at the type level
-  type Speed          = Double -- | ≥ 0
-  type Fuel           = Double -- | ≥ 0
-  type Time           = Double -- | ≥ 0
-  type PackageIndex   = Int    -- | ≥ 0 
+  type Speed    = Double -- | ≥ 0
+  type Fuel     = Double -- | ≥ 0
+  type Time     = Double -- | ≥ 0
+  type PkgIndex = Int    -- | ≥ 0 
+#+END_SRC
 
-  type Robots         = [ Robot ]
-  type Packages       = [ Package ] 
-  type RobotSchedule  = [ ScheduleSegment ] -- | Schedule for a single robot.
-  type Schedules      = [ RobotSchedule   ] -- | Schedule for a collection of robots
-  type PackageIndices = [ PackageIndex ]
-
-  -- | Carrier Vehicles
+The *Robot* data-type stores information about a single robot such as its positions at time $t=0$
+maximum speed, fuel capacity and other input-data. 
+#+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
   data Robot = Robot { initPosition :: Point V2 Double, 
                        maxSpeed     :: Speed          ,
                        maxFuel      :: Fuel 
                       } deriving (Show)
+#+END_SRC
 
-  -- | Items to transport
+The *Package* data-type stores the Cartesian co-ordinates of the *source* and *target* points 
+of a package.
+#+BEGIN_SRC haskell  :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
   data Package = Package { source :: Point V2 Double,
                            target :: Point V2 Double 
                          } deriving (Show)
-
-  -- | A List of these records makes up the schedule for one robot. Corresponds to one 
-  -- segment inside the robot's piecewise linear trajectory.
-  data ScheduleSegment = ScheduleSegment 
-                         { head              :: Point V2 Double   , -- ^ Rendezvous or pick-up point for a package
-                           inTransitPackages :: PackageIndices    , -- ^ List of packages carried while moving to head
-                           waitTime          :: Double            , -- ^ Time of waiting at the head
-                           givePackagesTo    :: Map.Map PackageIndex PackageIndices,  -- ^ Give packages to specified robots 
-                           takePackagesFrom  :: Map.Map PackageIndex PackageIndices   -- ^ Take packages from specified robots
-                         } deriving (Show)
-
-  -- | Container for the world state as we interact with the Gloss Canvas. 
-  -- Keeps store of the world data-while interacting with Gloss. 
-  -- This data-structure is used principally in Gloss functions
-  data GlossWorld = World { currentMode :: Mode    ,    -- ^ Switch betwen different modes using r, f, p, s keys
-                       robots      :: Robots  ,    -- ^ The collection of all robots inserted into the gloss canvas
-                       packages    :: Packages,    -- ^ The collection of all packages inserted into the gloss canvas
-                       globalSchedule :: Schedules -- ^ Schedule for pick-ups and hand-offs for all robots in the World
-                     } deriving (Show)
-
 #+END_SRC
 
-*** Single Package Routing
+The *World* data-type stores information about the robots and packages obtained from 
+input source (e.g. the Gloss canvas or a YAML file)  
+#+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
+  data World = World { robots      :: [Robot]  ,    
+                       packages    :: [Package]    
+                     } deriving (Show)
+#+END_SRC
+
+Note that *World* knows _nothing_ about the input source from which it came: 
+it might have been a file, or it could have been inserted via a Gloss or a Diagrams canvas.  
+Keeping the algorithmic and the input/output codes strictly decoupled is essential for making 
+the code more modular. 
+
+It also doesn't know anything about the time on the clock. /That/ clocking will be taken care 
+by a wrapper data-structure used by the visualization/animation routines of diagrams or gloss.
+
+**** Gloss Canvas IO 
+Now we will need to connect the world with a Gloss canvas. The following data-structure
+will be used by event-handlers which themselves will be wrappers around the algorithmic code. 
+
+#+BEGIN_SRC haskell  :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
+data GlossCanvas = GlossCanvas{ currentMode :: Mode, 
+                                world       :: World, 
+                                schedule    :: Schedule
+                              } deriving (Show)   
+#+END_SRC
+
+*Mode* in the snippet above refers to the following type. 
+
+#+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
+  data Mode =   RobotInput    -- ^ Insert Robots onto the Canvas ('r','R') 
+              | FuelInput     -- ^ Adjust the fuel for each robot. ('f','F')
+              | PackageInput  -- ^ Insert Packages onto the Canvas. ('p','P')
+              | AlgoInput     -- ^ Choose scheduling algorithm from the menu on the command-prompt. ('a','A')
+              deriving (Show, Eq)
+#+END_SRC
+
+The GlossCanvas is always in one of four states(modes) described in the *Mode* data-type above. Depending on the 
+current mode of the canvas, it responds differently to mouse and key-press events. To switch between the 4 modes 
+use the 'r','f','p','a' keys (or their upper-case brothers). 
+
+Each robot will travel along a piece-wise linear curve, its vertices being source/destinations of a package 
+the rendezvous points where the package-handoff occur. And the problems ask us to determine a trajectory for 
+each robot so that packages are delivered to their destination in quickest possible time. 
+
+With that in mind, it is natural to represent the schedule for a single robot and a collection of robots as follows. 
+
+#+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
+  data ScheduleSegment = ScheduleSegment 
+                         { head              :: Point V2 Double   , -- ^ Rendezvous or pick-up point 
+                           inTransitPackages :: [PkgIndex]        , -- ^ List of packages carried by a robot while moving to head
+                           waitTime          :: Double            , -- ^ Time of waiting at the head
+                           givePackagesTo    :: Map.Map PkgIndex [PkgIndex],  -- ^ Give packages to specified robots 
+                           takePackagesFrom  :: Map.Map PkgIndex [PkgIndex]   -- ^ Take packages from specified robots
+                         } deriving (Show)
+
+  type Trajectory  = [ ScheduleSegment ] -- | Schedule for a single robot.
+  type Schedule    = [ Trajectory ] -- | Schedule for a collection of robots
+#+END_SRC
+
+**** Disk File IO 
+*** SinglePackageRouting.hs
 #+BEGIN_SRC haskell :tangle  codeHaskell-pho/src/SinglePackageRouting.hs
   {-# LANGUAGE UnicodeSyntax #-}
   {-# LANGUAGE NoMonomorphismRestriction #-}
