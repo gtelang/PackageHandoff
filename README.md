@@ -17,9 +17,8 @@ Before installing **packagehandoff**  you will need
  * GCC
  * [GLPK] (https://www.gnu.org/software/glpk/)
  * [CGAL] (http://www.cgal.org/)
- 
-For editing or adding new algorithms to *PackageHandoff.org*, you will need a recent version of Emacs, which usually comes with Org mode installed. Org mode was used for implementing the algorithms in a literate style. 
- 
+ * [Emacs] (https://www.gnu.org/software/emacs/) (Only for editing and tangling library code in `PackageHandoff.org` ) 
+
 ## Installation 
 
 ####  *The C++ part*
@@ -32,13 +31,16 @@ Go up one level to **codeHaskell-pho**, and type
 ```
 Then sit back and enjoy a mojito! Stack will take care of fetching the appropriate haskell-related library dependencies (even the GHC compiler) if they have not been installed on your machine and compile the `.hs` packagehandoff files. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
 
-## Editing and running the code
+## Building and Running the Rxecutable
 
 That long build process you probably just witnessed, was because there were many dependencies to install on your virgin machine. If you make changes to the library code in **PackgeHandoff.org** or write your own `Main.hs` file inside *codeHaskell-pho/app*, type `stack build` at the command prompt to compile the code.  
 
 `codeHaskell-pho/src` contains a `Main.hs` file which creates a [Gloss](http://gloss.ouroborus.net/) canvas onto which you can interactively insert robots, adjust their fuel, insert packages and use one of the displayed algorithms to create and then animate the schedule. To execute the executable for this `Main.hs` function type **`stack exec main`** at the command-prompt. 
 
 All "Main.hs" type file (i.e. those with `main::IO ()` functions) go here. These files are constantly in flux depending on the computational experiment; hence they are developed separately with their own literate files inside that `app` folder .   
-If you add implementations of new algorithms or bug-fixes to existing ones inside `PackageHandoff.org`, use Emacs
+## Editing the Library Code
 
+If you want to add implementations of new algorithms or bug-fixes to existing ones inside `PackageHandoff.org`, use Emacs's 
+Org mode and tangle the file using `C-c C-v t`. 
 
+(More detailed instructions on how to edit the code will be added later)
