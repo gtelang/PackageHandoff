@@ -9,3 +9,11 @@ All of the library code has been weaved into
 [PackageHandoff.org](https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.org)  and tangled inside [codeHaskell-pho](https://github.com/gtelang/packagehandoff/tree/master/codeHaskell-pho). 
 
 ## Installation
+The code has been developed on an Ubuntu 14.04 machine. So I presume the procedure described below will best work on Linux
+systems. All bets are off for Windows/Mac OS. :-) 
+
+### Prerequisites
+You will need  
+1. [Stack](https://docs.haskellstack.org/en/stable/README/) 
+2. GCC
+3. [GLPK] (https://www.gnu.org/software/glpk/)
