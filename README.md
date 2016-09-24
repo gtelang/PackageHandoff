@@ -25,9 +25,9 @@ Before installing **packagehandoff**  you will need
 Having installed the prerequisites, navigate to **codeHaskell-pho/src** and type `make`. Light editing might be required to the /Makefile/ depending especially on where the gcc executable and the *.so* and *.hpp* files of CGAL might be on your machine. For that, you might find the bash commands **`which gcc`** and **`locate libCGAL`** useful. 
 
 #### *The Haskell part*
-Go up one level to **codeHaskell-pho**, and type
+Go up one level into **codeHaskell-pho**, and type
 ```zsh
-[../codeHaskell-pho]: stack build
+ stack build
 ```
 Then sit back and enjoy a mojito! Stack will take care of fetching the appropriate haskell-related library dependencies (even the GHC compiler) if they have not been installed on your machine and compile the `.hs` packagehandoff files. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
 
