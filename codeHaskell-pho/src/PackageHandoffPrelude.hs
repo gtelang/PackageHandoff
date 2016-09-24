@@ -22,24 +22,27 @@ data World = World { robots      :: [Robot]  ,
                      packages    :: [Package]    
                    } deriving (Show)
 
+-- | State of the Gloss canvas
 data GlossCanvas = GlossCanvas{ currentMode :: Mode, 
                                 world       :: World, 
                                 schedule    :: Schedule
                               } deriving (Show)
 
-data Mode =   RobotInput    -- ^ Insert Robots onto the Canvas ('r','R') 
-            | FuelInput     -- ^ Adjust the fuel for each robot. ('f','F')
-            | PackageInput  -- ^ Insert Packages onto the Canvas. ('p','P')
-            | AlgoInput     -- ^ Choose scheduling algorithm from the menu on the command-prompt. ('a','A')
+data Mode =   RobotInput    -- ^ Insert Robots onto the Canvas 'r 
+            | FuelInput     -- ^ Adjust the fuel for each robot. 'f'
+            | PackageInput  -- ^ Insert Packages onto the Canvas. 'p'
+            | AlgoInput     -- ^ Choose scheduling algorithm from the menu on the command-prompt. 'a'
             deriving (Show, Eq)
 
 data ScheduleSegment = ScheduleSegment 
-                       { head              :: Point V2 Double   , -- ^ Rendezvous or pick-up point 
-                         inTransitPackages :: [PkgIndex]        , -- ^ List of packages carried by a robot while moving to head
-                         waitTime          :: Double            , -- ^ Time of waiting at the head
-                         givePackagesTo    :: Map.Map PkgIndex [PkgIndex],  -- ^ Give packages to specified robots 
-                         takePackagesFrom  :: Map.Map PkgIndex [PkgIndex]   -- ^ Take packages from specified robots
-                       } deriving (Show)
+                         { head              :: Point V2 Double   , -- ^ Rendezvous or pick-up point 
+                           inTransitPackages :: [PkgIndex]        , -- ^ List of packages carried by a robot while moving to head
+                           waitTime          :: Double            , -- ^ Time of waiting at the head
+                           givePackagesTo    :: Map.Map PkgIndex [PkgIndex],  -- ^ Give packages to specified robots 
+                           takePackagesFrom  :: Map.Map PkgIndex [PkgIndex]   -- ^ Take packages from specified robots
+                         } deriving (Show)
 
-type Trajectory  = [ ScheduleSegment ] -- | Schedule for a single robot.
-type Schedule    = [ Trajectory ] -- | Schedule for a collection of robots
+-- | Schedule for a single robot.
+type Trajectory  = [ ScheduleSegment ] 
+-- | Schedule for a collection of robots
+type Schedule    = [ Trajectory ]
