@@ -32,13 +32,10 @@ Then sit back and enjoy a mojito! Stack will take care of fetching the appropria
 
 ## Running the code
 
-That long build process you probably just witnessed, was because there were many dependencies to install on your virgin machine. If you make changes to the library code inside **codeHaskell-pho/src** or write your own `Main.hs` file inside *codeHaskell-pho/app*, compile the code, type `stack build` at the command prompt. Since 
+That long build process you probably just witnessed, was because there were many dependencies to install on your virgin machine. If you make changes to the library code in **PackgeHandoff.org** or write your own `Main.hs` file inside *codeHaskell-pho/app*, type `stack build` at the command prompt to compile the code.  
 
-`codeHaskell-pho/src` contains a `Main.hs` file which creates a [Gloss](http://gloss.ouroborus.net/) canvas on which you can interactively insert robots, adjust their fuel, insert packages and use one of the displayed algorithms to create and then animate the schedule. To execute the executable for this `Main.hs` function type **`stack exec main`** at the command-prompt. 
+`codeHaskell-pho/src` contains a `Main.hs` file which creates a [Gloss](http://gloss.ouroborus.net/) canvas onto which you can interactively insert robots, adjust their fuel, insert packages and use one of the displayed algorithms to create and then animate the schedule. To execute the executable for this `Main.hs` function type **`stack exec main`** at the command-prompt. 
 
-
-
-
-All "Main.hs" files go here. These `Main.hs` files are consumers of the library code and are constantly in flux. Hence they are developed separately from the algorithms inside `PackageHandoff.org`. 
+All "Main.hs" files go here. These `Main.hs` files are consumers of the library code and constantly in flux. Hence they are developed separately from the library code inside `PackageHandoff.org`.  
 
 
