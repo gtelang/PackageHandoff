@@ -36,6 +36,6 @@ That long build process you probably just witnessed, was because there were many
 
 `codeHaskell-pho/src` contains a `Main.hs` file which creates a [Gloss](http://gloss.ouroborus.net/) canvas onto which you can interactively insert robots, adjust their fuel, insert packages and use one of the displayed algorithms to create and then animate the schedule. To execute the executable for this `Main.hs` function type **`stack exec main`** at the command-prompt. 
 
-All "Main.hs" files go here. These `Main.hs` files are consumers of the library code and constantly in flux. Hence they are developed separately from the library code inside `PackageHandoff.org`.  
+All "Main.hs" type file (i.e. those with `main::IO ()` functions) go here. These files are constantly in flux depending on the computational experiment; hence they are developed separately with their own literate files inside that `app` folder .   
 
 
