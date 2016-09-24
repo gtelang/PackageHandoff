@@ -1,3 +1,4 @@
+
 # Packagehandoff
 
 This repository contains programs written in Haskell and C++ to solve Package handoff problems: think of a taxi-service co-ordinating its fleet of cabs to transport passengers calling in from different points of the map to their destinations. Or consider [Amazon drones](https://www.youtube.com/watch?v=gFj5SCdSYQg) with limited battery capcacity and varying maximum speeds working together to deliver packages to customers from warehouses.
@@ -45,6 +46,4 @@ That long build process you just witnessed, was due to the many dependencies nee
 All "`Main.hs`-type" files (i.e. those with `main::IO ()` functions) go into `app`. These files are constantly in flux depending on the computational experiment; hence they are developed separately with their own literate files inside `app` .   
 ## Editing the Library Code
 
-If you want to add  new algorithms or bug-fixes to existing code inside `PackageHandoff.org`, do the editing with Emacs and tangle the file with `C-c C-v t`. 
-
-
+If you want to add  new algorithms or bug-fixes to existing code inside `PackageHandoff.org`, do the editing with Emacs and tangle the file with `C-c C-v t`.
