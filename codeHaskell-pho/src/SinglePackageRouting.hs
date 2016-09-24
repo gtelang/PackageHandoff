@@ -1,10 +1,12 @@
 
+{-# LANGUAGE UnicodeSyntax #-}
+{-# LANGUAGE NoMonomorphismRestriction #-}
+
 {- | This module contains scheduling algorithms and data-structures for 
      routing a single package from point A to point B, where the carrier-
      robots have varying velocity and possibly limited fuel.
 -}
 
-{-# LANGUAGE NoMonomorphismRestriction #-}
 module SinglePackageRouting where
 
 import Diagrams.Prelude
