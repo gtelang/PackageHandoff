@@ -327,6 +327,6 @@ that link, and a description of the package-exchanges that must take place at th
   import Graphics.Gloss
   import Graphics.Gloss.Interface.Pure.Game
 
-
+Made some edits here
 
 #+END_SRC
