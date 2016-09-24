@@ -6,4 +6,4 @@ More detailed introductory notes on this class of problems can be found in
 **PackageHandoff.html**.  
 
 All programs have been weaved into
-[PackageHandoff.org](https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.org) in a literate style and tangled into [codeHaskell-pho](https://github.com/gtelang/packagehandoff/tree/master/codeHaskell-pho). 
+[PackageHandoff.org](https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.org)  and tangled into [codeHaskell-pho](https://github.com/gtelang/packagehandoff/tree/master/codeHaskell-pho). 
