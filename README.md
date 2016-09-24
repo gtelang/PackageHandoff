@@ -21,10 +21,10 @@ Before installing *packagehandoff*
 ## Installation 
 
 ####  *The C++ part*
-Navigate to **codeHaskell-pho/src** and type `make`. Light editing might be required to the /Makefile/ depending especially on where the gcc executable and the *.so* and *.hpp* files of CGAL might be on your machine. For that, you might find the bash commands **`which gcc`** and **`locate libCGAL`** useful. 
+Having installed the prerequisites, navigate to **codeHaskell-pho/src** and type `make`. Light editing might be required to the /Makefile/ depending especially on where the gcc executable and the *.so* and *.hpp* files of CGAL might be on your machine. For that, you might find the bash commands **`which gcc`** and **`locate libCGAL`** useful. 
 
 #### *The Haskell part*
-Having installed the prerequisites, navigate to **codeHaskell-pho**, open up a shell-prompt and type
+Go up one level to **codeHaskell-pho**, and type
 ```zsh
 [../codeHaskell-pho]: stack build
 ```
