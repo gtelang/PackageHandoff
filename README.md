@@ -17,3 +17,10 @@ You will need
  * [Stack](https://docs.haskellstack.org/en/stable/README/) 
  * GCC
  * [GLPK] (https://www.gnu.org/software/glpk/)
+before proceeding with the installation
+
+### Building 
+After installing the aforementioned software, navigate to **codeHaskell-pho**, open up a shell-prompt and type
+```zsh
+stack build
+```
