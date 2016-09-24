@@ -7,3 +7,5 @@ More detailed introductory notes on this class of problems can be found in
 
 All of the library code has been weaved into
 [PackageHandoff.org](https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.org)  and tangled inside [codeHaskell-pho](https://github.com/gtelang/packagehandoff/tree/master/codeHaskell-pho). 
+
+## Installation
