@@ -1,1 +1,1 @@
-Please see the Package Handoff [Github Wiki] (https://github.com/gtelang/packagehandoff) for an extended README. 
+Please see the packagehandoff [github wiki] (https://github.com/gtelang/packagehandoff/wiki) for an extended README. 
