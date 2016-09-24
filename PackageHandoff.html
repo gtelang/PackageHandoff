@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Package Handoff</title>
-<!-- 2016-09-24 Sat 16:19 -->
+<!-- 2016-09-24 Sat 18:15 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Gaurish" />
@@ -272,7 +272,6 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#sec-4">4. README</a></li>
 </ul>
 </div>
 </div>
@@ -715,12 +714,14 @@ that link, and a description of the package-exchanges that must take place at th
 <div class="outline-text-4" id="text-3-2-2">
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span style="color: #ff9966;">{- | This module contains scheduling algorithms and data-structures for </span>
+<pre class="src src-haskell"><span style="color: #e5786d;">{-# LANGUAGE UnicodeSyntax #-}</span>
+<span style="color: #e5786d;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
+
+<span style="color: #ff9966;">{- | This module contains scheduling algorithms and data-structures for </span>
 <span style="color: #ff9966;">     routing a single package from point A to point B, where the carrier-</span>
 <span style="color: #ff9966;">     robots have varying velocity and possibly limited fuel.</span>
 <span style="color: #ff9966;">-}</span>
 
-<span style="color: #e5786d;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
 <span style="color: #8ac6f2; font-weight: bold;">module</span> <span style="color: #92a65e; font-weight: bold;">SinglePackageRouting</span> <span style="color: #8ac6f2; font-weight: bold;">where</span>
 
 <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Diagrams.Prelude</span>
@@ -741,67 +742,10 @@ that link, and a description of the package-exchanges that must take place at th
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> README</h2>
-<div class="outline-text-2" id="text-4">
-<div class="org-src-container">
-
-<pre class="src src-markdown"><span style="color: #b3b3b3;">#</span> <span style="color: #cae682; font-weight: bold;">Packagehandoff</span>
-
-This repository contains programs written in Haskell and C++ to solve Package handoff problems: think of a taxi-service co-ordinating its fleet of cabs to transport passengers calling in from different points of the map to their destinations. Or consider <span style="color: #b3b3b3;">[</span><span style="color: #8ac6f2; font-weight: bold;">Amazon drones</span><span style="color: #b3b3b3;">](</span><span style="color: #ff9966;">https://www.youtube.com/watch?v=gFj5SCdSYQg</span><span style="color: #b3b3b3;">)</span> with limited battery capcacity and varying maximum speeds working together to deliver packages to customers from warehouses.
-
-More detailed introductory notes on this class of problems can be found in 
-<span style="color: #b3b3b3;">**</span><span style="color: #cae682; font-weight: bold;">PackageHandoff.html</span><span style="color: #b3b3b3;">**</span>.<span style="color: #e5786d; text-decoration: underline;">  </span>
-
-All of the library code has been weaved into
-<span style="color: #b3b3b3;">[</span><span style="color: #8ac6f2; font-weight: bold;">PackageHandoff.org</span><span style="color: #b3b3b3;">](</span><span style="color: #ff9966;">https://github.com/gtelang/packagehandoff/blob/master/PackageHandoff.org</span><span style="color: #b3b3b3;">)</span> and tangled inside <span style="color: #b3b3b3;">[</span><span style="color: #8ac6f2; font-weight: bold;">codeHaskell-pho</span><span style="color: #b3b3b3;">](</span><span style="color: #ff9966;">https://github.com/gtelang/packagehandoff/tree/master/codeHaskell-pho</span><span style="color: #b3b3b3;">)</span>. 
-
-The following installations instructions should work on any Linux distro. The code was written using on an Ubuntu 14.04 machine.
-
-<span style="color: #b3b3b3;">##</span> <span style="color: #cae682; font-weight: bold;">Prerequisites</span>
-Before installing <span style="color: #b3b3b3;">**</span><span style="color: #cae682; font-weight: bold;">packagehandoff</span><span style="color: #b3b3b3;">**</span>  you will need
- <span style="color: #b3b3b3;">*</span> <span style="color: #b3b3b3;">[</span><span style="color: #8ac6f2; font-weight: bold;">Stack</span><span style="color: #b3b3b3;">](</span><span style="color: #ff9966;">https://docs.haskellstack.org/en/stable/README/</span><span style="color: #b3b3b3;">)</span> 
- <span style="color: #b3b3b3;">*</span> <span style="color: #b3b3b3;">[</span><span style="color: #8ac6f2; font-weight: bold;">GCC-6</span><span style="color: #b3b3b3;">](</span><span style="color: #ff9966;">http://askubuntu.com/a/746480</span><span style="color: #b3b3b3;">)</span> 
-     <span style="color: #b3b3b3;">*</span> sudo add-apt-repository ppa:ubuntu-toolchain-r/test 
-     <span style="color: #b3b3b3;">*</span> sudo apt-get update
-     <span style="color: #b3b3b3;">*</span> sudo apt-get install gcc-6 g++-6
-    The installed gcc executable will be named <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">gcc-6</span><span style="color: #b3b3b3;">`</span>.
- <span style="color: #b3b3b3;">*</span> [GLPK] (<span style="color: #8ac6f2; font-weight: bold;">https://www.gnu.org/software/glpk/</span>)
- <span style="color: #b3b3b3;">*</span> [CGAL] (<span style="color: #8ac6f2; font-weight: bold;">http://www.cgal.org/</span>)
- <span style="color: #b3b3b3;">*</span> [Emacs] (<span style="color: #8ac6f2; font-weight: bold;">https://www.gnu.org/software/emacs/</span>) (Only for editing and tangling library code inside <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">PackageHandoff.org</span><span style="color: #b3b3b3;">`</span> ) 
-
-<span style="color: #b3b3b3;">##</span> <span style="color: #cae682; font-weight: bold;">Install</span> 
-
-<span style="color: #b3b3b3;">####</span>  <span style="color: #b3b3b3; font-weight: bold;">*</span><span style="color: #cae682; font-weight: bold; font-style: italic;">The C++ part</span><span style="color: #b3b3b3; font-weight: bold;">*</span>
-Having installed the prerequisites, navigate to <span style="color: #b3b3b3;">**</span><span style="color: #cae682; font-weight: bold;">codeHaskell-pho/src</span><span style="color: #b3b3b3;">**</span> and type <span style="color: #b3b3b3;">**</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #e5786d; font-weight: bold;">make</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #b3b3b3;">**</span>. Light editing might be required to the <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">Makefile</span><span style="color: #b3b3b3;">`</span> depending especially on where the gcc executable and the <span style="color: #b3b3b3;">*</span><span style="color: #cae682; font-style: italic;">.so</span><span style="color: #b3b3b3;">*</span> and <span style="color: #b3b3b3;">*</span><span style="color: #cae682; font-style: italic;">.hpp</span><span style="color: #b3b3b3;">*</span> files of CGAL might be on your machine. For that, you might find the bash commands <span style="color: #b3b3b3;">**</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #e5786d; font-weight: bold;">which gcc-6</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #b3b3b3;">**</span> and <span style="color: #b3b3b3;">**</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #e5786d; font-weight: bold;">locate libCGAL</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #b3b3b3;">**</span> useful. 
-
-<span style="color: #b3b3b3;">####</span> <span style="color: #b3b3b3; font-weight: bold;">*</span><span style="color: #cae682; font-weight: bold; font-style: italic;">The Haskell part</span><span style="color: #b3b3b3; font-weight: bold;">*</span>
-Go up one level into <span style="color: #b3b3b3;">**</span><span style="color: #cae682; font-weight: bold;">codeHaskell-pho</span><span style="color: #b3b3b3;">**</span>, and type
-
-<span style="color: #b3b3b3;">```</span><span style="color: #92a65e; font-weight: bold;">zsh</span>
-<span style="color: #e5786d;"> stack build</span>
-<span style="color: #b3b3b3;">```</span>
-
-Now sit back and enjoy a mojito! Stack will take care of fetching the appropriate Haskell libraries (even the Haskell compiler GHC!) if they have not been installed on your machine and then compiling the <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">.hs</span><span style="color: #b3b3b3;">`</span> packagehandoff source-code inside <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">src</span><span style="color: #b3b3b3;">`</span> and <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">app</span><span style="color: #b3b3b3;">`</span>. <span style="color: #b3b3b3;">**</span><span style="color: #cae682; font-weight: bold;">This process can take upto 30-40 mins if you did not have the </span><span style="color: #b3b3b3; font-weight: bold;">[</span><span style="color: #8ac6f2; font-weight: bold;">Haskell platform</span><span style="color: #b3b3b3; font-weight: bold;">](</span><span style="color: #ff9966; font-weight: bold;">https://www.haskell.org/platform/</span><span style="color: #b3b3b3; font-weight: bold;">)</span><span style="color: #cae682; font-weight: bold;"> installed already</span><span style="color: #b3b3b3;">**</span>
-
-<span style="color: #b3b3b3;">##</span> <span style="color: #cae682; font-weight: bold;">Build and Run</span>
-
-That long build process you just witnessed, was due to the many dependencies needed by your computer. If you make changes to the existing library code in <span style="color: #b3b3b3;">**</span><span style="color: #cae682; font-weight: bold;">PackgeHandoff.org</span><span style="color: #b3b3b3;">**</span> or write your own <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">Main.hs</span><span style="color: #b3b3b3;">`</span> file inside <span style="color: #b3b3b3;">*</span><span style="color: #cae682; font-style: italic;">codeHaskell-pho/app</span><span style="color: #b3b3b3;">*</span>, type <span style="color: #b3b3b3;">**</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #e5786d; font-weight: bold;">stack build</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #b3b3b3;">**</span> at the command prompt to re-compile.<span style="color: #e5786d; text-decoration: underline;">  </span>
-
-<span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">codeHaskell-pho/app</span><span style="color: #b3b3b3;">`</span> contains <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">Main.hs</span><span style="color: #b3b3b3;">`</span> which creates a <span style="color: #b3b3b3;">[</span><span style="color: #8ac6f2; font-weight: bold;">Gloss</span><span style="color: #b3b3b3;">](</span><span style="color: #ff9966;">http://gloss.ouroborus.net/</span><span style="color: #b3b3b3;">)</span> canvas onto which you can interactively insert robots, adjust their fuel, place packages and use one of the algorithms displayed at the command prompty to generate and then animate the schedule. To execute the executable for this <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">Main.hs</span><span style="color: #b3b3b3;">`</span> function type <span style="color: #b3b3b3;">**</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #e5786d; font-weight: bold;">stack exec main</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #b3b3b3;">**</span> at the command-prompt. 
-
-All "<span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">Main.hs</span><span style="color: #b3b3b3;">`</span>-type" files (i.e. those with <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">main::IO ()</span><span style="color: #b3b3b3;">`</span> functions) go into <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">app</span><span style="color: #b3b3b3;">`</span>. These files are constantly in flux depending on the computational experiment; hence they are developed separately with their own literate files inside <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">app</span><span style="color: #b3b3b3;">`</span> . <span style="color: #e5786d; text-decoration: underline;">  </span>
-<span style="color: #b3b3b3;">##</span> <span style="color: #cae682; font-weight: bold;">Editing the Library Code</span>
-
-If you want to add  new algorithms or bug-fixes to existing code inside <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">PackageHandoff.org</span><span style="color: #b3b3b3;">`</span>, do the editing with Emacs and tangle the file with <span style="color: #b3b3b3;">`</span><span style="color: #e5786d;">C-c C-v t</span><span style="color: #b3b3b3;">`</span>.
-</pre>
-</div>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Gaurish</p>
-<p class="date">Created: 2016-09-24 Sat 16:19</p>
+<p class="date">Created: 2016-09-24 Sat 18:15</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
