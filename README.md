@@ -17,11 +17,16 @@ You will need
  * [Stack](https://docs.haskellstack.org/en/stable/README/) 
  * GCC
  * [GLPK] (https://www.gnu.org/software/glpk/)
+ * [CGAL] (http://www.cgal.org/)
 before proceeding with the installation
 
 ### Building 
+
+#### The Haskell part
 After installing the aforementioned software, navigate to **codeHaskell-pho**, open up a shell-prompt and type
 ```zsh
 [../codeHaskell-pho]: stack build
 ```
-Then sit back and enjoy a mojito! Stack will take care of fetching the appropriate haskell-related library dependencies (even the GHC compiler) if they have not been installed on your machine. **This process can take quite a while if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
+Then sit back and enjoy a mojito! Stack will take care of fetching the appropriate haskell-related library dependencies (even the GHC compiler) if they have not been installed on your machine. **This process can take upto 30-40 mins if you did not have the [Haskell platform](https://www.haskell.org/platform/) installed already**
+
+### The C++ part
