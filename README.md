@@ -17,7 +17,7 @@ Before installing **packagehandoff**  you will need
  * GCC
  * [GLPK] (https://www.gnu.org/software/glpk/)
  * [CGAL] (http://www.cgal.org/)
- * [Emacs] (https://www.gnu.org/software/emacs/) (Only for editing and tangling library code in `PackageHandoff.org` ) 
+ * [Emacs] (https://www.gnu.org/software/emacs/) (Only for editing and tangling library code inside `PackageHandoff.org` ) 
 
 ## Installation 
 
