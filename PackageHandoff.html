@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Package Handoff</title>
-<!-- 2016-09-24 Sat 18:15 -->
+<!-- 2016-09-24 Sat 22:46 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Gaurish" />
@@ -714,28 +714,30 @@ that link, and a description of the package-exchanges that must take place at th
 <div class="outline-text-4" id="text-3-2-2">
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span style="color: #e5786d;">{-# LANGUAGE UnicodeSyntax #-}</span>
-<span style="color: #e5786d;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
+<pre class="src src-haskell">  <span style="color: #e5786d;">{-# LANGUAGE UnicodeSyntax #-}</span>
+  <span style="color: #e5786d;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
 
-<span style="color: #ff9966;">{- | This module contains scheduling algorithms and data-structures for </span>
-<span style="color: #ff9966;">     routing a single package from point A to point B, where the carrier-</span>
-<span style="color: #ff9966;">     robots have varying velocity and possibly limited fuel.</span>
-<span style="color: #ff9966;">-}</span>
+  <span style="color: #ff9966;">{- | This module contains scheduling algorithms and data-structures for </span>
+<span style="color: #ff9966;">       routing a single package from point A to point B, where the carrier-</span>
+<span style="color: #ff9966;">       robots have varying velocity and possibly limited fuel.</span>
+<span style="color: #ff9966;">  -}</span>
 
-<span style="color: #8ac6f2; font-weight: bold;">module</span> <span style="color: #92a65e; font-weight: bold;">SinglePackageRouting</span> <span style="color: #8ac6f2; font-weight: bold;">where</span>
+  <span style="color: #8ac6f2; font-weight: bold;">module</span> <span style="color: #92a65e; font-weight: bold;">SinglePackageRouting</span> <span style="color: #8ac6f2; font-weight: bold;">where</span>
 
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Diagrams.Prelude</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Diagrams.Prelude</span>
 
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.List</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">List</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Map</span>  <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Map</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Set</span>  <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Set</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Function</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Function</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Control.Monad</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Monoid</span> 
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.List</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">List</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Map</span>  <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Map</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Set</span>  <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Set</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Function</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Function</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Control.Monad</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Monoid</span> 
 
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Colour.Palette.BrewerSet</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Graphics.Gloss</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Graphics.Gloss.Interface.Pure.Game</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Colour.Palette.BrewerSet</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Graphics.Gloss</span>
+  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Graphics.Gloss.Interface.Pure.Game</span>
+
+<span style="color: #92a65e; font-weight: bold;">Made</span> some edits here
 </pre>
 </div>
 </div>
@@ -745,7 +747,7 @@ that link, and a description of the package-exchanges that must take place at th
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Gaurish</p>
-<p class="date">Created: 2016-09-24 Sat 18:15</p>
+<p class="date">Created: 2016-09-24 Sat 22:46</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
