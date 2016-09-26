@@ -33,7 +33,7 @@ A nice real world instance of this problem is one where a taxi-service must co-o
 its fleet of cabs to transport passengers located at different points on the map, to
 their destinations.
 
-Here are a few variants or special cases of the above problem that might be of indepenedent interest.
+Here are a few variants or special cases of the above problem that might be of independent interest.
 
 - What if only one package needs to be transported i.e. $n=1$ ? In this case, min-sum and
   min-max yield the same cost function.
@@ -78,123 +78,72 @@ The most important libraries for performing geometric computations will be
 Different heuristics for both single and multi-package routine will be implemented atop the following interactive system
 outline in the next section. 
 
-** Functional Specifications
-Just like in the Pulley/rGathers codes, the events will be grouped into major *modes*:
-- Robot input
-- Fuel input
-- Package input
-- Scheduling algorithm input
+**  Specification
 
-*The current mode of the visualization thus becomes a state-variable!* By default, i.e
-when you start the canvas for the first time around, it will be in robot input mode.
-Modes will consist of an additive type!!! Key-presses *@@html:<font color = "red">@@r, f, p, s@@html:</font>@@* 
-switches between them. *Within a mode, I will use the @@html:<font color = "red">@@ mouse buttons @@html:</font>@@ to insert/modify data and @@html:<font color = "red">@@ Del @@html:</font>@@ to delete data.* 
-If you press *@@html:<font color = "red">@@ X @@html:</font>@@*, you can stop the animation, and clear whatever
-"information" you have gathered about the algorithm. And finally, I will be using all of Diagrams' inbuilt data-types 
-for things such as points, vectors, planes and other things. 
+The executable is started in one of two modes. 
 
-The schedule is calculated first and only then animated. 
-
-Here is a very high-overview of how the code works. The state variable contains the state of the packages 
-and robots. Three of *play*'s arguments are functions as shown by the arrows below. The whole simulation
-can be thought of as a left-right infinite tiling of this diagram, where each tile corresponds to a point in time.
-
-
-#+BEGIN_SRC ditaa :file modes.png :cmdline --round-corners  --scale 2.0
-       +---------+
-       | Canvas |
-       | cRED   |
-       +-+-----+-+
-         ^     |
-         |     |
-Render   |     |  Handle
-World    |     |  Events
-         |     v
-       +-+-------+           +---------+
-       | World   |---------> |  World  |
-       |  cBLU   |  Step     |   cBLU  |
-       +---------+  World    +---------+
-
-
-
-                  Figure 1. 
+#+BEGIN_SRC sh
+<prompt> ./main --variable-velocity # Fuel = ∞ ∀ robots,
+<prompt> ./main --bounded-fuel # Max-Velocity = 1.0 ∀ robots
 #+END_SRC
+Depending on the modes, the appropriate algorithms are activated.  Once the schedule 
+has been computed, it is written out as a  YAML file, then rendered or animated. [fn:1]
 
-- @@html:<font color = "blue">@@Robot Input mode@@html:</font>@@ ::
-  0. To enter press *r* and show this on the screen.
-  1. The user inputs robot positions by moving a disk over the screen.
-     1. The *disk-center* correponds to where the robot will be placed.
-     2. The *disk-radius*  corresponds to the maximum speed with which a robot can move.
-  2. Each disk is selectable and movable and deletable, and can be resized with the scroll wheel.
-     On being selected a disk changes color. Multiple disks can be selected and changed at the same time.
-  3. A ticker at the top tells what the (speed) disk size is as you move the scroll wheel up
-     and down. The index of the robot is also displayed.
+[fn:1] Because of a stupid bug in gloss (with The GLUT backend) where it 
+terminates the program after pressing *Esc* (but see [[http://stackoverflow.com/a/39622163/505306][this]] for a possible solution!),  
+you will have to animate the robot-schedule last.
 
-- @@html:<font color = "blue">@@ Fuel input mode @@html:</font>@@ ::
-  0. To enter these, press *f*. Again disks are created, and their size correponds to the amount
-     of fuel that they have.
-  1. While the robots are moving you should be able to press a key to see the amount of fuel remaining
-     Maybe  ahistogram can be shown on the side, with the fuel going down.
 
-- @@html:<font color = "blue">@@ Package input mode @@html:</font>@@ ::
-  0. To enter press *p* and show this on the screenr
-  1. Package, source and destination pairs are colored with the same color
-     But with a different boundary color. The source has a thick white boundary,
-     the target has a black boundary. All the faces will be transluscent so that we can
-     visualize multiple circles at a particular point.
-  2. When you click at a point on the screen in input mode, you get both the
-     source and target paired as an arrow: source is the tail, and target is the tip.
-     The tip and tail of this arrow can be moved around.
-  3. The sources and targets of the arrows are selectable and deletable but with an
-     important twist!! Whenever you select, s or t, you can see a light pink arrow
-     stretching from the source to its target, with a little piece of text on top
-     of the middle of the arrow indicating the length. This length changes  dynamically
-     as we change the positions of the source and target.
-  4. Deleting the source and or target, deletes the entire arrow.
+Data is inserted into the canvas as follows. 
+- Left-mouse button *dbl-click* :: @@html:<font color = "red">@@ Insert Robots   @@html:</font>@@
+- Right-mouse button *dbl-click* :: @@html:<font color = "red">@@ Insert Packages    @@html:</font>@@
+- Scroll-wheel ::  
+    - @@html:<font color = "red">@@Adjust fuel (disk size) @@html:</font>@@  
+    - @@html:<font color = "red">@@Adjust speed (disk color on a spectrum) @@html:</font>@@
+- Right-mouse button *single-click* :: 
+     When done on robots/packages select for editing
+     - Left-mouse *drag*  :: Translate robots/packages as a group
+     - Scroll-Wheel :: Adjust group properties in increments
+     - Delete :: Delete group
+                 
+I will be using all of Diagrams' inbuilt data-types for things such as points, 
+vectors, planes and other things. I might have to use gloss3d/OpenGL/three.js(via GHCJS)
+for visualizing problems like these in 3d.
 
-- @@html:<font color = "blue">@@  Choose Scheduling Algorithm @@html:</font>@@ ::
-  0. To enter press *a* followed by a number corresponding to the algorithm.
-     The list of algorithms is displayed to the terminal. Everything will
-     be managed with the play function. 
-  1. The schedule is computed offline and then rendered. 
-        - statically   
-        - dynamically
-     Both can be supported with call-backs. 
-     Suppose you are doing algorithm 1 for problem X
-     Then, doing
-         a   (for algorithm mode) 
-         1   (algorithm number) 
-         s/d (for static or dynamic animation of the schedule after being computed offline)
+For many sophisticated algorithms, I shall be using CGAL. For the simpler ones, we have Diagrams 
+and Boost::Geometry. Examples of algorithms available in the latter are: 
+   - Area and Perimeter
+   - Centroid
+   - Convex Hull
+   - Axis Aligned Bounding Box etc.
+   - Unions and [[http://www.boost.org/doc/libs/1_61_0/libs/geometry/doc/html/geometry/reference/algorithms/intersection.html][Intersections]] of two geometries, like polygons! 
+   The full list of algorithms in Boost::Geometry is available [[http://www.boost.org/doc/libs/1_61_0/libs/geometry/doc/html/geometry/reference/algorithms.html][here]]:
 
-  2. Every algorithm has its own .hs file. Inside this .hs file, you will need to provide 
-     implementations of the other two arrows "*Render World*" and "*Handle Events*" you see in the diagram above. 
-   
-  3. Because of the stupid gloss problem (but see [[http://stackoverflow.com/a/39622163/505306][this]]!), *you will have to do the animation last*. Once you compute 
-     the schedule, you should also write out a YAML file containing the schedule. The YAML file 
-     will have a very similar nesting to the record file, and hence will be useful by itself also
-     After writing out the file, start the animation. 
-     
+Much of BoostGeometry code is based on the notion of C++ concepts, which are very 
+similar to Haskell's typeclasses. 
+** Layout   
 The layout of the code files will be as follows:
 
-- Main.hs ::  All setup, profiling work goes here, when your program starts
+- Main.hs ::  All setup, profiling work goes here. When your program starts
               maturing, start having independent org files for the main.hs files
               which setup different sorts of experiments. This imports algorithmX
               and calls it via play in addition to any other profiling steps.
-- ProbX.hs ::  Implementation of the arrows *Render World*, *Step World*, *Handle Events*, and algorithms, 
-               for problemX in Figure 1. Try to export as little as possible. Just 
-               the arrows, and State should be sufficient. Other helper functions 
-               will not be needed for export. All algorithms to solve variant X of the package 
-               hand-off problem goes into *probX.hs*. Every problem will have its own 
-               customized game-state, input interaction, and algorithms to solve/approximate it. 
-               Every probX variant gets its own section in this Org file. Thus different variants 
-               are kept independent of each other.
+              These go into the /app/ folder. 
+ 
+- PackageHandoffUtilities.hs :: Common functions, typeclasses, event handlers etc.
 
-  Since all algorithms will be coded in literate-style, you will not need to have too many
-  files to partition your code. This literate document weaves all those files and code-blocks 
-  together.
-               
-** Source Code
+- ProbX.hs ::  Variants we will be trying to solve are:
+     - OnePackageVariableVelocity.hs 
+     - MultiPackageVariableVelocity.hs
+     - OnePackageBoundedFuel.hs
+     - MultiPackageBoundedFuel.hs
+
+  These four files will be instantiating typeclasses for robots and implementing 
+  approximation algorithms for min-sum and min-max variants.
+
+** Library Source Code
 Each subsection here describes the source-code inside the file given by the subsection heading. 
+For the /Main.hs/ files, have a look inside *codeHaskell-pho/app*
 *** PackageHandoffPrelude.hs
 :PROPERTIES:
 :TANGLE: codeHaskell-pho/src/PackageHandoffPrelude.hs
@@ -246,7 +195,7 @@ input source (e.g. the Gloss canvas or a YAML file)
 Note that *World* knows _nothing_ about the input source from which it came: 
 it might have been a file, or it could have been inserted via a Gloss or a Diagrams canvas.  
 Keeping the algorithmic and the input/output codes strictly decoupled is essential for making 
-the code more modular. Besides, it is possible that using javascript libraries via GHCJS might 
+the code more modular. Besides, it is apossible that using javascript libraries via GHCJS might 
 be an excellent option in the future for creating more sophisticated animations (e.g. using D3 and three.js)
 and possibly even for three dimensions.
 
