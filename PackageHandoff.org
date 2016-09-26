@@ -137,7 +137,7 @@ World    |     |  Events
      Maybe  ahistogram can be shown on the side, with the fuel going down.
 
 - @@html:<font color = "blue">@@ Package input mode @@html:</font>@@ ::
-  0. To enter press *p* and show this on the screen
+  0. To enter press *p* and show this on the screenr
   1. Package, source and destination pairs are colored with the same color
      But with a different boundary color. The source has a thick white boundary,
      the target has a black boundary. All the faces will be transluscent so that we can
@@ -246,7 +246,9 @@ input source (e.g. the Gloss canvas or a YAML file)
 Note that *World* knows _nothing_ about the input source from which it came: 
 it might have been a file, or it could have been inserted via a Gloss or a Diagrams canvas.  
 Keeping the algorithmic and the input/output codes strictly decoupled is essential for making 
-the code more modular. 
+the code more modular. Besides, it is possible that using javascript libraries via GHCJS might 
+be an excellent option in the future for creating more sophisticated animations (e.g. using D3 and three.js)
+and possibly even for three dimensions.
 
 It also doesn't know anything about the time on the clock. /That/ clocking will be taken care 
 by a wrapper data-structure used by the visualization/animation routines of diagrams or gloss.
