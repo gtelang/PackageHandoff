@@ -38,7 +38,7 @@ Here are a few variants or special cases of the above problem that might be of i
 - What if only one package needs to be transported i.e. $n=1$ ? In this case, min-sum and
   min-max yield the same cost function.
 - What if $n=1$ /and/ the package must move along a straight-line from its source all the way
-  to its destination. This is also an interesting question for the multiple-robot case.
+ to its destination. This is also an interesting question for the multiple-robot case.
   i.e. all packages must move along a straight line from their origin to their destination.
 - What if $n=2$?
 - What if every robot could travel with the same maximum speed $v_j=V$ but has only limited fuel.
@@ -50,7 +50,6 @@ Here are a few variants or special cases of the above problem that might be of i
   as distributed uniformly throughout the domain?
 
 * Theory
-
 * Experiments
 
 I've created a Github repository, *[[https://github.com/gtelang/packagehandoff][packagehandoff]]* ,which contains the Haskell code for experimenting
@@ -181,7 +180,7 @@ The layout of the code files will be as follows:
               maturing, start having independent org files for the main.hs files
               which setup different sorts of experiments. This imports algorithmX
               and calls it via play in addition to any other profiling steps.
-- ProbX.hs ::  Implementation of the arrows *Render World*, *Step World*, *Handle Events* 
+- ProbX.hs ::  Implementation of the arrows *Render World*, *Step World*, *Handle Events*, and algorithms, 
                for problemX in Figure 1. Try to export as little as possible. Just 
                the arrows, and State should be sufficient. Other helper functions 
                will not be needed for export. All algorithms to solve variant X of the package 
@@ -304,29 +303,27 @@ that link, and a description of the package-exchanges that must take place at th
 **** *_Disk File IO_* 
 *** SinglePackageRouting.hs
 #+BEGIN_SRC haskell :tangle  codeHaskell-pho/src/SinglePackageRouting.hs
-  {-# LANGUAGE UnicodeSyntax #-}
-  {-# LANGUAGE NoMonomorphismRestriction #-}
+{-# LANGUAGE UnicodeSyntax #-}
+{-# LANGUAGE NoMonomorphismRestriction #-}
 
-  {- | This module contains scheduling algorithms and data-structures for 
-       routing a single package from point A to point B, where the carrier-
-       robots have varying velocity and possibly limited fuel.
-  -}
+ {- | This module contains scheduling algorithms and data-structures for 
+      routing a single package from point A to point B, where the carrier-
+      robots have varying velocity and possibly limited fuel.
+ -}
 
-  module SinglePackageRouting where
+ module SinglePackageRouting where
 
-  import Diagrams.Prelude
+ import Diagrams.Prelude
 
-  import qualified Data.List as List
-  import qualified Data.Map  as Map
-  import qualified Data.Set  as Set
-  import qualified Data.Function as Function
-  import Control.Monad
-  import Data.Monoid 
+ import qualified Data.List as List
+ import qualified Data.Map  as Map
+ import qualified Data.Set  as Set
+ import qualified Data.Function as Function
+ import Control.Monad
+ import Data.Monoid 
 
-  import Data.Colour.Palette.BrewerSet
-  import Graphics.Gloss
-  import Graphics.Gloss.Interface.Pure.Game
-
-Made some edits here
+ import Data.Colour.Palette.BrewerSet
+ import Graphics.Gloss
+ import Graphics.Gloss.Interface.Pure.Game
 
 #+END_SRC

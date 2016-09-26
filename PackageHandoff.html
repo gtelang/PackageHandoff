@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Package Handoff</title>
-<!-- 2016-09-24 Sat 22:50 -->
+<!-- 2016-09-25 Sun 16:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Gaurish" />
@@ -324,7 +324,7 @@ min-max yield the same cost function.
 </li>
 <li>What if \(n=1\) <i>and</i> the package must move along a straight-line from its source all the way
 to its destination. This is also an interesting question for the multiple-robot case.
-i.e. all packages must move along a straight line from their origin to their destination.
+ i.e. all packages must move along a straight line from their origin to their destination.
 </li>
 <li>What if \(n=2\)?
 </li>
@@ -348,7 +348,6 @@ as distributed uniformly throughout the domain?
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Theory</h2>
 </div>
-
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> Experiments</h2>
 <div class="outline-text-2" id="text-3">
@@ -582,15 +581,15 @@ some descriptive type-synonyms.
 
 <pre class="src src-haskell"><span style="color: #ff9966;">-- | Common Data-Structures and Functions.</span>
 
-<span style="color: #e5786d;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
-<span style="color: #8ac6f2; font-weight: bold;">module</span> <span style="color: #92a65e; font-weight: bold;">PackageHandoffPrelude</span> <span style="color: #8ac6f2; font-weight: bold;">where</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Diagrams.Prelude</span>
-<span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Map</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Map</span>
+<span style="color: #0000ff; font-weight: bold;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
+<span style="color: #00ffff; font-weight: bold;">module</span> <span style="color: #00ff00;">PackageHandoffPrelude</span> <span style="color: #00ffff; font-weight: bold;">where</span>
+<span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ff00;">Diagrams.Prelude</span>
+<span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ffff; font-weight: bold;">qualified</span> <span style="color: #00ff00;">Data.Map</span> <span style="color: #00ffff; font-weight: bold;">as</span> <span style="color: #00ff00;">Map</span>
 <span style="color: #808080; font-style: italic;">-- </span><span style="color: #cc9393;">TODO</span><span style="color: #808080; font-style: italic;">: Use Liquid Haskell to enforce &#8805; 0 at the type level</span>
-<span style="color: #8ac6f2; font-weight: bold;">type</span> <span style="color: #92a65e; font-weight: bold;">Speed</span>    <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">Double</span> <span style="color: #ff9966;">-- | &#8805; 0</span>
-<span style="color: #8ac6f2; font-weight: bold;">type</span> <span style="color: #92a65e; font-weight: bold;">Fuel</span>     <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">Double</span> <span style="color: #ff9966;">-- | &#8805; 0</span>
-<span style="color: #8ac6f2; font-weight: bold;">type</span> <span style="color: #92a65e; font-weight: bold;">Time</span>     <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">Double</span> <span style="color: #ff9966;">-- | &#8805; 0</span>
-<span style="color: #8ac6f2; font-weight: bold;">type</span> <span style="color: #92a65e; font-weight: bold;">PkgIndex</span> <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">Int</span>    <span style="color: #ff9966;">-- | &#8805; 0</span>
+<span style="color: #00ffff; font-weight: bold;">type</span> <span style="color: #00ff00;">Speed</span>    <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">Double</span> <span style="color: #ff9966;">-- | &#8805; 0</span>
+<span style="color: #00ffff; font-weight: bold;">type</span> <span style="color: #00ff00;">Fuel</span>     <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">Double</span> <span style="color: #ff9966;">-- | &#8805; 0</span>
+<span style="color: #00ffff; font-weight: bold;">type</span> <span style="color: #00ff00;">Time</span>     <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">Double</span> <span style="color: #ff9966;">-- | &#8805; 0</span>
+<span style="color: #00ffff; font-weight: bold;">type</span> <span style="color: #00ff00;">PkgIndex</span> <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">Int</span>    <span style="color: #ff9966;">-- | &#8805; 0</span>
 </pre>
 </div>
 
@@ -600,10 +599,10 @@ maximum speed, fuel capacity and other input-data.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span style="color: #8ac6f2; font-weight: bold;">data</span> <span style="color: #92a65e; font-weight: bold;">Robot</span> <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">Robot</span> <span style="color: #8c8c8c;">{</span> initPosition <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Point</span> <span style="color: #92a65e; font-weight: bold;">V2</span> <span style="color: #92a65e; font-weight: bold;">Double</span><span style="color: #cae682;">,</span> 
-                     maxSpeed     <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Speed</span>          <span style="color: #cae682;">,</span>
-                     maxFuel      <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Fuel</span> 
-                    <span style="color: #8c8c8c;">}</span> <span style="color: #8ac6f2; font-weight: bold;">deriving</span> <span style="color: #8c8c8c;">(</span><span style="color: #92a65e; font-weight: bold;">Show</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-haskell"><span style="color: #00ffff; font-weight: bold;">data</span> <span style="color: #00ff00;">Robot</span> <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">Robot</span> <span style="color: #707183;">{</span> initPosition <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Point</span> <span style="color: #00ff00;">V2</span> <span style="color: #00ff00;">Double</span><span style="color: #ffff00;">,</span> 
+                     maxSpeed     <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Speed</span>          <span style="color: #ffff00;">,</span>
+                     maxFuel      <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Fuel</span> 
+                    <span style="color: #707183;">}</span> <span style="color: #00ffff; font-weight: bold;">deriving</span> <span style="color: #707183;">(</span><span style="color: #00ff00;">Show</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 
@@ -613,9 +612,9 @@ of a package.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span style="color: #8ac6f2; font-weight: bold;">data</span> <span style="color: #92a65e; font-weight: bold;">Package</span> <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">Package</span> <span style="color: #8c8c8c;">{</span> source <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Point</span> <span style="color: #92a65e; font-weight: bold;">V2</span> <span style="color: #92a65e; font-weight: bold;">Double</span><span style="color: #cae682;">,</span>
-                         target <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Point</span> <span style="color: #92a65e; font-weight: bold;">V2</span> <span style="color: #92a65e; font-weight: bold;">Double</span> 
-                       <span style="color: #8c8c8c;">}</span> <span style="color: #8ac6f2; font-weight: bold;">deriving</span> <span style="color: #8c8c8c;">(</span><span style="color: #92a65e; font-weight: bold;">Show</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-haskell"><span style="color: #00ffff; font-weight: bold;">data</span> <span style="color: #00ff00;">Package</span> <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">Package</span> <span style="color: #707183;">{</span> source <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Point</span> <span style="color: #00ff00;">V2</span> <span style="color: #00ff00;">Double</span><span style="color: #ffff00;">,</span>
+                         target <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Point</span> <span style="color: #00ff00;">V2</span> <span style="color: #00ff00;">Double</span> 
+                       <span style="color: #707183;">}</span> <span style="color: #00ffff; font-weight: bold;">deriving</span> <span style="color: #707183;">(</span><span style="color: #00ff00;">Show</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 
@@ -625,9 +624,9 @@ input source (e.g. the Gloss canvas or a YAML file)
 </p>
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span style="color: #8ac6f2; font-weight: bold;">data</span> <span style="color: #92a65e; font-weight: bold;">World</span> <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">World</span> <span style="color: #8c8c8c;">{</span> robots      <span style="color: #cae682;">::</span> <span style="color: #93a8c6;">[</span><span style="color: #92a65e; font-weight: bold;">Robot</span><span style="color: #93a8c6;">]</span>  <span style="color: #cae682;">,</span>    
-                     packages    <span style="color: #cae682;">::</span> <span style="color: #93a8c6;">[</span><span style="color: #92a65e; font-weight: bold;">Package</span><span style="color: #93a8c6;">]</span>    
-                   <span style="color: #8c8c8c;">}</span> <span style="color: #8ac6f2; font-weight: bold;">deriving</span> <span style="color: #8c8c8c;">(</span><span style="color: #92a65e; font-weight: bold;">Show</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-haskell"><span style="color: #00ffff; font-weight: bold;">data</span> <span style="color: #00ff00;">World</span> <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">World</span> <span style="color: #707183;">{</span> robots      <span style="color: #ffff00;">::</span> <span style="color: #7388d6;">[</span><span style="color: #00ff00;">Robot</span><span style="color: #7388d6;">]</span>  <span style="color: #ffff00;">,</span>    
+                     packages    <span style="color: #ffff00;">::</span> <span style="color: #7388d6;">[</span><span style="color: #00ff00;">Package</span><span style="color: #7388d6;">]</span>    
+                   <span style="color: #707183;">}</span> <span style="color: #00ffff; font-weight: bold;">deriving</span> <span style="color: #707183;">(</span><span style="color: #00ff00;">Show</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 
@@ -653,10 +652,10 @@ will be used by event-handlers which themselves are wrappers around the algorith
 <div class="org-src-container">
 
 <pre class="src src-haskell"><span style="color: #ff9966;">-- | State of the Gloss canvas</span>
-<span style="color: #8ac6f2; font-weight: bold;">data</span> <span style="color: #92a65e; font-weight: bold;">GlossCanvas</span> <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">GlossCanvas</span><span style="color: #8c8c8c;">{</span> currentMode <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Mode</span><span style="color: #cae682;">,</span> 
-                                world       <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">World</span><span style="color: #cae682;">,</span> 
-                                schedule    <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Schedule</span>
-                              <span style="color: #8c8c8c;">}</span> <span style="color: #8ac6f2; font-weight: bold;">deriving</span> <span style="color: #8c8c8c;">(</span><span style="color: #92a65e; font-weight: bold;">Show</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #00ffff; font-weight: bold;">data</span> <span style="color: #00ff00;">GlossCanvas</span> <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">GlossCanvas</span><span style="color: #707183;">{</span> currentMode <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Mode</span><span style="color: #ffff00;">,</span> 
+                                world       <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">World</span><span style="color: #ffff00;">,</span> 
+                                schedule    <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Schedule</span>
+                              <span style="color: #707183;">}</span> <span style="color: #00ffff; font-weight: bold;">deriving</span> <span style="color: #707183;">(</span><span style="color: #00ff00;">Show</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 
@@ -670,11 +669,11 @@ world state to empty, use <b>X</b> (Note the caps)
 <div class="org-src-container">
 
 <pre class="src src-haskell"><span style="color: #ff9966;">-- | The Gloss Canvas is always in one of four modes</span>
- <span style="color: #8ac6f2; font-weight: bold;">data</span> <span style="color: #92a65e; font-weight: bold;">Mode</span> <span style="color: #cae682;">=</span>   <span style="color: #92a65e; font-weight: bold;">RobotInput</span>    <span style="color: #ff9966;">-- ^ Insert Robots onto Canvas        'r </span>
-             <span style="color: #cae682;">|</span> <span style="color: #92a65e; font-weight: bold;">FuelInput</span>     <span style="color: #ff9966;">-- ^ Adjust the fuel for each robot.  'f'</span>
-             <span style="color: #cae682;">|</span> <span style="color: #92a65e; font-weight: bold;">PackageInput</span>  <span style="color: #ff9966;">-- ^ Insert Packages onto the Canvas. 'p'</span>
-             <span style="color: #cae682;">|</span> <span style="color: #92a65e; font-weight: bold;">AlgoInput</span>     <span style="color: #ff9966;">-- ^ Choose scheduling algorithm.     'a'</span>
-             <span style="color: #8ac6f2; font-weight: bold;">deriving</span> <span style="color: #8c8c8c;">(</span><span style="color: #92a65e; font-weight: bold;">Show</span><span style="color: #cae682;">,</span> <span style="color: #92a65e; font-weight: bold;">Eq</span><span style="color: #8c8c8c;">)</span>
+ <span style="color: #00ffff; font-weight: bold;">data</span> <span style="color: #00ff00;">Mode</span> <span style="color: #ffff00;">=</span>   <span style="color: #00ff00;">RobotInput</span>    <span style="color: #ff9966;">-- ^ Insert Robots onto Canvas        'r </span>
+             <span style="color: #ffff00;">|</span> <span style="color: #00ff00;">FuelInput</span>     <span style="color: #ff9966;">-- ^ Adjust the fuel for each robot.  'f'</span>
+             <span style="color: #ffff00;">|</span> <span style="color: #00ff00;">PackageInput</span>  <span style="color: #ff9966;">-- ^ Insert Packages onto the Canvas. 'p'</span>
+             <span style="color: #ffff00;">|</span> <span style="color: #00ff00;">AlgoInput</span>     <span style="color: #ff9966;">-- ^ Choose scheduling algorithm.     'a'</span>
+             <span style="color: #00ffff; font-weight: bold;">deriving</span> <span style="color: #707183;">(</span><span style="color: #00ff00;">Show</span><span style="color: #ffff00;">,</span> <span style="color: #00ff00;">Eq</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 
@@ -689,19 +688,19 @@ that link, and a description of the package-exchanges that must take place at th
 <div class="org-src-container">
 
 <pre class="src src-haskell"><span style="color: #ff9966;">-- | Schedule for a single robot.</span>
-<span style="color: #8ac6f2; font-weight: bold;">type</span> <span style="color: #92a65e; font-weight: bold;">Trajectory</span>  <span style="color: #cae682;">=</span> <span style="color: #8c8c8c;">[</span> <span style="color: #92a65e; font-weight: bold;">Link</span> <span style="color: #8c8c8c;">]</span> 
+<span style="color: #00ffff; font-weight: bold;">type</span> <span style="color: #00ff00;">Trajectory</span>  <span style="color: #ffff00;">=</span> <span style="color: #707183;">[</span> <span style="color: #00ff00;">Link</span> <span style="color: #707183;">]</span> 
 
 <span style="color: #ff9966;">-- | Schedule for a collection of robots</span>
-<span style="color: #8ac6f2; font-weight: bold;">type</span> <span style="color: #92a65e; font-weight: bold;">Schedule</span>    <span style="color: #cae682;">=</span> <span style="color: #8c8c8c;">[</span> <span style="color: #92a65e; font-weight: bold;">Trajectory</span> <span style="color: #8c8c8c;">]</span> 
+<span style="color: #00ffff; font-weight: bold;">type</span> <span style="color: #00ff00;">Schedule</span>    <span style="color: #ffff00;">=</span> <span style="color: #707183;">[</span> <span style="color: #00ff00;">Trajectory</span> <span style="color: #707183;">]</span> 
 
 <span style="color: #ff9966;">-- | An element of a trajectory</span>
-<span style="color: #8ac6f2; font-weight: bold;">data</span> <span style="color: #92a65e; font-weight: bold;">Link</span> <span style="color: #cae682;">=</span> <span style="color: #92a65e; font-weight: bold;">Link</span> 
-           <span style="color: #8c8c8c;">{</span> head <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Point</span> <span style="color: #92a65e; font-weight: bold;">V2</span> <span style="color: #92a65e; font-weight: bold;">Double</span>         <span style="color: #cae682;">,</span> <span style="color: #ff9966;">-- ^ Rendezvous or pick-up point </span>
-             waitTime          <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Time</span>       ,<span style="color: #ff9966;">-- ^ Time of waiting at the head</span>
-             inTransitPackages <span style="color: #cae682;">::</span> <span style="color: #93a8c6;">[</span><span style="color: #92a65e; font-weight: bold;">PkgIndex</span><span style="color: #93a8c6;">]</span> ,<span style="color: #ff9966;">-- ^ List of packages carried while moving to head</span>
-             givePackagesTo    <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Map.Map</span> <span style="color: #92a65e; font-weight: bold;">PkgIndex</span> <span style="color: #93a8c6;">[</span><span style="color: #92a65e; font-weight: bold;">PkgIndex</span><span style="color: #93a8c6;">]</span>,<span style="color: #ff9966;">-- ^ Give packages to specified robots </span>
-             takePackagesFrom  <span style="color: #cae682;">::</span> <span style="color: #92a65e; font-weight: bold;">Map.Map</span> <span style="color: #92a65e; font-weight: bold;">PkgIndex</span> <span style="color: #93a8c6;">[</span><span style="color: #92a65e; font-weight: bold;">PkgIndex</span><span style="color: #93a8c6;">]</span> <span style="color: #ff9966;">-- ^ Take packages from specified robots</span>
-            <span style="color: #8c8c8c;">}</span> <span style="color: #8ac6f2; font-weight: bold;">deriving</span> <span style="color: #8c8c8c;">(</span><span style="color: #92a65e; font-weight: bold;">Show</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #00ffff; font-weight: bold;">data</span> <span style="color: #00ff00;">Link</span> <span style="color: #ffff00;">=</span> <span style="color: #00ff00;">Link</span> 
+           <span style="color: #707183;">{</span> head <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Point</span> <span style="color: #00ff00;">V2</span> <span style="color: #00ff00;">Double</span>         <span style="color: #ffff00;">,</span> <span style="color: #ff9966;">-- ^ Rendezvous or pick-up point </span>
+             waitTime          <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Time</span>       ,<span style="color: #ff9966;">-- ^ Time of waiting at the head</span>
+             inTransitPackages <span style="color: #ffff00;">::</span> <span style="color: #7388d6;">[</span><span style="color: #00ff00;">PkgIndex</span><span style="color: #7388d6;">]</span> ,<span style="color: #ff9966;">-- ^ List of packages carried while moving to head</span>
+             givePackagesTo    <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Map.Map</span> <span style="color: #00ff00;">PkgIndex</span> <span style="color: #7388d6;">[</span><span style="color: #00ff00;">PkgIndex</span><span style="color: #7388d6;">]</span>,<span style="color: #ff9966;">-- ^ Give packages to specified robots </span>
+             takePackagesFrom  <span style="color: #ffff00;">::</span> <span style="color: #00ff00;">Map.Map</span> <span style="color: #00ff00;">PkgIndex</span> <span style="color: #7388d6;">[</span><span style="color: #00ff00;">PkgIndex</span><span style="color: #7388d6;">]</span> <span style="color: #ff9966;">-- ^ Take packages from specified robots</span>
+            <span style="color: #707183;">}</span> <span style="color: #00ffff; font-weight: bold;">deriving</span> <span style="color: #707183;">(</span><span style="color: #00ff00;">Show</span><span style="color: #707183;">)</span>
 </pre>
 </div>
 </div>
@@ -714,30 +713,28 @@ that link, and a description of the package-exchanges that must take place at th
 <div class="outline-text-4" id="text-3-2-2">
 <div class="org-src-container">
 
-<pre class="src src-haskell">  <span style="color: #e5786d;">{-# LANGUAGE UnicodeSyntax #-}</span>
-  <span style="color: #e5786d;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
+<pre class="src src-haskell"><span style="color: #0000ff; font-weight: bold;">{-# LANGUAGE UnicodeSyntax #-}</span>
+<span style="color: #0000ff; font-weight: bold;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
 
-  <span style="color: #ff9966;">{- | This module contains scheduling algorithms and data-structures for </span>
-<span style="color: #ff9966;">       routing a single package from point A to point B, where the carrier-</span>
-<span style="color: #ff9966;">       robots have varying velocity and possibly limited fuel.</span>
-<span style="color: #ff9966;">  -}</span>
+ <span style="color: #ff9966;">{- | This module contains scheduling algorithms and data-structures for </span>
+<span style="color: #ff9966;">      routing a single package from point A to point B, where the carrier-</span>
+<span style="color: #ff9966;">      robots have varying velocity and possibly limited fuel.</span>
+<span style="color: #ff9966;"> -}</span>
 
-  <span style="color: #8ac6f2; font-weight: bold;">module</span> <span style="color: #92a65e; font-weight: bold;">SinglePackageRouting</span> <span style="color: #8ac6f2; font-weight: bold;">where</span>
+ <span style="color: #00ffff; font-weight: bold;">module</span> <span style="color: #00ff00;">SinglePackageRouting</span> <span style="color: #00ffff; font-weight: bold;">where</span>
 
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Diagrams.Prelude</span>
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ff00;">Diagrams.Prelude</span>
 
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.List</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">List</span>
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Map</span>  <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Map</span>
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Set</span>  <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Set</span>
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #8ac6f2; font-weight: bold;">qualified</span> <span style="color: #92a65e; font-weight: bold;">Data.Function</span> <span style="color: #8ac6f2; font-weight: bold;">as</span> <span style="color: #92a65e; font-weight: bold;">Function</span>
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Control.Monad</span>
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Monoid</span> 
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ffff; font-weight: bold;">qualified</span> <span style="color: #00ff00;">Data.List</span> <span style="color: #00ffff; font-weight: bold;">as</span> <span style="color: #00ff00;">List</span>
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ffff; font-weight: bold;">qualified</span> <span style="color: #00ff00;">Data.Map</span>  <span style="color: #00ffff; font-weight: bold;">as</span> <span style="color: #00ff00;">Map</span>
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ffff; font-weight: bold;">qualified</span> <span style="color: #00ff00;">Data.Set</span>  <span style="color: #00ffff; font-weight: bold;">as</span> <span style="color: #00ff00;">Set</span>
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ffff; font-weight: bold;">qualified</span> <span style="color: #00ff00;">Data.Function</span> <span style="color: #00ffff; font-weight: bold;">as</span> <span style="color: #00ff00;">Function</span>
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ff00;">Control.Monad</span>
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ff00;">Data.Monoid</span> 
 
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Data.Colour.Palette.BrewerSet</span>
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Graphics.Gloss</span>
-  <span style="color: #8ac6f2; font-weight: bold;">import</span> <span style="color: #92a65e; font-weight: bold;">Graphics.Gloss.Interface.Pure.Game</span>
-
-<span style="color: #92a65e; font-weight: bold;">Made</span> some edits here
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ff00;">Data.Colour.Palette.BrewerSet</span>
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ff00;">Graphics.Gloss</span>
+ <span style="color: #00ffff; font-weight: bold;">import</span> <span style="color: #00ff00;">Graphics.Gloss.Interface.Pure.Game</span>
 </pre>
 </div>
 </div>
@@ -747,7 +744,7 @@ that link, and a description of the package-exchanges that must take place at th
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Gaurish</p>
-<p class="date">Created: 2016-09-24 Sat 22:50</p>
+<p class="date">Created: 2016-09-25 Sun 16:59</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
