@@ -16,7 +16,7 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     PackageHandoffPrelude
-                     , SinglePackageRouting
+                     , OnePackageVariableVelocity 
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , diagrams-lib
@@ -30,6 +30,7 @@ library
                      , random
                      , fgl
                      , gloss
+                     , quickcheck
   default-language:    Haskell2010
 
 executable main

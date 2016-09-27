@@ -1,12 +1,12 @@
 
--- | Common Data-Structures and Functions.
+{- | Common Data-Structures and Functions. -}
 
 {-# LANGUAGE NoMonomorphismRestriction #-}
 module PackageHandoffPrelude where
 import Diagrams.Prelude
 import qualified Data.Map as Map
--- TODO: Use Liquid Haskell to enforce ≥ 0 at the type level
-type Speed    = Double -- | ≥ 0
+-- TODO: Use Liquid Haskell to enforce the commented constraints at the type level
+type Speed    = Double -- | ∈ [0,1]
 type Fuel     = Double -- | ≥ 0
 type Time     = Double -- | ≥ 0
 type PkgIndex = Int    -- | ≥ 0
@@ -21,21 +21,8 @@ data Package = Package { source :: Point V2 Double,
                        } deriving (Show)
 
 data World = World { robots      :: [Robot]  ,    
-                     packages    :: [Package]    
+                     packages    :: [Package]
                    } deriving (Show)
-
--- | State of the Gloss canvas
-data GlossCanvas = GlossCanvas{ currentMode :: Mode, 
-                                world       :: World, 
-                                schedule    :: Schedule
-                              } deriving (Show)
-
--- | The Gloss Canvas is always in one of four modes
- data Mode =   RobotInput    -- ^ Insert Robots onto Canvas        'r 
-             | FuelInput     -- ^ Adjust the fuel for each robot.  'f'
-             | PackageInput  -- ^ Insert Packages onto the Canvas. 'p'
-             | AlgoInput     -- ^ Choose scheduling algorithm.     'a'
-             deriving (Show, Eq)
 
 -- | Schedule for a single robot.
 type Trajectory  = [ Link ] 
