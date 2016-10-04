@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>The Package Handoff Library</title>
-<!-- 2016-09-26 Mon 22:25 -->
+<!-- 2016-10-04 Tue 11:05 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Gaurish" />
@@ -92,77 +92,6 @@
 <style>pre.src {background-color: #303030; color: #e5e5e5;} </style>
 <link rel="stylesheet" type="text/css" href="org-style.css"/>
 <style> blockquote {background:#EEEEEE; padding: 3px 13px}</style>
-<script type="text/javascript" src="org-info.js">
-/**
- *
- * @source: org-info.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in org-info.js.
- *
- * Copyright (C) 2012-2013 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in org-info.js.
- *
- */
-</script>
-
-<script type="text/javascript">
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-
-<!--/*--><![CDATA[/*><!--*/
-org_html_manager.set("TOC_DEPTH", "3");
-org_html_manager.set("LINK_HOME", "");
-org_html_manager.set("LINK_UP", "");
-org_html_manager.set("LOCAL_TOC", "1");
-org_html_manager.set("VIEW_BUTTONS", "0");
-org_html_manager.set("MOUSE_HINT", "underline");
-org_html_manager.set("FIXED_TOC", "0");
-org_html_manager.set("TOC", "0");
-org_html_manager.set("VIEW", "info");
-org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -355,11 +284,11 @@ designing library.
 </p>
 
 <p>
-I plan to use the Haskell platform with occasional calls to C++ Libraries for this project. 
+I plan to implement the code using the Haskell platform, with occasional calls to C++ libraries.
 </p>
 
 <p>
-The main Haskell and C/C++ libraries I will use are:
+The main Haskell and C/C++ libraries to be used by the library are
 </p>
 <ol class="org-ol">
 <li>Reactive Banana
@@ -556,12 +485,12 @@ generate: a schedule consists of a collection of robot trajectories.
 
 <div class="org-src-container">
 
-<pre class="src src-haskell"><span style="color: #2aa198;">-- | Every world comes with its own kind of robot.</span>
+<pre class="src src-haskell"><span style="color: #2aa198;">-- | Every world comes with its own kind of robot and link (see below)</span>
 <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900; font-weight: bold;">Robot</span> <span style="color: #268bd2;">=</span> <span style="color: #b58900; font-weight: bold;">Robot</span> <span style="color: #2aa198;">{</span> initPosition <span style="color: #268bd2;">::</span> <span style="color: #b58900; font-weight: bold;">Point</span> <span style="color: #b58900; font-weight: bold;">V2</span> <span style="color: #b58900; font-weight: bold;">Double</span><span style="color: #268bd2;">,</span> 
                       schedule <span style="color: #268bd2;">::</span> <span style="color: #b58900; font-weight: bold;">Schedule</span> <span style="color: #586e75;">-- </span><span style="color: #808080; font-style: italic;">Starts out as empty for everyone. Empty schedule corresponds to nothing to do.</span>
                     <span style="color: #2aa198;">}</span> <span style="color: #859900; font-weight: bold;">deriving</span> <span style="color: #2aa198;">(</span><span style="color: #b58900; font-weight: bold;">Show</span><span style="color: #2aa198;">)</span>
 
-<span style="color: #2aa198;">-- | Schedule for a collection of robots. In one-one correspondence with robots array.</span>
+<span style="color: #2aa198;">-- | Schedule for a collection of robots. In one-one correspondence with the robots array.</span>
 <span style="color: #859900; font-weight: bold;">type</span> <span style="color: #b58900; font-weight: bold;">Schedule</span>    <span style="color: #268bd2;">=</span> <span style="color: #2aa198;">[</span> <span style="color: #b58900; font-weight: bold;">Trajectory</span> <span style="color: #2aa198;">]</span> <span style="color: #586e75;">-- </span><span style="color: #cc9393;">TODO</span><span style="color: #808080; font-style: italic;"> Need to ask if this gets a type-class constraint too.</span>
 
 <span style="color: #2aa198;">-- | Schedule for a single robot. </span>
@@ -610,21 +539,20 @@ the code more modular.
 </p>
 
 <p>
-It also doesn't know anything about the current-time on the clock. <i>That</i> clocking will be taken care 
-by a wrapper data-structure used by the visualization/animation routines of diagrams or gloss.
+It also doesn't know anything about the current-time on the clock. <i>That</i> clocking, if needed, will 
+be taken care by a wrapper data-structure used by the visualization/animation routines of diagrams or gloss.
 </p>
 </div>
-
-<ol class="org-ol"><li><a id="sec-3-3-1-1" name="sec-3-3-1-1"></a><b><span class="underline">Disk File IO</span></b><br  /></li></ol>
 </div>
+
 <div id="outline-container-sec-3-3-2" class="outline-4">
 <h4 id="sec-3-3-2"><span class="section-number-4">3.3.2</span> OnePackageVariableVelocity.hs</h4>
 <div class="outline-text-4" id="text-3-3-2">
 <div class="org-src-container">
 
-<pre class="src src-haskell"> <span style="color: #2aa198;">{- | This module contains scheduling algorithms and data-structures for </span>
-<span style="color: #2aa198;">      routing a single package from point A to point B, where the carrier-</span>
-<span style="color: #2aa198;">      robots have varying velocity and possibly limited fuel.-}</span>
+<pre class="src src-haskell"> <span style="color: #2aa198;">{- | Contains data-structures and scheduling algorithms for </span>
+<span style="color: #2aa198;">      routing a single package from source to destination, using carrier-</span>
+<span style="color: #2aa198;">      robots with varying velocity. The fuel for each robot is assumed to be +&#8734; -}</span>
 
 <span style="color: #268bd2;">{-# LANGUAGE UnicodeSyntax #-}</span>
 <span style="color: #268bd2;">{-# LANGUAGE NoMonomorphismRestriction #-}</span>
@@ -669,7 +597,7 @@ For the <i>Main.hs</i> files, have a look inside <b>codeHaskell-pho/app</b>
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Gaurish</p>
-<p class="date">Created: 2016-09-26 Mon 22:25</p>
+<p class="date">Created: 2016-10-04 Tue 11:05</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
