@@ -2,7 +2,6 @@
 #+HTML_HEAD_EXTRA: <style> blockquote {background:#EEEEEE; padding: 3px 13px}</style>
 #+HTML_HEAD: <style>pre.src {background-color: #303030; color: #e5e5e5;} </style>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org-style.css"/>
-#+INFOJS_OPT: path:org-info.js view:info toc:nil
 #+TITLE: The Package Handoff Library
 * Introduction
 
