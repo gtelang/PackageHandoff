@@ -123,11 +123,10 @@ The code will consist of the following files.
 - PackageHandoffUtilities.hs :: Common functions, Typeclasses, Event handlers, and other plumbing
 
 - ProbX.hs ::  Variants we will be trying to solve are:
-     - OnePackageVariableVelocity.hs    (∞ fuel)
-     - MultiPackageVariableVelocity.hs  (∞ fuel)
-     - OnePackageBoundedFuel.hs         (Vel=1.0)
-     - MultiPackageBoundedFuel.hs       (Vel=1.0)
-     All algorithms and or heuristics go into this file.
+     - One Package      , Variable Velocity, ∞ fuel
+     - One Package      , Velocity 1.0      , Bounded fuel
+     - Multiple Packages, Variable Velocity , ∞ fuel
+     - Multiple Packages, Velocity 1.0      , Bounded fuel
 ** Source Code [fn:3]
 [fn:3] For the /Main.hs/ files, have a look inside *codeHaskell-pho/app*
 
