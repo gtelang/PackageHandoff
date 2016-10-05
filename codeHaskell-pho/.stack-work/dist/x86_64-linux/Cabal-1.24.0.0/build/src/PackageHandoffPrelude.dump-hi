@@ -1,25 +1,24 @@
 
 ==================== FINAL INTERFACE ====================
-2016-10-05 05:46:28.926704 UTC
+2016-10-05 15:41:04.446195 UTC
 
 interface codeHaskell-pho-0.1.0.0-5gA6WvhCsSWGfeeTAbimO3:PackageHandoffPrelude 8001
-  interface hash: b0410bcca062d05505496e30bd4a503a
-  ABI hash: fd5bca014d57ebf741f830224419cc95
-  export-list hash: 9157e0c93ebfe46a0d759c7f668df23c
-  orphan hash: deea332dc1844dde96abb11956b96dd2
+  interface hash: d3df427c4d70086bf5dde031fca9ba5d
+  ABI hash: 197aa2274781b49d8e3426e2f6b12667
+  export-list hash: 71d29e88543bb60cd6d978455a9d915d
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
   flag hash: 477a8d1bb81c99f556d7120b6ab816ed
   sig of: Nothing
   used TH splices: False
   where
 exports:
   PackageHandoffPrelude.Fuel
-  PackageHandoffPrelude.Link{PackageHandoffPrelude.Link load segment waitTimeAtHead}
-  PackageHandoffPrelude.Load{PackageHandoffPrelude.MultiplePackage PackageHandoffPrelude.Nil PackageHandoffPrelude.SinglePackage}
+  PackageHandoffPrelude.Link{PackageHandoffPrelude.Link head load waitTimeAtHead}
+  PackageHandoffPrelude.Load{PackageHandoffPrelude.MPack PackageHandoffPrelude.Nil PackageHandoffPrelude.SPack}
   PackageHandoffPrelude.Package{PackageHandoffPrelude.Package source target}
-  PackageHandoffPrelude.PackageIdx
-  PackageHandoffPrelude.PackageList
+  PackageHandoffPrelude.Packages
   PackageHandoffPrelude.Robot{PackageHandoffPrelude.Robot idx initPosition}
-  PackageHandoffPrelude.RobotIdx
+  PackageHandoffPrelude.Robots
   PackageHandoffPrelude.Schedule
   PackageHandoffPrelude.Speed
   PackageHandoffPrelude.Trajectory{PackageHandoffPrelude.Trajectory}
@@ -212,530 +211,537 @@ import  -/  diagrams-lib-1.3.1.4@diagrams-lib-1.3.1.4-5KrQPZgfDl67Oaw6nHaBWv:Dia
 import  -/  ghc-prim-0.5.0.0:GHC.Classes 0bdf3d057a415ec1b84a7b1994efbe47
 import  -/  linear-1.20.5@linear-1.20.5-1XFX1PW2Ng12KqMxMQSDU4:Linear.Affine 4b617ac814fb114d00c38bd8072f1276
 import  -/  linear-1.20.5@linear-1.20.5-1XFX1PW2Ng12KqMxMQSDU4:Linear.V2 220ef7250e80e358ea3cb23062e7e5dd
-fdce2cb2444fc8dc1b279d5c1958ccda
-  $fEqRobot :: GHC.Classes.Eq PackageHandoffPrelude.Robot
+8f15462282f02e966bd298654c822961
+  $fEqRobot :: GHC.Classes.Eq (PackageHandoffPrelude.Robot a)
   DFunId
   {- HasNoCafRefs, Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ PackageHandoffPrelude.Robot
-                  PackageHandoffPrelude.$fEqRobot_$c==
-                  PackageHandoffPrelude.$fEqRobot_$c/= -}
-fdce2cb2444fc8dc1b279d5c1958ccda
+     Unfolding: DFun: @ a.
+                  @ (PackageHandoffPrelude.Robot a)
+                  (PackageHandoffPrelude.$fEqRobot_$c== @ a)
+                  (PackageHandoffPrelude.$fEqRobot_$c/= @ a) -}
+8f15462282f02e966bd298654c822961
   $fEqRobot_$c/= ::
-    PackageHandoffPrelude.Robot
-    -> PackageHandoffPrelude.Robot -> GHC.Types.Bool
+    PackageHandoffPrelude.Robot a
+    -> PackageHandoffPrelude.Robot a -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs, Strictness: <L,U><L,U>,
      Inline: INLINE (sat-args=2),
      Unfolding: InlineRule (2, False, False)
-                (\ (x :: PackageHandoffPrelude.Robot)
-                   (y :: PackageHandoffPrelude.Robot) ->
-                 GHC.Classes.not (PackageHandoffPrelude.$fEqRobot_$c== x y)) -}
-fdce2cb2444fc8dc1b279d5c1958ccda
+                (\ @ a
+                   (x :: PackageHandoffPrelude.Robot a)
+                   (y :: PackageHandoffPrelude.Robot a) ->
+                 GHC.Classes.not (PackageHandoffPrelude.$fEqRobot_$c== @ a x y)) -}
+8f15462282f02e966bd298654c822961
   $fEqRobot_$c== ::
-    PackageHandoffPrelude.Robot
-    -> PackageHandoffPrelude.Robot -> GHC.Types.Bool
+    PackageHandoffPrelude.Robot a
+    -> PackageHandoffPrelude.Robot a -> GHC.Types.Bool
   {- Arity: 2, HasNoCafRefs,
      Strictness: <S(S(S)L),1*U(1*U(U),A)><S(S(S)L),1*U(1*U(U),A)>,
      Unfolding: InlineRule (2, True, False)
-                (\ (ds :: PackageHandoffPrelude.Robot)
-                   (ds1 :: PackageHandoffPrelude.Robot) ->
+                (\ @ a
+                   (ds :: PackageHandoffPrelude.Robot a)
+                   (ds1 :: PackageHandoffPrelude.Robot a) ->
                  case ds of wild { PackageHandoffPrelude.Robot idx1 ds2 ->
                  case ds1 of wild1 { PackageHandoffPrelude.Robot idx2 ds3 ->
                  GHC.Classes.eqInt idx1 idx2 } }) -}
-04dd40ae205075241d98dc7f68636eda
-  $fShowLink :: GHC.Show.Show PackageHandoffPrelude.Link
+b9b7049e9704749e6006de6e8e025da7
+  $fShowLink ::
+    GHC.Show.Show a => GHC.Show.Show (PackageHandoffPrelude.Link a)
   DFunId
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ PackageHandoffPrelude.Link
-                  PackageHandoffPrelude.$fShowLink_$cshowsPrec1
-                  PackageHandoffPrelude.$fShowLink_$cshow
-                  PackageHandoffPrelude.$fShowLink_$cshowList -}
-04dd40ae205075241d98dc7f68636eda
-  $fShowLink1 :: PackageHandoffPrelude.Link -> GHC.Show.ShowS
-  {- Arity: 1,
-     Unfolding: (\ (w :: PackageHandoffPrelude.Link) ->
-                 case w of ww { PackageHandoffPrelude.Link ww1 ww2 ww3 ->
-                 PackageHandoffPrelude.$w$cshowsPrec 0# ww1 ww2 ww3 }) -}
-1316f56c5e4a88faea95f2e9dea25476
-  $fShowLink10 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Package {"#) -}
-d7e65bf8c737c2b15d28232b79a85689
-  $fShowLink11 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "SinglePackage "#) -}
-1fb9b39b45bffddf5a29f3a2920a7266
-  $fShowLink12 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "load = "#) -}
-3e97a17f1f9464b594f2dc93ff3f64c5
-  $fShowLink13 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "segment = "#) -}
-883ae2fab2c3dbbed24137b261c121fd
-  $fShowLink14 :: GHC.Types.Int
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a ($dShow :: GHC.Show.Show a).
+                  @ (PackageHandoffPrelude.Link a)
+                  (PackageHandoffPrelude.$fShowLink_$cshowsPrec @ a $dShow)
+                  (PackageHandoffPrelude.$fShowLink_$cshow @ a $dShow)
+                  (PackageHandoffPrelude.$fShowLink_$cshowList @ a $dShow) -}
+02d083e3ea8bff3137449b60992191fe
+  $fShowLink1 :: GHC.Types.Int
   {- HasNoCafRefs, Strictness: m, Unfolding: (GHC.Types.I# 0#) -}
-aeeaad26674837d507be6de5e23a649f
+fd670f9fef4b2b358832e772fec127ad
   $fShowLink2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Link {"#) -}
-f113829d301b78aaf62a1cecd42d053a
-  $fShowLink3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "}"#) -}
-23cbd3a7be7e9b7e491cdffb564bd5b7
-  $fShowLink4 :: [GHC.Types.Char]
+4b74751ae6899b378866faf5f24b9b4d
+  $fShowLink3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# "waitTimeAtHead = "#) -}
-55cd85e45e08747eae6be19c2d2706db
+91b687dc83ae1bd714c51aba6e4ec519
+  $fShowLink4 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "load = "#) -}
+e262f1da8f8dee0c0636b66bc5138031
   $fShowLink5 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Nil"#) -}
-810f9713705a3f279f565032b5caa685
-  $fShowLink6 ::
-    ([PackageHandoffPrelude.PackageIdx],
-     GHC.Base.Maybe PackageHandoffPrelude.Robot)
-    -> GHC.Base.String -> [GHC.Types.Char]
-  {- Arity: 2,
-     Unfolding: (\ (w3 :: ([PackageHandoffPrelude.PackageIdx],
-                           GHC.Base.Maybe PackageHandoffPrelude.Robot))
-                   (w4 :: GHC.Base.String)[OneShot] ->
-                 case w3 of ww { (,) ww1 ww2 ->
-                 GHC.Types.:
-                   @ GHC.Types.Char
-                   GHC.Show.shows9
-                   (GHC.Show.showList__
-                      @ GHC.Types.Int
-                      GHC.Show.shows_$sshows11
-                      ww1
-                      (GHC.Types.:
-                         @ GHC.Types.Char
-                         GHC.Show.shows7
-                         (GHC.Show.$fShow(,)_$sgo
-                            (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w4)
-                            (GHC.Show.$fShowMaybe_$cshowsPrec
-                               @ PackageHandoffPrelude.Robot
-                               PackageHandoffPrelude.$fShowRobot
-                               GHC.Show.shows22
-                               ww2)
-                            (GHC.Types.[] @ GHC.Show.ShowS)))) }) -}
-a51854ebbe358c856bf0956bdc6975ff
-  $fShowLink7 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "MultiplePackage "#) -}
-01ad2c03fdf0221f8758255ff0114f39
-  $fShowLink8 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "target = "#) -}
-b70a3f89d14631764321c600bafc24d3
-  $fShowLink9 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "source = "#) -}
-04dd40ae205075241d98dc7f68636eda
-  $fShowLink_$cshow :: PackageHandoffPrelude.Link -> GHC.Base.String
-  {- Arity: 1, Strictness: <S,1*U(H,U,1*U(U))>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (x :: PackageHandoffPrelude.Link) ->
-                 PackageHandoffPrelude.$fShowLink_$cshowsPrec1
-                   GHC.Show.shows22
-                   x
-                   (GHC.Types.[] @ GHC.Types.Char)) -}
-04dd40ae205075241d98dc7f68636eda
-  $fShowLink_$cshowList ::
-    [PackageHandoffPrelude.Link] -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (GHC.Show.showList__
-                   @ PackageHandoffPrelude.Link
-                   PackageHandoffPrelude.$fShowLink1) -}
-0fa0402425cb29ef214f063593434afa
-  $fShowLink_$cshowsPrec ::
-    GHC.Types.Int -> PackageHandoffPrelude.Load -> GHC.Show.ShowS
-  {- Arity: 3, Strictness: <L,1*U(U)><S,1*U><L,U>,
-     Unfolding: (\ (a :: GHC.Types.Int)
-                   (ds :: PackageHandoffPrelude.Load)
-                   (eta :: GHC.Base.String) ->
-                 case ds of wild {
-                   PackageHandoffPrelude.SinglePackage b1
-                   -> case a of wild1 { GHC.Types.I# x ->
-                      let {
-                        p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,U> -}
-                        = \ (x1 :: GHC.Base.String)[OneShot] ->
-                          GHC.Base.++
-                            @ GHC.Types.Char
-                            PackageHandoffPrelude.$fShowLink11
-                            (case b1 of ww { (,) ww1 ww2 ->
-                             GHC.Types.:
-                               @ GHC.Types.Char
-                               GHC.Show.shows9
-                               (case ww1 of ww4 { PackageHandoffPrelude.Package ww5 ww6 ->
-                                PackageHandoffPrelude.$w$cshowsPrec2
-                                  0#
-                                  ww5
-                                  ww6
-                                  (GHC.Types.:
-                                     @ GHC.Types.Char
-                                     GHC.Show.shows7
-                                     (GHC.Show.$fShow(,)_$sgo
-                                        (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x1)
-                                        (GHC.Show.$fShowMaybe_$cshowsPrec
-                                           @ PackageHandoffPrelude.Robot
-                                           PackageHandoffPrelude.$fShowRobot
-                                           GHC.Show.shows22
-                                           ww2)
-                                        (GHC.Types.[] @ GHC.Show.ShowS))) }) })
-                      } in
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# x 11#) of wild2 {
-                        GHC.Types.False -> p eta
-                        GHC.Types.True
-                        -> GHC.Types.:
-                             @ GHC.Types.Char
-                             GHC.Show.shows9
-                             (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 eta)) } }
-                   PackageHandoffPrelude.MultiplePackage b1
-                   -> case a of wild1 { GHC.Types.I# x ->
-                      case GHC.Prim.tagToEnum#
-                             @ GHC.Types.Bool
-                             (GHC.Prim.>=# x 11#) of wild2 {
-                        GHC.Types.False
-                        -> GHC.Base.++
-                             @ GHC.Types.Char
-                             PackageHandoffPrelude.$fShowLink7
-                             (GHC.Show.showList__
-                                @ ([PackageHandoffPrelude.PackageIdx],
-                                   GHC.Base.Maybe PackageHandoffPrelude.Robot)
-                                PackageHandoffPrelude.$fShowLink6
-                                b1
-                                eta)
-                        GHC.Types.True
-                        -> GHC.Types.:
-                             @ GHC.Types.Char
-                             GHC.Show.shows9
-                             (GHC.Base.++
-                                @ GHC.Types.Char
-                                PackageHandoffPrelude.$fShowLink7
-                                (GHC.Show.showList__
-                                   @ ([PackageHandoffPrelude.PackageIdx],
-                                      GHC.Base.Maybe PackageHandoffPrelude.Robot)
-                                   PackageHandoffPrelude.$fShowLink6
-                                   b1
-                                   (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 eta))) } }
-                   PackageHandoffPrelude.Nil
-                   -> GHC.Base.++
-                        @ GHC.Types.Char
-                        PackageHandoffPrelude.$fShowLink5
-                        eta }) -}
-04dd40ae205075241d98dc7f68636eda
-  $fShowLink_$cshowsPrec1 ::
-    GHC.Types.Int -> PackageHandoffPrelude.Link -> GHC.Show.ShowS
-  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(H,U,1*U(U))>,
-     Inline: INLINE[0],
-     Unfolding: InlineRule (2, True, False)
-                (\ (w :: GHC.Types.Int) (w1 :: PackageHandoffPrelude.Link) ->
-                 case w of ww { GHC.Types.I# ww1 ->
-                 case w1 of ww2 { PackageHandoffPrelude.Link ww3 ww4 ww5 ->
-                 PackageHandoffPrelude.$w$cshowsPrec ww1 ww3 ww4 ww5 } }) -}
-0fa0402425cb29ef214f063593434afa
-  $fShowLoad :: GHC.Show.Show PackageHandoffPrelude.Load
-  DFunId
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ PackageHandoffPrelude.Load
-                  PackageHandoffPrelude.$fShowLink_$cshowsPrec
-                  PackageHandoffPrelude.$fShowLoad_$cshow
-                  PackageHandoffPrelude.$fShowLoad_$cshowList -}
-0fa0402425cb29ef214f063593434afa
-  $fShowLoad1 :: PackageHandoffPrelude.Load -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (PackageHandoffPrelude.$fShowLink_$cshowsPrec
-                   PackageHandoffPrelude.$fShowLink14) -}
-c81e6c345da04211ad2741ac5e803458
-  $fShowLoad2 :: [GHC.Types.Char]
-  {- HasNoCafRefs,
-     Unfolding: (GHC.Types.:
-                   @ GHC.Types.Char
-                   GHC.Show.shows6
-                   (GHC.Types.[] @ GHC.Types.Char)) -}
-0fa0402425cb29ef214f063593434afa
-  $fShowLoad_$cshow :: PackageHandoffPrelude.Load -> GHC.Base.String
-  {- Arity: 1, Strictness: <S,1*U>,
-     Unfolding: (\ (x :: PackageHandoffPrelude.Load) ->
-                 case x of wild {
-                   PackageHandoffPrelude.SinglePackage b1
-                   -> GHC.Base.++
-                        @ GHC.Types.Char
-                        PackageHandoffPrelude.$fShowLink11
-                        (case b1 of ww { (,) ww1 ww2 ->
-                         GHC.Types.:
-                           @ GHC.Types.Char
-                           GHC.Show.shows9
-                           (case ww1 of ww4 { PackageHandoffPrelude.Package ww5 ww6 ->
-                            PackageHandoffPrelude.$w$cshowsPrec2
-                              0#
-                              ww5
-                              ww6
-                              (GHC.Types.:
-                                 @ GHC.Types.Char
-                                 GHC.Show.shows7
-                                 (GHC.Show.$fShow(,)_$sgo
-                                    PackageHandoffPrelude.$fShowLoad2
-                                    (GHC.Show.$fShowMaybe_$cshowsPrec
-                                       @ PackageHandoffPrelude.Robot
-                                       PackageHandoffPrelude.$fShowRobot
-                                       GHC.Show.shows22
-                                       ww2)
-                                    (GHC.Types.[] @ GHC.Show.ShowS))) }) })
-                   PackageHandoffPrelude.MultiplePackage b1
-                   -> GHC.Base.++
-                        @ GHC.Types.Char
-                        PackageHandoffPrelude.$fShowLink7
-                        (GHC.Show.showList__
-                           @ ([PackageHandoffPrelude.PackageIdx],
-                              GHC.Base.Maybe PackageHandoffPrelude.Robot)
-                           PackageHandoffPrelude.$fShowLink6
-                           b1
-                           (GHC.Types.[] @ GHC.Types.Char))
-                   PackageHandoffPrelude.Nil
-                   -> PackageHandoffPrelude.$fShowLink5 }) -}
-0fa0402425cb29ef214f063593434afa
-  $fShowLoad_$cshowList ::
-    [PackageHandoffPrelude.Load] -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (GHC.Show.showList__
-                   @ PackageHandoffPrelude.Load
-                   PackageHandoffPrelude.$fShowLoad1) -}
-4bd1d625f5becec81da2f6d5aba5341f
-  $fShowPackage :: GHC.Show.Show PackageHandoffPrelude.Package
-  DFunId
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ PackageHandoffPrelude.Package
-                  PackageHandoffPrelude.$fShowPackage_$cshowsPrec
-                  PackageHandoffPrelude.$fShowPackage_$cshow
-                  PackageHandoffPrelude.$fShowPackage_$cshowList -}
-4bd1d625f5becec81da2f6d5aba5341f
-  $fShowPackage1 :: PackageHandoffPrelude.Package -> GHC.Show.ShowS
-  {- Arity: 1,
-     Unfolding: (\ (w :: PackageHandoffPrelude.Package) ->
-                 case w of ww { PackageHandoffPrelude.Package ww1 ww2 ->
-                 PackageHandoffPrelude.$w$cshowsPrec2 0# ww1 ww2 }) -}
-4bd1d625f5becec81da2f6d5aba5341f
-  $fShowPackage_$cshow ::
-    PackageHandoffPrelude.Package -> GHC.Base.String
-  {- Arity: 1, Strictness: <S,1*U(U,U)>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (x :: PackageHandoffPrelude.Package) ->
-                 PackageHandoffPrelude.$fShowPackage_$cshowsPrec
-                   GHC.Show.shows22
-                   x
-                   (GHC.Types.[] @ GHC.Types.Char)) -}
-4bd1d625f5becec81da2f6d5aba5341f
-  $fShowPackage_$cshowList ::
-    [PackageHandoffPrelude.Package] -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (GHC.Show.showList__
-                   @ PackageHandoffPrelude.Package
-                   PackageHandoffPrelude.$fShowPackage1) -}
-4bd1d625f5becec81da2f6d5aba5341f
-  $fShowPackage_$cshowsPrec ::
-    GHC.Types.Int -> PackageHandoffPrelude.Package -> GHC.Show.ShowS
-  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(U,U)>,
-     Inline: INLINE[0],
-     Unfolding: InlineRule (2, True, False)
-                (\ (w :: GHC.Types.Int) (w1 :: PackageHandoffPrelude.Package) ->
-                 case w of ww { GHC.Types.I# ww1 ->
-                 case w1 of ww2 { PackageHandoffPrelude.Package ww3 ww4 ->
-                 PackageHandoffPrelude.$w$cshowsPrec2 ww1 ww3 ww4 } }) -}
-fdce2cb2444fc8dc1b279d5c1958ccda
-  $fShowRobot :: GHC.Show.Show PackageHandoffPrelude.Robot
-  DFunId
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ PackageHandoffPrelude.Robot
-                  PackageHandoffPrelude.$fShowRobot_$cshowsPrec
-                  PackageHandoffPrelude.$fShowRobot_$cshow
-                  PackageHandoffPrelude.$fShowRobot_$cshowList -}
-fdce2cb2444fc8dc1b279d5c1958ccda
-  $fShowRobot1 :: PackageHandoffPrelude.Robot -> GHC.Show.ShowS
-  {- Arity: 1,
-     Unfolding: (\ (w :: PackageHandoffPrelude.Robot) ->
-                 case w of ww { PackageHandoffPrelude.Robot ww1 ww2 ->
-                 PackageHandoffPrelude.$w$cshowsPrec1 0# ww1 ww2 }) -}
-f1bb4ff061676446d3a76f0ce562735a
-  $fShowRobot2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "initPosition = "#) -}
-8f21ce18979cd00adf88cc5445c352c1
-  $fShowRobot3 :: [GHC.Types.Char]
   {- Unfolding: (GHC.CString.unpackCString# ", "#) -}
-ced69ccbf8b1b1a264149bcaab677b81
-  $fShowRobot4 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "idx = "#) -}
-a71233c43402b95c86d61ad8f3a79e79
-  $fShowRobot5 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Robot {"#) -}
-fdce2cb2444fc8dc1b279d5c1958ccda
-  $fShowRobot_$cshow ::
-    PackageHandoffPrelude.Robot -> GHC.Base.String
-  {- Arity: 1, Strictness: <S,1*U(U(U),U)>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (x :: PackageHandoffPrelude.Robot) ->
-                 PackageHandoffPrelude.$fShowRobot_$cshowsPrec
+ecc6f33cfb2fd3e82e1dd69bfdc7bf6c
+  $fShowLink6 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "head = "#) -}
+8a387ca3fcb59aaae20911707d4b8d26
+  $fShowLink7 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Link {"#) -}
+b9b7049e9704749e6006de6e8e025da7
+  $fShowLink_$cshow ::
+    GHC.Show.Show a => PackageHandoffPrelude.Link a -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A,A)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a
+                   ($dShow :: GHC.Show.Show a)
+                   (x :: PackageHandoffPrelude.Link a) ->
+                 PackageHandoffPrelude.$fShowLink_$cshowsPrec
+                   @ a
+                   $dShow
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-fdce2cb2444fc8dc1b279d5c1958ccda
+b9b7049e9704749e6006de6e8e025da7
+  $fShowLink_$cshowList ::
+    GHC.Show.Show a => [PackageHandoffPrelude.Link a] -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ a ($dShow :: GHC.Show.Show a) ->
+                 GHC.Show.showList__
+                   @ (PackageHandoffPrelude.Link a)
+                   (PackageHandoffPrelude.$fShowLink_$cshowsPrec
+                      @ a
+                      $dShow
+                      PackageHandoffPrelude.$fShowLink1)) -}
+b9b7049e9704749e6006de6e8e025da7
+  $fShowLink_$cshowsPrec ::
+    GHC.Show.Show a =>
+    GHC.Types.Int -> PackageHandoffPrelude.Link a -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>,
+     Unfolding: (\ @ a ($dShow :: GHC.Show.Show a) ->
+                 let {
+                   $dShow1 :: GHC.Show.Show (Linear.V2.V2 a)
+                   = Linear.V2.$fShowV2 @ a $dShow
+                 } in
+                 let {
+                   lvl3 :: GHC.Types.Int
+                           -> PackageHandoffPrelude.Load a -> GHC.Show.ShowS
+                   = PackageHandoffPrelude.$fShowLink_$cshowsPrec1 @ a $dShow
+                 } in
+                 \ (a1 :: GHC.Types.Int) (ds :: PackageHandoffPrelude.Link a) ->
+                 case ds of wild { PackageHandoffPrelude.Link b1 b2 b3 ->
+                 case a1 of wild1 { GHC.Types.I# x ->
+                 let {
+                   f :: GHC.Base.String -> GHC.Base.String
+                   = Linear.Affine.$w$cshowsPrec @ Linear.V2.V2 @ a $dShow1 0# b1
+                 } in
+                 let {
+                   f1 :: GHC.Base.String -> GHC.Base.String
+                   = lvl3 PackageHandoffPrelude.$fShowLink1 b2
+                 } in
+                 let {
+                   f2 :: GHC.Base.String -> GHC.Base.String
+                   = case b3 of ww { GHC.Types.D# ww1 ->
+                     GHC.Float.$w$sshowSignedFloat
+                       GHC.Float.$fShowDouble_$sshowFloat
+                       PackageHandoffPrelude.$fShowLink1
+                       ww1 }
+                 } in
+                 let {
+                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
+                   = \ (x1 :: GHC.Base.String) ->
+                     GHC.Base.++
+                       @ GHC.Types.Char
+                       PackageHandoffPrelude.$fShowLink7
+                       (GHC.Base.++
+                          @ GHC.Types.Char
+                          PackageHandoffPrelude.$fShowLink6
+                          (f (GHC.Base.++
+                                @ GHC.Types.Char
+                                PackageHandoffPrelude.$fShowLink5
+                                (GHC.Base.++
+                                   @ GHC.Types.Char
+                                   PackageHandoffPrelude.$fShowLink4
+                                   (f1
+                                      (GHC.Base.++
+                                         @ GHC.Types.Char
+                                         PackageHandoffPrelude.$fShowLink5
+                                         (GHC.Base.++
+                                            @ GHC.Types.Char
+                                            PackageHandoffPrelude.$fShowLink3
+                                            (f2
+                                               (GHC.Base.++
+                                                  @ GHC.Types.Char
+                                                  PackageHandoffPrelude.$fShowLink2
+                                                  x1)))))))))
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# x 11#) of wild2 {
+                   GHC.Types.False -> p
+                   GHC.Types.True
+                   -> \ (x1 :: GHC.Base.String) ->
+                      GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x1)) } } }) -}
+13daf183717374a03e87d466e66f2772
+  $fShowLink_$cshowsPrec1 ::
+    GHC.Show.Show a =>
+    GHC.Types.Int -> PackageHandoffPrelude.Load a -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)> -}
+13daf183717374a03e87d466e66f2772
+  $fShowLoad ::
+    GHC.Show.Show a => GHC.Show.Show (PackageHandoffPrelude.Load a)
+  DFunId
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a ($dShow :: GHC.Show.Show a).
+                  @ (PackageHandoffPrelude.Load a)
+                  (PackageHandoffPrelude.$fShowLink_$cshowsPrec1 @ a $dShow)
+                  (PackageHandoffPrelude.$fShowLoad_$cshow @ a $dShow)
+                  (PackageHandoffPrelude.$fShowLoad_$cshowList @ a $dShow) -}
+13daf183717374a03e87d466e66f2772
+  $fShowLoad_$cshow ::
+    GHC.Show.Show a => PackageHandoffPrelude.Load a -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A,A)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a
+                   ($dShow :: GHC.Show.Show a)
+                   (x :: PackageHandoffPrelude.Load a) ->
+                 PackageHandoffPrelude.$fShowLink_$cshowsPrec1
+                   @ a
+                   $dShow
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+13daf183717374a03e87d466e66f2772
+  $fShowLoad_$cshowList ::
+    GHC.Show.Show a => [PackageHandoffPrelude.Load a] -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ a ($dShow :: GHC.Show.Show a) ->
+                 GHC.Show.showList__
+                   @ (PackageHandoffPrelude.Load a)
+                   (PackageHandoffPrelude.$fShowLink_$cshowsPrec1
+                      @ a
+                      $dShow
+                      PackageHandoffPrelude.$fShowLink1)) -}
+84cd5894b4d56c519fb640fd15378332
+  $fShowPackage ::
+    GHC.Show.Show a => GHC.Show.Show (PackageHandoffPrelude.Package a)
+  DFunId
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a ($dShow :: GHC.Show.Show a).
+                  @ (PackageHandoffPrelude.Package a)
+                  (PackageHandoffPrelude.$fShowPackage_$cshowsPrec @ a $dShow)
+                  (PackageHandoffPrelude.$fShowPackage_$cshow @ a $dShow)
+                  (PackageHandoffPrelude.$fShowPackage_$cshowList @ a $dShow) -}
+188788d46d61785ac4c7b4ee37e07c35
+  $fShowPackage1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "target = "#) -}
+b398958dcd0b6cb5cc5a5e274e1144d9
+  $fShowPackage2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "source = "#) -}
+551208351f187deb1fb0972e4957525e
+  $fShowPackage3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Package {"#) -}
+84cd5894b4d56c519fb640fd15378332
+  $fShowPackage_$cshow ::
+    GHC.Show.Show a =>
+    PackageHandoffPrelude.Package a -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A,A)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a
+                   ($dShow :: GHC.Show.Show a)
+                   (x :: PackageHandoffPrelude.Package a) ->
+                 PackageHandoffPrelude.$fShowPackage_$cshowsPrec
+                   @ a
+                   $dShow
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+84cd5894b4d56c519fb640fd15378332
+  $fShowPackage_$cshowList ::
+    GHC.Show.Show a =>
+    [PackageHandoffPrelude.Package a] -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ a ($dShow :: GHC.Show.Show a) ->
+                 GHC.Show.showList__
+                   @ (PackageHandoffPrelude.Package a)
+                   (PackageHandoffPrelude.$fShowPackage_$cshowsPrec
+                      @ a
+                      $dShow
+                      PackageHandoffPrelude.$fShowLink1)) -}
+84cd5894b4d56c519fb640fd15378332
+  $fShowPackage_$cshowsPrec ::
+    GHC.Show.Show a =>
+    GHC.Types.Int -> PackageHandoffPrelude.Package a -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>,
+     Unfolding: (\ @ a ($dShow :: GHC.Show.Show a) ->
+                 let {
+                   $dShow1 :: GHC.Show.Show (Linear.V2.V2 a)
+                   = Linear.V2.$fShowV2 @ a $dShow
+                 } in
+                 \ (a1 :: GHC.Types.Int) (ds :: PackageHandoffPrelude.Package a) ->
+                 case ds of wild { PackageHandoffPrelude.Package b1 b2 ->
+                 case a1 of wild1 { GHC.Types.I# x ->
+                 let {
+                   f :: GHC.Base.String -> GHC.Base.String
+                   = Linear.Affine.$w$cshowsPrec @ Linear.V2.V2 @ a $dShow1 0# b1
+                 } in
+                 let {
+                   f1 :: GHC.Base.String -> GHC.Base.String
+                   = Linear.Affine.$w$cshowsPrec @ Linear.V2.V2 @ a $dShow1 0# b2
+                 } in
+                 let {
+                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
+                   = \ (x1 :: GHC.Base.String) ->
+                     GHC.Base.++
+                       @ GHC.Types.Char
+                       PackageHandoffPrelude.$fShowPackage3
+                       (GHC.Base.++
+                          @ GHC.Types.Char
+                          PackageHandoffPrelude.$fShowPackage2
+                          (f (GHC.Base.++
+                                @ GHC.Types.Char
+                                PackageHandoffPrelude.$fShowLink5
+                                (GHC.Base.++
+                                   @ GHC.Types.Char
+                                   PackageHandoffPrelude.$fShowPackage1
+                                   (f1
+                                      (GHC.Base.++
+                                         @ GHC.Types.Char
+                                         PackageHandoffPrelude.$fShowLink2
+                                         x1))))))
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# x 11#) of wild2 {
+                   GHC.Types.False -> p
+                   GHC.Types.True
+                   -> \ (x1 :: GHC.Base.String) ->
+                      GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x1)) } } }) -}
+8f15462282f02e966bd298654c822961
+  $fShowRobot ::
+    GHC.Show.Show a => GHC.Show.Show (PackageHandoffPrelude.Robot a)
+  DFunId
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a ($dShow :: GHC.Show.Show a).
+                  @ (PackageHandoffPrelude.Robot a)
+                  (PackageHandoffPrelude.$fShowRobot_$cshowsPrec @ a $dShow)
+                  (PackageHandoffPrelude.$fShowRobot_$cshow @ a $dShow)
+                  (PackageHandoffPrelude.$fShowRobot_$cshowList @ a $dShow) -}
+cf981d6e7a75ca0ed36f1f0477027891
+  $fShowRobot1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "initPosition = "#) -}
+d927436dc1da548cc0037aa8dda36950
+  $fShowRobot2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "idx = "#) -}
+802127a335ccecec6097c8be8ef950e5
+  $fShowRobot3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Robot {"#) -}
+8f15462282f02e966bd298654c822961
+  $fShowRobot_$cshow ::
+    GHC.Show.Show a => PackageHandoffPrelude.Robot a -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A,A)><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a
+                   ($dShow :: GHC.Show.Show a)
+                   (x :: PackageHandoffPrelude.Robot a) ->
+                 PackageHandoffPrelude.$fShowRobot_$cshowsPrec
+                   @ a
+                   $dShow
+                   GHC.Show.shows22
+                   x
+                   (GHC.Types.[] @ GHC.Types.Char)) -}
+8f15462282f02e966bd298654c822961
   $fShowRobot_$cshowList ::
-    [PackageHandoffPrelude.Robot] -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (GHC.Show.showList__
-                   @ PackageHandoffPrelude.Robot
-                   PackageHandoffPrelude.$fShowRobot1) -}
-fdce2cb2444fc8dc1b279d5c1958ccda
+    GHC.Show.Show a =>
+    [PackageHandoffPrelude.Robot a] -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ a ($dShow :: GHC.Show.Show a) ->
+                 GHC.Show.showList__
+                   @ (PackageHandoffPrelude.Robot a)
+                   (PackageHandoffPrelude.$fShowRobot_$cshowsPrec
+                      @ a
+                      $dShow
+                      PackageHandoffPrelude.$fShowLink1)) -}
+8f15462282f02e966bd298654c822961
   $fShowRobot_$cshowsPrec ::
-    GHC.Types.Int -> PackageHandoffPrelude.Robot -> GHC.Show.ShowS
-  {- Arity: 2, Strictness: <S(S),1*U(U)><S,1*U(U(U),U)>,
+    GHC.Show.Show a =>
+    GHC.Types.Int -> PackageHandoffPrelude.Robot a -> GHC.Show.ShowS
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>,
+     Unfolding: (\ @ a ($dShow :: GHC.Show.Show a) ->
+                 let {
+                   $dShow1 :: GHC.Show.Show (Linear.V2.V2 a)
+                   = Linear.V2.$fShowV2 @ a $dShow
+                 } in
+                 \ (a1 :: GHC.Types.Int) (ds :: PackageHandoffPrelude.Robot a) ->
+                 case ds of wild { PackageHandoffPrelude.Robot b1 b2 ->
+                 case a1 of wild1 { GHC.Types.I# x ->
+                 let {
+                   f :: GHC.Base.String -> GHC.Base.String
+                   = Linear.Affine.$w$cshowsPrec @ Linear.V2.V2 @ a $dShow1 0# b2
+                 } in
+                 let {
+                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
+                   = \ (x1 :: GHC.Base.String) ->
+                     GHC.Base.++
+                       @ GHC.Types.Char
+                       PackageHandoffPrelude.$fShowRobot3
+                       (GHC.Base.++
+                          @ GHC.Types.Char
+                          PackageHandoffPrelude.$fShowRobot2
+                          (case b1 of ww2 { GHC.Types.I# ww3 ->
+                           case GHC.Show.$wshowSignedInt
+                                  0#
+                                  ww3
+                                  (GHC.Base.++
+                                     @ GHC.Types.Char
+                                     PackageHandoffPrelude.$fShowLink5
+                                     (GHC.Base.++
+                                        @ GHC.Types.Char
+                                        PackageHandoffPrelude.$fShowRobot1
+                                        (f (GHC.Base.++
+                                              @ GHC.Types.Char
+                                              PackageHandoffPrelude.$fShowLink2
+                                              x1)))) of ww4 { (#,#) ww5 ww6 ->
+                           GHC.Types.: @ GHC.Types.Char ww5 ww6 } }))
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# x 11#) of wild2 {
+                   GHC.Types.False -> p
+                   GHC.Types.True
+                   -> \ (x1 :: GHC.Base.String) ->
+                      GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x1)) } } }) -}
+ad3afd162a7b54dc80bc502526c8623f
+  $fShowTrajectory ::
+    GHC.Show.Show a =>
+    GHC.Show.Show (PackageHandoffPrelude.Trajectory a)
+  DFunId
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a ($dShow :: GHC.Show.Show a).
+                  @ (PackageHandoffPrelude.Trajectory a)
+                  (PackageHandoffPrelude.$fShowTrajectory_$cshowsPrec @ a $dShow)
+                  (PackageHandoffPrelude.$fShowTrajectory_$cshow @ a $dShow)
+                  (PackageHandoffPrelude.$fShowTrajectory_$cshowList @ a $dShow) -}
+76f85952c44effd16cf35643c075a912
+  $fShowTrajectory1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "Trajectory "#) -}
+ad3afd162a7b54dc80bc502526c8623f
+  $fShowTrajectory_$cshow ::
+    GHC.Show.Show a =>
+    PackageHandoffPrelude.Trajectory a -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A,A)><S,1*U(1*U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (2, True, False)
-                (\ (w :: GHC.Types.Int) (w1 :: PackageHandoffPrelude.Robot) ->
-                 case w of ww { GHC.Types.I# ww1 ->
-                 case w1 of ww2 { PackageHandoffPrelude.Robot ww3 ww4 ->
-                 PackageHandoffPrelude.$w$cshowsPrec1 ww1 ww3 ww4 } }) -}
-dac2eff2dfc13616e15775eaaa3f09c6
-  $fShowRobot_$s$fShowV2 ::
-    GHC.Show.Show (Linear.V2.V2 GHC.Types.Double)
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ (Linear.V2.V2 GHC.Types.Double)
-                  (Linear.V2.$fShowV2_$cshowsPrec
-                     @ GHC.Types.Double
-                     GHC.Float.$fShowDouble)
-                  PackageHandoffPrelude.$fShowRobot_$s$fShowV2_$cshow
-                  PackageHandoffPrelude.$fShowRobot_$s$fShowV2_$cshowList -}
-e01e15bc9244d7cfd8649c7b04117f20
-  $fShowRobot_$s$fShowV2_$cshow ::
-    Linear.V2.V2 GHC.Types.Double -> GHC.Base.String
-  {- Arity: 1, Strictness: <S(SS),1*U(U(U),U(U))>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (eta :: Linear.V2.V2 GHC.Types.Double) ->
-                 Linear.V2.$fShowV2_$cshowsPrec
-                   @ GHC.Types.Double
-                   GHC.Float.$fShowDouble
-                   GHC.Show.shows22
-                   eta
-                   (GHC.Types.[] @ GHC.Types.Char)) -}
-f43f31c90b7512050b90202140236675
-  $fShowRobot_$s$fShowV2_$cshowList ::
-    [Linear.V2.V2 GHC.Types.Double] -> GHC.Show.ShowS
-  {- Arity: 2, Strictness: <S,1*U><L,U>,
-     Unfolding: InlineRule (2, True, False)
-                (\ (eta :: [Linear.V2.V2 GHC.Types.Double])
+                (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (w1 :: PackageHandoffPrelude.Trajectory a) ->
+                 case w1 of ww { PackageHandoffPrelude.Trajectory ww1 ->
+                 PackageHandoffPrelude.$w$cshow @ a w ww1 }) -}
+ad3afd162a7b54dc80bc502526c8623f
+  $fShowTrajectory_$cshowList ::
+    GHC.Show.Show a =>
+    [PackageHandoffPrelude.Trajectory a] -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,U(C(C1(U)),A,A)><S,1*U><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ a
+                   ($dShow :: GHC.Show.Show a)
+                   (eta :: [PackageHandoffPrelude.Trajectory a])
                    (eta1 :: GHC.Base.String) ->
                  GHC.Show.showList__
-                   @ (Linear.V2.V2 GHC.Types.Double)
-                   (Linear.V2.$fShowV2_$cshowsPrec
-                      @ GHC.Types.Double
-                      GHC.Float.$fShowDouble
-                      Linear.V2.$fShowV1)
+                   @ (PackageHandoffPrelude.Trajectory a)
+                   (PackageHandoffPrelude.$fShowTrajectory_$cshowsPrec
+                      @ a
+                      $dShow
+                      PackageHandoffPrelude.$fShowLink1)
                    eta
                    eta1) -}
-fba5e9da659ed188941d0e6b6ffd74a4
-  $fShowTrajectory :: GHC.Show.Show PackageHandoffPrelude.Trajectory
-  DFunId
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ PackageHandoffPrelude.Trajectory
-                  PackageHandoffPrelude.$fShowTrajectory_$cshowsPrec
-                  PackageHandoffPrelude.$fShowTrajectory_$cshow
-                  PackageHandoffPrelude.$fShowTrajectory_$cshowList -}
-fba5e9da659ed188941d0e6b6ffd74a4
-  $fShowTrajectory1 ::
-    PackageHandoffPrelude.Trajectory -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (\ (w :: PackageHandoffPrelude.Trajectory)
-                   (w1 :: GHC.Base.String) ->
-                 case w of ww { PackageHandoffPrelude.Trajectory ww1 ->
-                 PackageHandoffPrelude.$w$cshowsPrec3 0# ww1 w1 }) -}
-3dc8c5e863abf67ae76f64fce8009a1e
-  $fShowTrajectory2 :: [GHC.Types.Char]
-  {- Unfolding: (GHC.CString.unpackCString# "Trajectory "#) -}
-fba5e9da659ed188941d0e6b6ffd74a4
-  $fShowTrajectory_$cshow ::
-    PackageHandoffPrelude.Trajectory -> GHC.Base.String
-  {- Arity: 1, Strictness: <S,1*U(1*U)>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (x :: PackageHandoffPrelude.Trajectory) ->
-                 case x of wild { PackageHandoffPrelude.Trajectory b1 ->
-                 GHC.Base.augment
-                   @ GHC.Types.Char
-                   (\ @ b
-                      (c :: GHC.Types.Char -> b -> b)[OneShot]
-                      (n :: b)[OneShot] ->
-                    GHC.Base.foldr
-                      @ GHC.Types.Char
-                      @ b
-                      c
-                      n
-                      PackageHandoffPrelude.$fShowTrajectory2)
-                   (GHC.Show.showList__
-                      @ PackageHandoffPrelude.Link
-                      PackageHandoffPrelude.$fShowLink1
-                      b1
-                      (GHC.Types.[] @ GHC.Types.Char)) }) -}
-fba5e9da659ed188941d0e6b6ffd74a4
-  $fShowTrajectory_$cshowList ::
-    [PackageHandoffPrelude.Trajectory] -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (GHC.Show.showList__
-                   @ PackageHandoffPrelude.Trajectory
-                   PackageHandoffPrelude.$fShowTrajectory1) -}
-fba5e9da659ed188941d0e6b6ffd74a4
+ad3afd162a7b54dc80bc502526c8623f
   $fShowTrajectory_$cshowsPrec ::
-    GHC.Types.Int -> PackageHandoffPrelude.Trajectory -> GHC.Show.ShowS
-  {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U)><L,U>,
+    GHC.Show.Show a =>
+    GHC.Types.Int
+    -> PackageHandoffPrelude.Trajectory a -> GHC.Show.ShowS
+  {- Arity: 3,
+     Strictness: <L,U(C(C1(U)),A,A)><S(S),1*U(U)><S,1*U(U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (3, True, False)
-                (\ (w :: GHC.Types.Int)
-                   (w1 :: PackageHandoffPrelude.Trajectory)
-                   (w2 :: GHC.Base.String) ->
-                 case w of ww { GHC.Types.I# ww1 ->
-                 case w1 of ww2 { PackageHandoffPrelude.Trajectory ww3 ->
-                 PackageHandoffPrelude.$w$cshowsPrec3 ww1 ww3 w2 } }) -}
-175cc1872d8822bc12d646aeba692ef2
-  $fShowWorld :: GHC.Show.Show PackageHandoffPrelude.World
+                (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (w1 :: GHC.Types.Int)
+                   (w2 :: PackageHandoffPrelude.Trajectory a) ->
+                 case w1 of ww { GHC.Types.I# ww1 ->
+                 case w2 of ww2 { PackageHandoffPrelude.Trajectory ww3 ->
+                 PackageHandoffPrelude.$w$cshowsPrec @ a w ww1 ww3 } }) -}
+71d512a6bc7f6e8dcd9e52974ebf953b
+  $fShowWorld ::
+    GHC.Show.Show a => GHC.Show.Show (PackageHandoffPrelude.World a)
   DFunId
-  {- Strictness: m, Inline: [ALWAYS] CONLIKE,
-     Unfolding: DFun:.
-                  @ PackageHandoffPrelude.World
-                  PackageHandoffPrelude.$fShowWorld_$cshowsPrec
-                  PackageHandoffPrelude.$fShowWorld_$cshow
-                  PackageHandoffPrelude.$fShowWorld_$cshowList -}
-175cc1872d8822bc12d646aeba692ef2
-  $fShowWorld1 :: PackageHandoffPrelude.World -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (\ (w :: PackageHandoffPrelude.World)
-                   (w1 :: GHC.Base.String) ->
-                 case w of ww { PackageHandoffPrelude.World ww1 ww2 ->
-                 PackageHandoffPrelude.$w$cshowsPrec4 0# ww1 ww2 w1 }) -}
-175cc1872d8822bc12d646aeba692ef2
+  {- Arity: 1, Strictness: <L,U(C(C1(U)),A,A)>m,
+     Inline: [ALWAYS] CONLIKE,
+     Unfolding: DFun: @ a ($dShow :: GHC.Show.Show a).
+                  @ (PackageHandoffPrelude.World a)
+                  (PackageHandoffPrelude.$fShowWorld_$cshowsPrec @ a $dShow)
+                  (PackageHandoffPrelude.$fShowWorld_$cshow @ a $dShow)
+                  (PackageHandoffPrelude.$fShowWorld_$cshowList @ a $dShow) -}
+a796f6729f2d0c5f23f013970d87523a
+  $fShowWorld1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "World {"#) -}
+bb9a4a5357fd8c01645f6005d0c415ba
+  $fShowWorld2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "packages = "#) -}
+1764cab97dc25669040f6084da0869d5
+  $fShowWorld3 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString# "robots = "#) -}
+71d512a6bc7f6e8dcd9e52974ebf953b
   $fShowWorld_$cshow ::
-    PackageHandoffPrelude.World -> GHC.Base.String
-  {- Arity: 1, Strictness: <S,1*U(1*U,1*U)>,
-     Unfolding: InlineRule (1, True, False)
-                (\ (x :: PackageHandoffPrelude.World) ->
+    GHC.Show.Show a => PackageHandoffPrelude.World a -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A,A)><S,1*U(U,U)>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a
+                   ($dShow :: GHC.Show.Show a)
+                   (x :: PackageHandoffPrelude.World a) ->
                  PackageHandoffPrelude.$fShowWorld_$cshowsPrec
+                   @ a
+                   $dShow
                    GHC.Show.shows22
                    x
                    (GHC.Types.[] @ GHC.Types.Char)) -}
-175cc1872d8822bc12d646aeba692ef2
+71d512a6bc7f6e8dcd9e52974ebf953b
   $fShowWorld_$cshowList ::
-    [PackageHandoffPrelude.World] -> GHC.Show.ShowS
-  {- Arity: 2,
-     Unfolding: (GHC.Show.showList__
-                   @ PackageHandoffPrelude.World
-                   PackageHandoffPrelude.$fShowWorld1) -}
-175cc1872d8822bc12d646aeba692ef2
+    GHC.Show.Show a =>
+    [PackageHandoffPrelude.World a] -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,U(C(C1(U)),A,A)><S,1*U><L,U>,
+     Unfolding: InlineRule (3, True, False)
+                (\ @ a
+                   ($dShow :: GHC.Show.Show a)
+                   (eta :: [PackageHandoffPrelude.World a])
+                   (eta1 :: GHC.Base.String) ->
+                 GHC.Show.showList__
+                   @ (PackageHandoffPrelude.World a)
+                   (PackageHandoffPrelude.$fShowWorld_$cshowsPrec
+                      @ a
+                      $dShow
+                      PackageHandoffPrelude.$fShowLink1)
+                   eta
+                   eta1) -}
+71d512a6bc7f6e8dcd9e52974ebf953b
   $fShowWorld_$cshowsPrec ::
-    GHC.Types.Int -> PackageHandoffPrelude.World -> GHC.Show.ShowS
-  {- Arity: 3, Strictness: <S(S),1*U(U)><S,1*U(1*U,1*U)><L,U>,
+    GHC.Show.Show a =>
+    GHC.Types.Int -> PackageHandoffPrelude.World a -> GHC.Show.ShowS
+  {- Arity: 3,
+     Strictness: <L,U(C(C1(U)),A,A)><S(S),1*U(U)><S,1*U(U,U)>,
      Inline: INLINE[0],
      Unfolding: InlineRule (3, True, False)
-                (\ (w :: GHC.Types.Int)
-                   (w1 :: PackageHandoffPrelude.World)
-                   (w2 :: GHC.Base.String) ->
-                 case w of ww { GHC.Types.I# ww1 ->
-                 case w1 of ww2 { PackageHandoffPrelude.World ww3 ww4 ->
-                 PackageHandoffPrelude.$w$cshowsPrec4 ww1 ww3 ww4 w2 } }) -}
+                (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (w1 :: GHC.Types.Int)
+                   (w2 :: PackageHandoffPrelude.World a) ->
+                 case w1 of ww { GHC.Types.I# ww1 ->
+                 case w2 of ww2 { PackageHandoffPrelude.World ww3 ww4 ->
+                 PackageHandoffPrelude.$w$cshowsPrec1 @ a w ww1 ww3 ww4 } }) -}
 c3a298c91cd76e53ee00fbfc0478af9e
   $tc'Link :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -748,18 +754,18 @@ adc72700a762a2c63cb2aa0ab8afdfed
   $tc'Link1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'Link"#) -}
-b5f3ff6472fe77485291628032ba589a
-  $tc'MultiplePackage :: GHC.Types.TyCon
+96316960d0803fd4ae40825b3739f970
+  $tc'MPack :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   10097250657042611894##
-                   5364959853083203121##
+                   8675091787240602195##
+                   575796575920634062##
                    PackageHandoffPrelude.$trModule
-                   PackageHandoffPrelude.$tc'MultiplePackage1) -}
-19c21116ce4b5e34cd3a11ebe86d8d56
-  $tc'MultiplePackage1 :: GHC.Types.TrName
+                   PackageHandoffPrelude.$tc'MPack1) -}
+b1123d3bed9b2afce8c3163e5692480d
+  $tc'MPack1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
-     Unfolding: (GHC.Types.TrNameS "'MultiplePackage"#) -}
+     Unfolding: (GHC.Types.TrNameS "'MPack"#) -}
 9d39a200fd54d27b983a559bb06c65c7
   $tc'Nil :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -796,18 +802,18 @@ b5f3ff6472fe77485291628032ba589a
   $tc'Robot1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS "'Robot"#) -}
-99c437edf62383c4a2146485f9acffea
-  $tc'SinglePackage :: GHC.Types.TyCon
+e1d4f9ec4fb0bf309c0fe652da99a6e8
+  $tc'SPack :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
      Unfolding: (GHC.Types.TyCon
-                   1124046121743369234##
-                   14347394201400161399##
+                   1181698345966218454##
+                   12766193996791313463##
                    PackageHandoffPrelude.$trModule
-                   PackageHandoffPrelude.$tc'SinglePackage1) -}
-f8dd3b29be1a1b07208b45c1f30f8a67
-  $tc'SinglePackage1 :: GHC.Types.TrName
+                   PackageHandoffPrelude.$tc'SPack1) -}
+e9667cc5526900b7fa4b4d23f5b94fd7
+  $tc'SPack1 :: GHC.Types.TrName
   {- HasNoCafRefs, Strictness: m1,
-     Unfolding: (GHC.Types.TrNameS "'SinglePackage"#) -}
+     Unfolding: (GHC.Types.TrNameS "'SPack"#) -}
 e8f0d2ec401e8670f07eb83391fa5d1e
   $tc'Trajectory :: GHC.Types.TyCon
   {- HasNoCafRefs, Strictness: m,
@@ -919,56 +925,41 @@ f7b912a3eff885002f852ce328b9f856
   {- HasNoCafRefs, Strictness: m1,
      Unfolding: (GHC.Types.TrNameS
                    "codeHaskell-pho-0.1.0.0-5gA6WvhCsSWGfeeTAbimO3"#) -}
-e30081fde24d922a0e9bb61631d003c1
+19764d6ff0686a1296b717bd7b039252
+  $w$cshow ::
+    GHC.Show.Show a =>
+    [PackageHandoffPrelude.Link a] -> GHC.Base.String
+  {- Arity: 2, Strictness: <L,U(C(C1(U)),A,A)><L,1*U>, Inline: [0],
+     Unfolding: (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (ww :: [PackageHandoffPrelude.Link a]) ->
+                 GHC.Base.++
+                   @ GHC.Types.Char
+                   PackageHandoffPrelude.$fShowTrajectory1
+                   (GHC.Show.showList__
+                      @ (PackageHandoffPrelude.Link a)
+                      (PackageHandoffPrelude.$fShowLink_$cshowsPrec
+                         @ a
+                         w
+                         PackageHandoffPrelude.$fShowLink1)
+                      ww
+                      (GHC.Types.[] @ GHC.Types.Char))) -}
+0bb1f6f3efb94a1eb431d26f9057f4b9
   $w$cshowsPrec ::
-    GHC.Prim.Int#
-    -> ()
-    -> PackageHandoffPrelude.Load
-    -> GHC.Types.Double
-    -> GHC.Show.ShowS
-  {- Arity: 4, Strictness: <S,U><L,H><L,U><L,1*U(U)>, Inline: [0],
-     Unfolding: (\ (ww :: GHC.Prim.Int#)
-                   (ww1 :: ())
-                   (ww2 :: PackageHandoffPrelude.Load)
-                   (ww3 :: GHC.Types.Double) ->
+    GHC.Show.Show a =>
+    GHC.Prim.Int# -> [PackageHandoffPrelude.Link a] -> GHC.Show.ShowS
+  {- Arity: 3, Strictness: <L,U(C(C1(U)),A,A)><S,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (ww :: GHC.Prim.Int#)
+                   (ww1 :: [PackageHandoffPrelude.Link a]) ->
                  let {
-                   f :: GHC.Base.String -> GHC.Base.String
-                   = case ww3 of ww4 { GHC.Types.D# ww5 ->
-                     GHC.Float.$w$sshowSignedFloat
-                       GHC.Float.$fShowDouble_$sshowFloat
-                       PackageHandoffPrelude.$fShowLink14
-                       ww5 }
-                 } in
-                 let {
-                   g :: GHC.Base.String -> GHC.Base.String
-                     {- Arity: 1, Strictness: <L,1*U> -}
-                   = \ (x :: GHC.Base.String) ->
-                     GHC.Base.++
-                       @ GHC.Types.Char
-                       PackageHandoffPrelude.$fShowLink13
-                       (case ww1 of wild { () ->
-                        GHC.Base.++
-                          @ GHC.Types.Char
-                          GHC.Show.shows2
-                          (GHC.Base.++
-                             @ GHC.Types.Char
-                             PackageHandoffPrelude.$fShowRobot3
-                             (GHC.Base.++
-                                @ GHC.Types.Char
-                                PackageHandoffPrelude.$fShowLink12
-                                (PackageHandoffPrelude.$fShowLink_$cshowsPrec
-                                   PackageHandoffPrelude.$fShowLink14
-                                   ww2
-                                   (GHC.Base.++
-                                      @ GHC.Types.Char
-                                      PackageHandoffPrelude.$fShowRobot3
-                                      (GHC.Base.++
-                                         @ GHC.Types.Char
-                                         PackageHandoffPrelude.$fShowLink4
-                                         (f (GHC.Base.++
-                                               @ GHC.Types.Char
-                                               PackageHandoffPrelude.$fShowLink3
-                                               x))))))) })
+                   g :: PackageHandoffPrelude.Link a -> GHC.Show.ShowS
+                   = PackageHandoffPrelude.$fShowLink_$cshowsPrec
+                       @ a
+                       w
+                       PackageHandoffPrelude.$fShowLink1
                  } in
                  case GHC.Prim.tagToEnum#
                         @ GHC.Types.Bool
@@ -977,7 +968,83 @@ e30081fde24d922a0e9bb61631d003c1
                    -> \ (x :: GHC.Base.String) ->
                       GHC.Base.++
                         @ GHC.Types.Char
-                        PackageHandoffPrelude.$fShowLink2
+                        PackageHandoffPrelude.$fShowTrajectory1
+                        (GHC.Show.showList__ @ (PackageHandoffPrelude.Link a) g ww1 x)
+                   GHC.Types.True
+                   -> \ (x :: GHC.Base.String) ->
+                      GHC.Types.:
+                        @ GHC.Types.Char
+                        GHC.Show.shows9
+                        (GHC.Base.++
+                           @ GHC.Types.Char
+                           PackageHandoffPrelude.$fShowTrajectory1
+                           (GHC.Show.showList__
+                              @ (PackageHandoffPrelude.Link a)
+                              g
+                              ww1
+                              (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x))) }) -}
+8b84ec788b391974a40621f54f1ad4d3
+  $w$cshowsPrec1 ::
+    GHC.Show.Show a =>
+    GHC.Prim.Int#
+    -> PackageHandoffPrelude.Robots a
+    -> PackageHandoffPrelude.Packages a
+    -> GHC.Show.ShowS
+  {- Arity: 4, Strictness: <L,U(C(C1(U)),A,A)><S,U><L,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ a
+                   (w :: GHC.Show.Show a)
+                   (ww :: GHC.Prim.Int#)
+                   (ww1 :: PackageHandoffPrelude.Robots a)
+                   (ww2 :: PackageHandoffPrelude.Packages a) ->
+                 let {
+                   f :: PackageHandoffPrelude.Robot a -> GHC.Show.ShowS
+                   = PackageHandoffPrelude.$fShowRobot_$cshowsPrec
+                       @ a
+                       w
+                       PackageHandoffPrelude.$fShowLink1
+                 } in
+                 let {
+                   f1 :: PackageHandoffPrelude.Package a -> GHC.Show.ShowS
+                   = PackageHandoffPrelude.$fShowPackage_$cshowsPrec
+                       @ a
+                       w
+                       PackageHandoffPrelude.$fShowLink1
+                 } in
+                 let {
+                   g :: GHC.Base.String -> GHC.Base.String
+                     {- Arity: 1, Strictness: <L,1*U> -}
+                   = \ (x :: GHC.Base.String) ->
+                     GHC.Base.++
+                       @ GHC.Types.Char
+                       PackageHandoffPrelude.$fShowWorld3
+                       (GHC.Show.showList__
+                          @ (PackageHandoffPrelude.Robot a)
+                          f
+                          ww1
+                          (GHC.Base.++
+                             @ GHC.Types.Char
+                             PackageHandoffPrelude.$fShowLink5
+                             (GHC.Base.++
+                                @ GHC.Types.Char
+                                PackageHandoffPrelude.$fShowWorld2
+                                (GHC.Show.showList__
+                                   @ (PackageHandoffPrelude.Package a)
+                                   f1
+                                   ww2
+                                   (GHC.Base.++
+                                      @ GHC.Types.Char
+                                      PackageHandoffPrelude.$fShowLink2
+                                      x)))))
+                 } in
+                 case GHC.Prim.tagToEnum#
+                        @ GHC.Types.Bool
+                        (GHC.Prim.>=# ww 11#) of wild {
+                   GHC.Types.False
+                   -> \ (x :: GHC.Base.String) ->
+                      GHC.Base.++
+                        @ GHC.Types.Char
+                        PackageHandoffPrelude.$fShowWorld1
                         (g x)
                    GHC.Types.True
                    -> \ (x :: GHC.Base.String) ->
@@ -986,277 +1053,125 @@ e30081fde24d922a0e9bb61631d003c1
                         GHC.Show.shows9
                         (GHC.Base.++
                            @ GHC.Types.Char
-                           PackageHandoffPrelude.$fShowLink2
+                           PackageHandoffPrelude.$fShowWorld1
                            (g (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x))) }) -}
-ab9822ca364efa8c122d2bcdb869ae6e
-  $w$cshowsPrec1 ::
-    GHC.Prim.Int#
-    -> PackageHandoffPrelude.RobotIdx
-    -> Linear.Affine.Point Linear.V2.V2 GHC.Types.Double
-    -> GHC.Show.ShowS
-  {- Arity: 3, Strictness: <S,U><L,U(U)><L,U>, Inline: [0],
-     Unfolding: (\ (ww :: GHC.Prim.Int#)
-                   (ww1 :: PackageHandoffPrelude.RobotIdx)
-                   (ww2 :: Linear.Affine.Point Linear.V2.V2 GHC.Types.Double) ->
-                 let {
-                   f :: GHC.Base.String -> GHC.Base.String
-                   = Linear.Affine.$w$cshowsPrec
-                       @ Linear.V2.V2
-                       @ GHC.Types.Double
-                       PackageHandoffPrelude.$fShowRobot_$s$fShowV2
-                       0#
-                       ww2
-                 } in
-                 let {
-                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
-                   = \ (x :: GHC.Base.String) ->
-                     GHC.Base.++
-                       @ GHC.Types.Char
-                       PackageHandoffPrelude.$fShowRobot5
-                       (GHC.Base.++
-                          @ GHC.Types.Char
-                          PackageHandoffPrelude.$fShowRobot4
-                          (case ww1 of ww3 { GHC.Types.I# ww4 ->
-                           case GHC.Show.$wshowSignedInt
-                                  0#
-                                  ww4
-                                  (GHC.Base.++
-                                     @ GHC.Types.Char
-                                     PackageHandoffPrelude.$fShowRobot3
-                                     (GHC.Base.++
-                                        @ GHC.Types.Char
-                                        PackageHandoffPrelude.$fShowRobot2
-                                        (f (GHC.Base.++
-                                              @ GHC.Types.Char
-                                              PackageHandoffPrelude.$fShowLink3
-                                              x)))) of ww5 { (#,#) ww6 ww7 ->
-                           GHC.Types.: @ GHC.Types.Char ww6 ww7 } }))
-                 } in
-                 case GHC.Prim.tagToEnum#
-                        @ GHC.Types.Bool
-                        (GHC.Prim.>=# ww 11#) of wild {
-                   GHC.Types.False -> p
-                   GHC.Types.True
-                   -> \ (x :: GHC.Base.String) ->
-                      GHC.Types.:
-                        @ GHC.Types.Char
-                        GHC.Show.shows9
-                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x)) }) -}
-7b1162458635009bb872d8d6b6785a0e
-  $w$cshowsPrec2 ::
-    GHC.Prim.Int#
-    -> Linear.Affine.Point Linear.V2.V2 GHC.Types.Double
-    -> Linear.Affine.Point Linear.V2.V2 GHC.Types.Double
-    -> GHC.Show.ShowS
-  {- Arity: 3, Strictness: <S,U><L,U><L,U>, Inline: [0],
-     Unfolding: (\ (ww :: GHC.Prim.Int#)
-                   (ww1 :: Linear.Affine.Point Linear.V2.V2 GHC.Types.Double)
-                   (ww2 :: Linear.Affine.Point Linear.V2.V2 GHC.Types.Double) ->
-                 let {
-                   f :: GHC.Base.String -> GHC.Base.String
-                   = Linear.Affine.$w$cshowsPrec
-                       @ Linear.V2.V2
-                       @ GHC.Types.Double
-                       PackageHandoffPrelude.$fShowRobot_$s$fShowV2
-                       0#
-                       ww1
-                 } in
-                 let {
-                   f1 :: GHC.Base.String -> GHC.Base.String
-                   = Linear.Affine.$w$cshowsPrec
-                       @ Linear.V2.V2
-                       @ GHC.Types.Double
-                       PackageHandoffPrelude.$fShowRobot_$s$fShowV2
-                       0#
-                       ww2
-                 } in
-                 let {
-                   p :: GHC.Show.ShowS {- Arity: 1, Strictness: <L,1*U> -}
-                   = \ (x :: GHC.Base.String) ->
-                     GHC.Base.++
-                       @ GHC.Types.Char
-                       PackageHandoffPrelude.$fShowLink10
-                       (GHC.Base.++
-                          @ GHC.Types.Char
-                          PackageHandoffPrelude.$fShowLink9
-                          (f (GHC.Base.++
-                                @ GHC.Types.Char
-                                PackageHandoffPrelude.$fShowRobot3
-                                (GHC.Base.++
-                                   @ GHC.Types.Char
-                                   PackageHandoffPrelude.$fShowLink8
-                                   (f1
-                                      (GHC.Base.++
-                                         @ GHC.Types.Char
-                                         PackageHandoffPrelude.$fShowLink3
-                                         x))))))
-                 } in
-                 case GHC.Prim.tagToEnum#
-                        @ GHC.Types.Bool
-                        (GHC.Prim.>=# ww 11#) of wild {
-                   GHC.Types.False -> p
-                   GHC.Types.True
-                   -> \ (x :: GHC.Base.String) ->
-                      GHC.Types.:
-                        @ GHC.Types.Char
-                        GHC.Show.shows9
-                        (p (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 x)) }) -}
-b2be3b1d154b91b5e70d6652aa5be0d8
-  $w$cshowsPrec3 ::
-    GHC.Prim.Int#
-    -> [PackageHandoffPrelude.Link]
-    -> GHC.Base.String
-    -> GHC.Base.String
-  {- Arity: 3, Strictness: <S,U><L,1*U><L,U>, Inline: [0],
-     Unfolding: (\ (ww :: GHC.Prim.Int#)
-                   (ww1 :: [PackageHandoffPrelude.Link])
-                   (w :: GHC.Base.String) ->
-                 case GHC.Prim.tagToEnum#
-                        @ GHC.Types.Bool
-                        (GHC.Prim.>=# ww 11#) of wild {
-                   GHC.Types.False
-                   -> GHC.Base.++
-                        @ GHC.Types.Char
-                        PackageHandoffPrelude.$fShowTrajectory2
-                        (GHC.Show.showList__
-                           @ PackageHandoffPrelude.Link
-                           PackageHandoffPrelude.$fShowLink1
-                           ww1
-                           w)
-                   GHC.Types.True
-                   -> GHC.Types.:
-                        @ GHC.Types.Char
-                        GHC.Show.shows9
-                        (GHC.Base.++
-                           @ GHC.Types.Char
-                           PackageHandoffPrelude.$fShowTrajectory2
-                           (GHC.Show.showList__
-                              @ PackageHandoffPrelude.Link
-                              PackageHandoffPrelude.$fShowLink1
-                              ww1
-                              (GHC.Types.: @ GHC.Types.Char GHC.Show.shows6 w))) }) -}
-cdb7cb2fdeea8f9197a76e9df7f54762
-  $w$cshowsPrec4 ::
-    GHC.Prim.Int#
-    -> [PackageHandoffPrelude.Robot]
-    -> [PackageHandoffPrelude.Package]
-    -> GHC.Base.String
-    -> GHC.Base.String
-  {- Arity: 4, Strictness: <S,U><L,1*U><L,1*U><L,U>, Inline: [0] -}
 c9f5c0a42b4ad7bdef50f7b6b4c5924e
   type Fuel = GHC.Types.Double
-04dd40ae205075241d98dc7f68636eda
-  data Link
-    = Link {segment :: (),
-            load :: PackageHandoffPrelude.Load,
+b9b7049e9704749e6006de6e8e025da7
+  type role Link nominal
+  data Link a
+    = Link {head :: Linear.Affine.Point Linear.V2.V2 a,
+            load :: PackageHandoffPrelude.Load a,
             waitTimeAtHead :: GHC.Types.Double}
-0fa0402425cb29ef214f063593434afa
-  data Load
-    = SinglePackage (PackageHandoffPrelude.Package,
-                     GHC.Base.Maybe PackageHandoffPrelude.Robot)
-    | MultiplePackage [(PackageHandoffPrelude.PackageList,
-                        GHC.Base.Maybe PackageHandoffPrelude.Robot)]
+13daf183717374a03e87d466e66f2772
+  type role Load nominal
+  data Load a
+    = SPack (PackageHandoffPrelude.Package a,
+             GHC.Base.Maybe (PackageHandoffPrelude.Robot a))
+    | MPack [(PackageHandoffPrelude.Packages a,
+              GHC.Base.Maybe (PackageHandoffPrelude.Robot a))]
     | Nil
-4bd1d625f5becec81da2f6d5aba5341f
-  data Package
-    = Package {source :: Linear.Affine.Point
-                           Linear.V2.V2 GHC.Types.Double,
-               target :: Linear.Affine.Point Linear.V2.V2 GHC.Types.Double}
-86f589d4f3ba5b67abe6037355602cf2
-  type PackageIdx = GHC.Types.Int
-b21493c46afbbd9dd05f966379dc3be2
-  type PackageList = [PackageHandoffPrelude.PackageIdx]
-fdce2cb2444fc8dc1b279d5c1958ccda
-  data Robot
-    = Robot {idx :: PackageHandoffPrelude.RobotIdx,
-             initPosition :: Linear.Affine.Point Linear.V2.V2 GHC.Types.Double}
-243abde4e8e2997445ea45d936106b7e
-  type RobotIdx = GHC.Types.Int
-e2247bf7513066c8a66e97e5d429c2e4
-  type Schedule = [PackageHandoffPrelude.Trajectory]
+84cd5894b4d56c519fb640fd15378332
+  type role Package nominal
+  data Package a
+    = Package {source :: Linear.Affine.Point Linear.V2.V2 a,
+               target :: Linear.Affine.Point Linear.V2.V2 a}
+dcd4eeff032b2e7b086a42a37cb1fcd6
+  type Packages a = [PackageHandoffPrelude.Package a]
+8f15462282f02e966bd298654c822961
+  type role Robot nominal
+  data Robot a
+    = Robot {idx :: GHC.Types.Int,
+             initPosition :: Linear.Affine.Point Linear.V2.V2 a}
+091274ca9947542c1a476ca45c7cdb30
+  type Robots a = [PackageHandoffPrelude.Robot a]
+92289a6bb903482290c5fc2dba446555
+  type Schedule a = [PackageHandoffPrelude.Trajectory a]
 2dfae63e3696c701cfa565a2118f57d0
   type Speed = GHC.Types.Double
-fba5e9da659ed188941d0e6b6ffd74a4
-  data Trajectory = Trajectory [PackageHandoffPrelude.Link]
-175cc1872d8822bc12d646aeba692ef2
-  data World
-    = World {robots :: [PackageHandoffPrelude.Robot],
-             packages :: [PackageHandoffPrelude.Package]}
-fb0adfbe46f37793570f2d07610bd014
-  idx ::
-    PackageHandoffPrelude.Robot -> PackageHandoffPrelude.RobotIdx
+ad3afd162a7b54dc80bc502526c8623f
+  type role Trajectory nominal
+  data Trajectory a = Trajectory [PackageHandoffPrelude.Link a]
+71d512a6bc7f6e8dcd9e52974ebf953b
+  type role World nominal
+  data World a
+    = World {robots :: PackageHandoffPrelude.Robots a,
+             packages :: PackageHandoffPrelude.Packages a}
+aaa6b0fec7b404a2b9d3d03445c3df21
+  head ::
+    PackageHandoffPrelude.Link a -> Linear.Affine.Point Linear.V2.V2 a
+  RecSel Left PackageHandoffPrelude.Link
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U(U,U),A,A)>m,
+     Unfolding: InlineRule (1, True, False)
+                (\ @ a (ds :: PackageHandoffPrelude.Link a) ->
+                 case ds of wild { PackageHandoffPrelude.Link ds1 ds2 ds3 ->
+                 ds1 }) -}
+60aa849290f2790ed68e7b55ca3a95de
+  idx :: PackageHandoffPrelude.Robot a -> GHC.Types.Int
   RecSel Left PackageHandoffPrelude.Robot
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U(U),A)>m,
      Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.Robot) ->
+                (\ @ a (ds :: PackageHandoffPrelude.Robot a) ->
                  case ds of wild { PackageHandoffPrelude.Robot ds1 ds2 -> ds1 }) -}
-d158572ac203355205cef09b98d5eb8c
+5bea24b73da94500909df0613b080fe6
   initPosition ::
-    PackageHandoffPrelude.Robot
-    -> Linear.Affine.Point Linear.V2.V2 GHC.Types.Double
+    PackageHandoffPrelude.Robot a -> Linear.Affine.Point Linear.V2.V2 a
   RecSel Left PackageHandoffPrelude.Robot
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U(U,U))>m,
      Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.Robot) ->
+                (\ @ a (ds :: PackageHandoffPrelude.Robot a) ->
                  case ds of wild { PackageHandoffPrelude.Robot ds1 ds2 -> ds2 }) -}
-f597345e802455ab20ece1d38e15f45e
-  load :: PackageHandoffPrelude.Link -> PackageHandoffPrelude.Load
+7c124878234b5ec0a8da6fa970d3184a
+  load ::
+    PackageHandoffPrelude.Link a -> PackageHandoffPrelude.Load a
   RecSel Left PackageHandoffPrelude.Link
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LSL),1*U(A,1*U,A)>,
      Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.Link) ->
+                (\ @ a (ds :: PackageHandoffPrelude.Link a) ->
                  case ds of wild { PackageHandoffPrelude.Link ds1 ds2 ds3 ->
                  ds2 }) -}
-fcc335bfabff1d987b481cef459ff001
+9e629654674ecc181fb7a351d6b7c15b
   packages ::
-    PackageHandoffPrelude.World -> [PackageHandoffPrelude.Package]
+    PackageHandoffPrelude.World a -> PackageHandoffPrelude.Packages a
   RecSel Left PackageHandoffPrelude.World
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U)>,
      Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.World) ->
+                (\ @ a (ds :: PackageHandoffPrelude.World a) ->
                  case ds of wild { PackageHandoffPrelude.World ds1 ds2 -> ds2 }) -}
-634c91acb3c540ec54fcdcd4dd3729e8
+89b5547d6b49fad3c4c9b74c11dab5f2
   robots ::
-    PackageHandoffPrelude.World -> [PackageHandoffPrelude.Robot]
+    PackageHandoffPrelude.World a -> PackageHandoffPrelude.Robots a
   RecSel Left PackageHandoffPrelude.World
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,A)>,
      Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.World) ->
+                (\ @ a (ds :: PackageHandoffPrelude.World a) ->
                  case ds of wild { PackageHandoffPrelude.World ds1 ds2 -> ds1 }) -}
-68fdf88555437ac889866446fdd89a13
-  segment :: PackageHandoffPrelude.Link -> ()
-  RecSel Left PackageHandoffPrelude.Link
-  {- Arity: 1, HasNoCafRefs, Strictness: <S(SLL),1*U(1*U(),A,A)>m,
-     Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.Link) ->
-                 case ds of wild { PackageHandoffPrelude.Link ds1 ds2 ds3 ->
-                 ds1 }) -}
-7e160548aaeb84c2129bc7be7e718f04
+d3d6618ac61be07a0eb1aa8119ca4c57
   source ::
-    PackageHandoffPrelude.Package
-    -> Linear.Affine.Point Linear.V2.V2 GHC.Types.Double
+    PackageHandoffPrelude.Package a
+    -> Linear.Affine.Point Linear.V2.V2 a
   RecSel Left PackageHandoffPrelude.Package
   {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U(U,U),A)>m,
      Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.Package) ->
+                (\ @ a (ds :: PackageHandoffPrelude.Package a) ->
                  case ds of wild { PackageHandoffPrelude.Package ds1 ds2 ->
                  ds1 }) -}
-f89afe1ac2132cba0cf984db071dcd59
+30de98569e1e1f39792ceb741b4b0d76
   target ::
-    PackageHandoffPrelude.Package
-    -> Linear.Affine.Point Linear.V2.V2 GHC.Types.Double
+    PackageHandoffPrelude.Package a
+    -> Linear.Affine.Point Linear.V2.V2 a
   RecSel Left PackageHandoffPrelude.Package
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LS),1*U(A,1*U(U,U))>m,
      Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.Package) ->
+                (\ @ a (ds :: PackageHandoffPrelude.Package a) ->
                  case ds of wild { PackageHandoffPrelude.Package ds1 ds2 ->
                  ds2 }) -}
-43c7a142a86099525a43fb0b9169562b
-  waitTimeAtHead :: PackageHandoffPrelude.Link -> GHC.Types.Double
+e7ff7890e8894192f79986937b1239b5
+  waitTimeAtHead :: PackageHandoffPrelude.Link a -> GHC.Types.Double
   RecSel Left PackageHandoffPrelude.Link
   {- Arity: 1, HasNoCafRefs, Strictness: <S(LLS),1*U(A,A,1*U(U))>m,
      Unfolding: InlineRule (1, True, False)
-                (\ (ds :: PackageHandoffPrelude.Link) ->
+                (\ @ a (ds :: PackageHandoffPrelude.Link a) ->
                  case ds of wild { PackageHandoffPrelude.Link ds1 ds2 ds3 ->
                  ds3 }) -}
 instance GHC.Classes.Eq [PackageHandoffPrelude.Robot]
@@ -1273,18 +1188,6 @@ instance GHC.Show.Show [PackageHandoffPrelude.Trajectory]
   = PackageHandoffPrelude.$fShowTrajectory
 instance GHC.Show.Show [PackageHandoffPrelude.World]
   = PackageHandoffPrelude.$fShowWorld
-"SPEC/PackageHandoffPrelude $fShowV2 @ Double" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                                            GHC.Types.Double)
-  Linear.V2.$fShowV2 @ GHC.Types.Double $dShow
-  = PackageHandoffPrelude.$fShowRobot_$s$fShowV2
-"SPEC/PackageHandoffPrelude $fShowV2_$cshow @ Double" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                                                   GHC.Types.Double)
-  Linear.V2.$fShowV2_$cshow @ GHC.Types.Double $dShow
-  = PackageHandoffPrelude.$fShowRobot_$s$fShowV2_$cshow
-"SPEC/PackageHandoffPrelude $fShowV2_$cshowList @ Double" [ALWAYS] forall ($dShow :: GHC.Show.Show
-                                                                                       GHC.Types.Double)
-  Linear.V2.$fShowV2_$cshowList @ GHC.Types.Double $dShow
-  = PackageHandoffPrelude.$fShowRobot_$s$fShowV2_$cshowList
 vectorised variables:
 vectorised tycons:
 vectorised reused tycons:
