@@ -23,7 +23,7 @@ data Package = Package { source :: Point V2 Double,
 data Robot = Robot { initPosition :: Point V2 Double, 
                      speed        :: Speed          ,
                      fuel         :: Fuel           ,       
-                     schedule     :: Trajectory -- A piecewise linear link where each link stores additional data. 
+                     schedule     :: Trajectory  
                    } deriving (Show)
 
 {- | World consists of only robots and packages. -}

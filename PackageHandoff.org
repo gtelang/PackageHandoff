@@ -173,7 +173,7 @@ that link, and a description of the package-exchanges that must take place at th
   data Robot = Robot { initPosition :: Point V2 Double, 
                        speed        :: Speed          ,
                        fuel         :: Fuel           ,       
-                       schedule     :: Trajectory -- A piecewise linear link where each link stores additional data. 
+                       schedule     :: Trajectory  
                      } deriving (Show)
 
   {- | World consists of only robots and packages. -}
