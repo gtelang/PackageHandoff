@@ -31,15 +31,13 @@ data World = World { robots      :: [ Robot  ] ,
                      packages    :: [ Package]
                    } deriving (Show) 
              
-{- | Load carried across a link of the trajectory. 
-  An list containing Robots will keep "changing" its 
-  "schedule" field via Lenses. Hence I chose RobotIdx, 
-  instead of just a plain Maybe Robot. Each package is 
-  paired with the robot it has to (possibly) been given to
--}
-data Load =   SinglePackage      (   Package     , Maybe RobotIdx )    -- ^ Single package load, possibly give to RobotIdx inside Maybe functor
-            | MultiplePackage    [ ( PackageList , Maybe RobotIdx ) ]  -- ^ Multi-package load, possibly give each to RobotIdx inside Maybe functor 
-            | Nil                                                      -- ^ Zero Load, nothing to give!
+{- | Load carried across a link of the trajectory. -} 
+data Load =  -- | Single package load, possibly give to RobotIdx inside Maybe functor  
+             SinglePackage      (   Package     , Maybe RobotIdx )    
+             -- | Multi-package load, possibly give each to RobotIdx inside Maybe functor 
+           | MultiplePackage    [ ( PackageList   , Maybe RobotIdx ) ]  
+             -- | Zero Load, nothing to give!
+           | Nil                                                      
              deriving (Show)
 
  {- | A single link of the trajectory -}
