@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>The Package Handoff Library</title>
-<!-- 2016-10-05 Wed 00:40 -->
+<!-- 2016-10-05 Wed 00:53 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Gaurish" />
@@ -487,7 +487,7 @@ that link, and a description of the package-exchanges that must take place at th
 <pre class="src src-haskell"><span style="color: #859900; font-weight: bold;">data</span> <span style="color: #b58900; font-weight: bold;">Robot</span> <span style="color: #268bd2;">=</span> <span style="color: #b58900; font-weight: bold;">Robot</span> <span style="color: #2aa198;">{</span> initPosition <span style="color: #268bd2;">::</span> <span style="color: #b58900; font-weight: bold;">Point</span> <span style="color: #b58900; font-weight: bold;">V2</span> <span style="color: #b58900; font-weight: bold;">Double</span><span style="color: #268bd2;">,</span> 
                      speed        <span style="color: #268bd2;">::</span> <span style="color: #b58900; font-weight: bold;">Speed</span>          <span style="color: #268bd2;">,</span>
                      fuel         <span style="color: #268bd2;">::</span> <span style="color: #b58900; font-weight: bold;">Fuel</span>           <span style="color: #268bd2;">,</span>       
-                     schedule     <span style="color: #268bd2;">::</span> <span style="color: #b58900; font-weight: bold;">Trajectory</span> <span style="color: #586e75;">-- </span><span style="color: #808080; font-style: italic;">A piecewise linear link where each link stores additional data. </span>
+                     schedule     <span style="color: #268bd2;">::</span> <span style="color: #b58900; font-weight: bold;">Trajectory</span>  
                    <span style="color: #2aa198;">}</span> <span style="color: #859900; font-weight: bold;">deriving</span> <span style="color: #2aa198;">(</span><span style="color: #b58900; font-weight: bold;">Show</span><span style="color: #2aa198;">)</span>
 
 <span style="color: #2aa198;">{- | World consists of only robots and packages. -}</span>
@@ -495,15 +495,13 @@ that link, and a description of the package-exchanges that must take place at th
                      packages    <span style="color: #268bd2;">::</span> <span style="color: #b58900;">[</span> <span style="color: #b58900; font-weight: bold;">Package</span><span style="color: #b58900;">]</span>
                    <span style="color: #2aa198;">}</span> <span style="color: #859900; font-weight: bold;">deriving</span> <span style="color: #2aa198;">(</span><span style="color: #b58900; font-weight: bold;">Show</span><span style="color: #2aa198;">)</span> 
 
-<span style="color: #2aa198;">{- | Load carried across a link of the trajectory. </span>
-<span style="color: #2aa198;">  An list containing Robots will keep "changing" its </span>
-<span style="color: #2aa198;">  "schedule" field via Lenses. Hence I chose RobotIdx, </span>
-<span style="color: #2aa198;">  instead of just a plain Maybe Robot. Each package is </span>
-<span style="color: #2aa198;">  paired with the robot it has to (possibly) been given to</span>
-<span style="color: #2aa198;">-}</span>
-<span style="color: #859900; font-weight: bold;">data</span> <span style="color: #b58900; font-weight: bold;">Load</span> <span style="color: #268bd2;">=</span>   <span style="color: #b58900; font-weight: bold;">SinglePackage</span>      <span style="color: #2aa198;">(</span>   <span style="color: #b58900; font-weight: bold;">Package</span>     <span style="color: #268bd2;">,</span> <span style="color: #b58900; font-weight: bold;">Maybe</span> <span style="color: #b58900; font-weight: bold;">RobotIdx</span> <span style="color: #2aa198;">)</span>    <span style="color: #2aa198;">-- ^ Single package load, possibly give to RobotIdx inside Maybe functor</span>
-            <span style="color: #268bd2;">|</span> <span style="color: #b58900; font-weight: bold;">MultiplePackage</span>    <span style="color: #2aa198;">[</span> <span style="color: #b58900;">(</span> <span style="color: #b58900; font-weight: bold;">PackageList</span> <span style="color: #268bd2;">,</span> <span style="color: #b58900; font-weight: bold;">Maybe</span> <span style="color: #b58900; font-weight: bold;">RobotIdx</span> <span style="color: #b58900;">)</span> <span style="color: #2aa198;">]</span>  <span style="color: #2aa198;">-- ^ Multi-package load, possibly give each to RobotIdx inside Maybe functor </span>
-            <span style="color: #268bd2;">|</span> <span style="color: #b58900; font-weight: bold;">Nil</span>                                                      <span style="color: #2aa198;">-- ^ Zero Load, nothing to give!</span>
+<span style="color: #2aa198;">{- | Load carried across a link of the trajectory. -}</span> 
+<span style="color: #859900; font-weight: bold;">data</span> <span style="color: #b58900; font-weight: bold;">Load</span> <span style="color: #268bd2;">=</span>  <span style="color: #2aa198;">-- | Single package load, possibly give to RobotIdx inside Maybe functor  </span>
+             <span style="color: #b58900; font-weight: bold;">SinglePackage</span>      <span style="color: #2aa198;">(</span>   <span style="color: #b58900; font-weight: bold;">Package</span>     <span style="color: #268bd2;">,</span> <span style="color: #b58900; font-weight: bold;">Maybe</span> <span style="color: #b58900; font-weight: bold;">RobotIdx</span> <span style="color: #2aa198;">)</span>    
+             <span style="color: #2aa198;">-- | Multi-package load, possibly give each to RobotIdx inside Maybe functor </span>
+           <span style="color: #268bd2;">|</span> <span style="color: #b58900; font-weight: bold;">MultiplePackage</span>    <span style="color: #2aa198;">[</span> <span style="color: #b58900;">(</span> <span style="color: #b58900; font-weight: bold;">PackageList</span>   <span style="color: #268bd2;">,</span> <span style="color: #b58900; font-weight: bold;">Maybe</span> <span style="color: #b58900; font-weight: bold;">RobotIdx</span> <span style="color: #b58900;">)</span> <span style="color: #2aa198;">]</span>  
+             <span style="color: #2aa198;">-- | Zero Load, nothing to give!</span>
+           <span style="color: #268bd2;">|</span> <span style="color: #b58900; font-weight: bold;">Nil</span>                                                      
              <span style="color: #859900; font-weight: bold;">deriving</span> <span style="color: #2aa198;">(</span><span style="color: #b58900; font-weight: bold;">Show</span><span style="color: #2aa198;">)</span>
 
  <span style="color: #2aa198;">{- | A single link of the trajectory -}</span>
@@ -580,7 +578,7 @@ For the <i>Main.hs</i> files, have a look inside <b>codeHaskell-pho/app</b>
 </div></div>
 <div id="postamble" class="status">
 <p class="author">Author: Gaurish</p>
-<p class="date">Created: 2016-10-05 Wed 00:40</p>
+<p class="date">Created: 2016-10-05 Wed 00:53</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

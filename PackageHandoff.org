@@ -127,6 +127,8 @@ The code will consist of the following files.
      - One Package      , Velocity 1.0      , Bounded fuel
      - Multiple Packages, Variable Velocity , ∞ fuel
      - Multiple Packages, Velocity 1.0      , Bounded fuel
+         
+
 ** Source Code [fn:3]
 [fn:3] For the /Main.hs/ files, have a look inside *codeHaskell-pho/app*
 
@@ -148,10 +150,9 @@ some descriptive type-synonyms.
   import qualified Data.Map as Map
   
   type Speed       = Double  -- | ∈ [0,1]
-  type Fuel        = Double  -- | ≥ 0
-  type Time        = Double  -- | ≥ 0
+  type Fuel        = Double  -- | ∈ [0,∞] 
+  type RobotIdx    = Int     -- | ≥ 0
   type PackageIdx  = Int     -- | ≥ 0 
-  type RobotIdx    = Int     -- | >= 0
   type PackageList = [PackageIdx]
 #+END_SRC
 
@@ -170,11 +171,16 @@ of *Trajectory* s. Each *Link* is like a arrow in $\mathbb{R}^2$ tagged data suc
 that link, and a description of the package-exchanges that must take place at the link's *head*. 
 
 #+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
-  data Robot = Robot { initPosition :: Point V2 Double, 
-                       speed        :: Speed          ,
-                       fuel         :: Fuel           ,       
-                       schedule     :: Trajectory  
-                     } deriving (Show)
+  -- TODO: Should we parametrize the Robot data-type depending on what king of points, it starts at? 
+  -- i.e integer grid points or just the R^2 plane.
+  data Robot = Robot { idx          :: RobotIdx,
+                       initPosition :: Point V2 Double 
+                     } deriving (Show) 
+ 
+  -- We define Robot Equality based on their indices. 
+  -- since two Robots are allowed to start at the same position. 
+  instance Eq Robot where 
+     Robot idx1 _ == Robot idx2 _ = (idx1 == idx2)
 
   {- | World consists of only robots and packages. -}
   data World = World { robots      :: [ Robot  ] ,    
@@ -182,17 +188,18 @@ that link, and a description of the package-exchanges that must take place at th
                      } deriving (Show) 
                
   {- | Load carried across a link of the trajectory. -} 
-  data Load =  -- | Single package load, possibly give to RobotIdx inside Maybe functor  
-               SinglePackage      (   Package     , Maybe RobotIdx )    
-               -- | Multi-package load, possibly give each to RobotIdx inside Maybe functor 
-             | MultiplePackage    [ ( PackageList   , Maybe RobotIdx ) ]  
-               -- | Zero Load, nothing to give!
+  data Load =  -- Single package load, possibly give to the Robot inside Maybe functor  
+               SinglePackage      (   Package     , Maybe Robot )    
+               -- Multi-package load, possibly give each to the Robot inside Maybe functor 
+             | MultiPackage       [ ( PackageList , Maybe Robot ) ]  
+               -- Zero Load, nothing to give!
              | Nil                                                      
                deriving (Show)
 
    {- | A single link of the trajectory -}
-  data Link = Link { segment :: ()  , 
-                     load    :: Load
+  data Link = Link { head            :: Point V2 Double, 
+                     load            :: Load, 
+                     waitTimeAtHead  :: Double
                    } deriving (Show)
 
   {- | Schedule for a single robot.-} 
@@ -211,6 +218,17 @@ the code more modular.
 
 It also doesn't know anything about the current-time on the clock. /That/ clocking, if needed, will 
 be taken care by a wrapper data-structure used by the visualization/animation routines of diagrams or gloss.
+
+Note, that I have not included the fuel and speed attributes of a robot into the Robot data-type. That
+allows us to express the kind of routing being done, and also enables us to exploit currying for 
+interesting purposes. One could, even make the position field-separate, but for the moment, 
+I am placing that inside the robot-field itself. To make changes via, gloss-functions, I will 
+use slightly fancier tricks. Another justification for this design decision is that, we identify a 
+configuration of robots with their starting positions. For a given configuration, the only items 
+that we would need to tweak are speed and velocity. 
+
+By separating the speed and the fuel from the Robot data-type, the type-signatures of the 
+algorithms become more expressive.
 
 *** SinglePackageRouting.hs
 #+BEGIN_SRC haskell :tangle  codeHaskell-pho/src/SinglePackageRouting.hs
