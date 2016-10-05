@@ -189,10 +189,10 @@ that link, and a description of the package-exchanges that must take place at th
                
   {- | Load carried across a link of the trajectory. -} 
   data Load =  -- Single package load, possibly give to the Robot inside Maybe functor  
-               SinglePackage      (   Package     , Maybe Robot )    
+               SPack (Package, Maybe Robot )    
                -- Multi-package load, possibly give each to the Robot inside Maybe functor 
-             | MultiPackage       [ ( PackageList , Maybe Robot ) ]  
-               -- Zero Load, nothing to give!
+             | MPack [(PackageList, Maybe Robot)]  
+               -- Zero Load, nothing to give to anybody!
              | Nil                                                      
                deriving (Show)
 
