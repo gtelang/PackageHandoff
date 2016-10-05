@@ -25,9 +25,9 @@ using the $m$ robots, how can you construct a schedule for the robots to transpo
 all packages to their destinations "quickly" ?
 #+END_quote
 
-We get different cost criteria based on the interpretation of "quick": min-sum. or min-max. The /*min-sum*/ problem 
-asks to minimize the sum of the travel times of all packages, while the /*min-max*/ requires the maximum of their 
-delivery-times to be minimized.
+We get different cost criteria based on the interpretation of "quick": min-sum. or min-max. 
+The /*min-sum*/ problem asks to minimize the sum of the travel times of all packages, while 
+the /*min-max*/ requires the maximum of their delivery-times to be minimized.
 
 A real world instance of this problem is when a taxi-service must co-ordinate
 its fleet of cabs to transport passengers located at different points on the map, 
@@ -127,7 +127,7 @@ The code will consist of the following files.
      - MultiPackageVariableVelocity.hs  (∞ fuel)
      - OnePackageBoundedFuel.hs         (Vel=1.0)
      - MultiPackageBoundedFuel.hs       (Vel=1.0)
-
+     All algorithms and or heuristics go into this file.
 ** Source Code [fn:3]
 [fn:3] For the /Main.hs/ files, have a look inside *codeHaskell-pho/app*
 
@@ -141,14 +141,19 @@ some descriptive type-synonyms.
   {- | Common Data-Structures and Functions. -}
 
   {-# LANGUAGE NoMonomorphismRestriction #-}
+  {-# LANGUAGE TemplateHaskell           #-}
+  {-# LANGUAGE TypeFamilies              #-}
+  {-# LANGUAGE GADTs                     #-}
   module PackageHandoffPrelude where
   import Diagrams.Prelude
   import qualified Data.Map as Map
-  -- TODO: Use Liquid Haskell to enforce the commented constraints at the type level
-  type Speed    = Double -- | ∈ [0,1]
-  type Fuel     = Double -- | ≥ 0
-  type Time     = Double -- | ≥ 0
-  type PkgIndex = Int    -- | ≥ 0 
+  
+  type Speed       = Double  -- | ∈ [0,1]
+  type Fuel        = Double  -- | ≥ 0
+  type Time        = Double  -- | ≥ 0
+  type PackageIdx  = Int     -- | ≥ 0 
+  type RobotIdx    = Int     -- | >= 0
+  type PackageList = [PackageIdx]
 #+END_SRC
 
 The *Package* data-type stores the Cartesian co-ordinates of the *source* and *target* points 
@@ -165,50 +170,42 @@ for a single robot, as a *Trajectory*, which is a collection of *Link*'s and the
 of *Trajectory* s. Each *Link* is like a arrow in $\mathbb{R}^2$ tagged data such as which packages travelled along 
 that link, and a description of the package-exchanges that must take place at the link's *head*. 
 
-What is unique to each world will be the nature of the robots and consequently the nature of the schedule they 
-generate: a schedule consists of a collection of robot trajectories. 
-
 #+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
-  -- | Every world comes with its own kind of robot and link (see below)
-  class Robot = Robot { initPosition :: Point V2 Double, 
-                        schedule :: Schedule -- Starts out as empty for everyone. Empty schedule corresponds to nothing to do.
-                      } deriving (Show)
+  data Robot = Robot { initPosition :: Point V2 Double, 
+                       speed        :: Speed          ,
+                       fuel         :: Fuel           ,       
+                       schedule     :: Trajectory -- A piecewise linear link where each link stores additional data. 
+                     } deriving (Show)
 
-  -- | Schedule for a collection of robots. In one-one correspondence with the robots array.
-  type Schedule    = [ Trajectory ] -- TODO Need to ask if this gets a type-class constraint too.
+  {- | World consists of only robots and packages. -}
+  data World = World { robots      :: [ Robot  ] ,    
+                       packages    :: [ Package]
+                     } deriving (Show) 
+               
+  {- | Load carried across a link of the trajectory. 
+    An list containing Robots will keep "changing" its 
+    "schedule" field via Lenses. Hence I chose RobotIdx, 
+    instead of just a plain Maybe Robot. Each package is 
+    paired with the robot it has to (possibly) been given to
+  -}
+  data Load =   SinglePackage      (   Package     , Maybe RobotIdx )    -- ^ Single package load, possibly give to RobotIdx inside Maybe functor
+              | MultiplePackage    [ ( PackageList , Maybe RobotIdx ) ]  -- ^ Multi-package load, possibly give each to RobotIdx inside Maybe functor 
+              | Nil                                                      -- ^ Zero Load, nothing to give!
+               deriving (Show)
 
-  -- | Schedule for a single robot. 
-  data Trajectory  = Trajectory [ Link w ]  -- TODO This gets a typeclass constraint depending on the world type used. Should we use Trails from Diagrams?
-                                            -- you might also want to create a function to extract a diagrams trajectory using lenses across all links. 
-                                            -- You may need to make this into an additive type. Where the data-constructor indicates an open/closed path
-                                            -- These last two types are now going to be important. 
-   -- | An element of a trajectory. Every world generates its own type of link. 
-   --   Think of the link as an arrow with a definite position in space.  
-  class Link w = Link -- TODO This becomes a type-class too. Store both the start and tail, but extract only the head.
-                { head              :: Point V2 Double, -- ^ The rendezvous point
-                  waitTime          :: Time       ,     -- ^ Time of waiting at the head
-      
-                  -- These three items will get different implementations based on single/package/multipackage world. 
-                  -- Infact, it is possible that the exchange operation between two robots will have to bde described 
-                  -- in special terms for each world. e.g. in the one-package case, the robot will probably hand off 
-                  -- its package only at the trajectory end after which it will either stop or return to its end point. 
-                  -- This will be important in those Delaunay triangulation  like schemes which Joe mentioned.
-                  inTransitPackages :: [PkgIndex] ,     -- ^ List of packages carried while moving to head
-                  givePackagesTo    :: Map.Map PkgIndex [PkgIndex],-- ^ Give packages to specified robots 
-                  takePackagesFrom  :: Map.Map PkgIndex [PkgIndex] -- ^ Take packages from specified robots
-                 } deriving (Show) 
+   {- | A single link of the trajectory -}
+  data Link = Link { segment :: ()  , 
+                     load    :: Load
+                   } deriving (Show)
+
+  {- | Schedule for a single robot.-} 
+  data Trajectory  = Trajectory [ Link ]  
+                      deriving (Show)
+
+  {- | Schedule for a collection of robots. In one-one 
+        correspondence with the robots list of the World -}
+  type Schedule    = [ Trajectory ] 
  #+END_SRC
-
-Finally, the *World* class stores information about the robots and packages obtained from 
-input source (e.g. the Gloss canvas or a YAML file)  
-#+BEGIN_SRC haskell :tangle codeHaskell-pho/src/PackageHandoffPrelude.hs
-  -- Give it a good implementation of `show` also for a clean description of 
-  -- the world's constituents, which can possibly be serialized using YAML
-  data World = World { robots      :: [Robot]  ,    
-                       packages    :: [Package]
-                      } deriving (Show) -- Information about the world is contained in the type-class constraint of robots. Gloss functions will actt
-                                        -- on this world.
-#+END_SRC
 
 Note that *World* knows _nothing_ about the input source from which it came: 
 it might have been a file, or it could have been inserted via a Gloss or a Diagrams canvas.  
@@ -218,16 +215,21 @@ the code more modular.
 It also doesn't know anything about the current-time on the clock. /That/ clocking, if needed, will 
 be taken care by a wrapper data-structure used by the visualization/animation routines of diagrams or gloss.
 
-*** OnePackageVariableVelocity.hs
-#+BEGIN_SRC haskell :tangle  codeHaskell-pho/src/OnePackageVariableVelocity.hs
+*** SinglePackageRouting.hs
+#+BEGIN_SRC haskell :tangle  codeHaskell-pho/src/SinglePackageRouting.hs
  {- | Contains data-structures and scheduling algorithms for 
-      routing a single package from source to destination, using carrier-
-      robots with varying velocity. The fuel for each robot is assumed to be +∞ -}
+      routing a single package from sourcodeHaskell-pho/src/SinglePackageRouting -}
 
-{-# LANGUAGE UnicodeSyntax #-}
-{-# LANGUAGE NoMonomorphismRestriction #-}
+ {-# LANGUAGE UnicodeSyntax #-} 
+ {-# LANGUAGE NoMonomorphismRestriction #-}
+ {-# LANGUAGE NoMonomorphismRestriction #-}
+ {-# LANGUAGE TemplateHaskell           #-}
+ {-# LANGUAGE TypeFamilies              #-}
+ {-# LANGUAGE GADTs                     #-}
  module SinglePackageRouting where
 
+ import PackageHandoffPrelude
+ 
  import Diagrams.Prelude
  import qualified Data.List as List
  import qualified Data.Map  as Map

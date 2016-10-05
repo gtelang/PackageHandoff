@@ -6,8 +6,6 @@ module Main where
 import Graphics.Gloss
 import Graphics.Gloss.Interface.Pure.Game
 import System.IO
---import Graphics.Gloss.Interface.Pure.Simulate
---import ProbX
 
 type Radius = Float
 type RealTime   = Float

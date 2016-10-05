@@ -1,18 +1,18 @@
 
 ==================== FINAL INTERFACE ====================
-2016-09-24 07:18:17.801705 UTC
+2016-10-05 04:21:41.931702 UTC
 
 interface codeHaskell-pho-0.1.0.0-5gA6WvhCsSWGfeeTAbimO3:SinglePackageRouting 8001
-  interface hash: b839fb996ad4776a720bc81eab194f09
+  interface hash: cbaa34c9f4961238674fa44264c1be84
   ABI hash: b11a42c0f3a82cf81d37672d5859dc03
   export-list hash: 20da580a9c173807f0eb487c8db2ab21
   orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
-  flag hash: 8de72d77ebf2ca1c9da60b45e3919c1f
+  flag hash: 5c58ed5a68975e6c9e6c30f73e675eb8
   sig of: Nothing
   used TH splices: False
   where
 exports:
-module dependencies:
+module dependencies: PackageHandoffPrelude
 package dependencies: GLURaw-2.0.0.2@GLURaw-2.0.0.2-FbcPHzTa7vLEnCQ0kkJ8B4
                       GLUT-2.7.0.10@GLUT-2.7.0.10-A3NqGto8XAVI0ysflkZZW9
                       JuicyPixels-3.2.8@JuicyPixels-3.2.8-KBBGrEaocoH5BvQMvr2w05
@@ -209,6 +209,8 @@ import  -/  base-4.9.0.0:Data.Function 0e2e66c2e87e48a960f18fa702dab405
 import  -/  base-4.9.0.0:Data.List 49b86831b79b49ce5d4d9416ecba61df
 import  -/  base-4.9.0.0:Data.Monoid 1efae021212a10c79fd75960dc0a1d99
 import  -/  base-4.9.0.0:Prelude b9bddb97799837fe67a8d00939a5b6c3
+import  -/  PackageHandoffPrelude 4c7e032b56737d5c21c853bbfe2d9b8b
+  exports: 6e326babf08014a0baa45d005e8205df
 import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Map 24b19ef74cea78e4c18332bed9f0491d
 import  -/  containers-0.5.7.1@containers-0.5.7.1:Data.Set 3ed2324fd1e757464a8ac2b636a64e5a
 import  -/  diagrams-lib-1.3.1.4@diagrams-lib-1.3.1.4-5KrQPZgfDl67Oaw6nHaBWv:Diagrams.Prelude 4a943364b911e0f1f22d20430c77aae1
