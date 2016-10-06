@@ -1,0 +1,54 @@
+
+
+#+BEGIN_SRC haskell :tangle Main.hs
+module Main where
+
+import PackageHandoffPrelude
+import SinglePackageRouting
+import Graphics.Gloss
+import Graphics.Gloss.Interface.Pure.Game
+import System.IO
+
+main :: IO ()
+
+main = do let initialWorld   = World {robots=[], packages=[]}
+          let initialWorld'  = World'{world=initialWorld, robotSpeeds=[]}
+          let windowSize     = (800,800)
+          let windowPosition = (200,200)
+          play (InWindow "PackageHandoff" windowSize windowPosition) (greyN 0.9) 20
+                initialWorld' renderWorld' handleEvent stepWorld'    
+
+
+#+END_SRC
+
+#+BEGIN_SRC haskell 
+  --module Main where
+
+  --import SinglePackageRouting
+  --import Graphics.Gloss
+  --import Graphics.Gloss.Interface.Pure.Game
+  --import System.IO
+
+  --main :: IO ()
+
+  -- main :: IO ()
+  -- main  = do let initialWorld   = World 100.0 0 0
+  --            let windowSize     = (800,800)
+  --            let windowPosition = (200,200)
+  --            -- First 4 arguments to `play` are about setting up the window.
+  --            play (InWindow "PackageHandoff" windowSize windowPosition) white 20
+  --                  initialWorld --In the beginning God created the heaven and earth
+  --                  renderWorld  --Let there be light and there was light
+  --                  handleEvent  --Intervention into the affairs of men
+  --                  stepWorld    --The laws of the world.
+
+  -- renderWorld :: World -> Picture
+  -- renderWorld (World rad rtime gtime) = Pictures [Translate 5.0 250.0 $ Scale 0.3 0.3 $ Text ("Time:"++show rtime++":"++show gtime) ,
+  --                                                 Circle rad]
+  -- handleEvent :: Event -> World -> World
+  -- handleEvent _ = id --Don't change the state
+
+  -- stepWorld ::  Dt -> World -> World
+  -- stepWorld  dt (World _ wtime _)  = World (100 * sin wtime) (wtime+0.5) dt
+
+#+END_SRC

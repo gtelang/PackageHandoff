@@ -9,8 +9,6 @@ module PackageHandoffPrelude where
 import Diagrams.Prelude
 import qualified Data.Map as Map
 
-type Speed       = Double  -- | ∈ [0,1]
-type Fuel        = Double  -- | ∈ [0,∞] 
 type Robots a    = [Robot a]
 type Packages a  = [Package a]
 
