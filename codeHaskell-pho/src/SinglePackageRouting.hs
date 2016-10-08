@@ -10,9 +10,6 @@ data GlossWorld a = GlossWorld { world :: World a,
                                  displayString :: String
                                } deriving (Show)
 
---TODO: The "world" passed to 'play' should be an IO action
--- Hence the thing to the right of the = sign must be a `do` block
--- The let expressions, themsleves can g
 handleEvent :: Event -> GlossWorld Float -> GlossWorld Float
 handleEvent event glossWorld
 
