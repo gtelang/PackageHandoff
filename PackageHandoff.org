@@ -147,7 +147,6 @@ some descriptive type-synonyms.
   import Diagrams.Prelude
   import qualified Data.Map as Map
   
-  type Robots a    = [Robot a]
   type Packages a  = [Package a]
 #+END_SRC
 
@@ -176,8 +175,8 @@ that link, and a description of the package-exchanges that must take place at th
      Robot idx1 _ == Robot idx2 _ = (idx1 == idx2)
 
   {- | World consists of only robots and packages. -}
-  data World a = World { robots   :: Robots a, 
-                         packages :: Packages a
+  data World a = World { robots   :: [Robot a], 
+                         packages :: [Package a]
                         } deriving (Show) 
                
   {- | Load carried across a link of the trajectory along with a description of 
@@ -185,7 +184,7 @@ that link, and a description of the package-exchanges that must take place at th
   data Load a =  -- Single package load, possibly give to the Robot inside Maybe functor  
                SPack (Package a, Maybe (Robot a))    
                -- Multi-package load, possibly give each to the Robot inside Maybe functor 
-             | MPack [(Packages a, Maybe (Robot a))]  
+             | MPack [([Package a], Maybe (Robot a))]  
                -- Zero Load, nothing to give to anybody!
              | Nil                                                      
                deriving (Show)
@@ -229,51 +228,98 @@ that we would need to tweak are speed and velocity.
 By separating the speed and the fuel from the Robot data-type, the type-signatures of the 
 algorithms become more expressive.
 
-*** SinglePackageRouting.hs
+***  SinglePackageRouting.hs
 
 #+BEGIN_SRC haskell :tangle  codeHaskell-pho/src/SinglePackageRouting.hs
-    {-# LANGUAGE NoMonomorphismRestriction #-}
-    {-# LANGUAGE TemplateHaskell           #-}
-    {-# LANGUAGE TypeFamilies              #-}
-    {-# LANGUAGE PatternGuards             #-}
-    {-# LANGUAGE TypeApplications          #-}
-    module SinglePackageRouting where
+  {-# LANGUAGE NoMonomorphismRestriction #-}
+  {-# LANGUAGE TemplateHaskell           #-}
+  {-# LANGUAGE TypeFamilies              #-}
+  {-# LANGUAGE PatternGuards             #-}
+  {-# LANGUAGE TypeApplications          #-}
+  module SinglePackageRouting where
 
-    import PackageHandoffPrelude
-    import Diagrams.Prelude
-    import qualified Data.List as List
-    import Graphics.Gloss
-    import Graphics.Gloss.Data.Color
-    import Graphics.Gloss.Interface.Pure.Game
+  import PackageHandoffPrelude
+  import Diagrams.Prelude hiding (blue)
+  import qualified Data.List as List
+  import Graphics.Gloss
+  import Graphics.Gloss.Data.Color
+  import Graphics.Gloss.Interface.Pure.Game
 
-    type Speed = Double
-    type Time  = Double
+  type Speed = Double
+  type Time  = Double
 
-    -- A Wrapper around world which includes auxiliary information like velocity etc.
-    -- This auxiliary information will be specific to the variant of the problem we are solving.
-    data World' a = World' { world        :: World a , -- This is the core-input consisting of robots and packages.
-                             robotSpeeds  :: [Speed] , -- Depending on the problem this information, may or may not be there
-                             test         :: String
-                           } deriving (Show)
+  -- A Wrapper around world which includes auxiliary information like velocity etc.
+  -- This auxiliary information will be specific to the variant of the problem we are solving.
+  -- TODO: Add Schedule.
+  data World' a = World' { world       :: World a, -- This is the core-input consisting of robots and packages.
+                           robotSpeeds :: [Speed] -- Depending on the problem this information, may or may not be there
+                         } deriving (Show)
 
-    renderWorld' :: World' a -> Picture
-    renderWorld' (World' world speeds test)= Pictures [ Text test ] 
+  #+END_SRC
 
-    -- The <- is critical! For both event and world, since it represents some kind of IO event
-    -- Also you just discovered the lens problem! Why did you have to unpack so much!
-    -- This event-handler is going to represent the real meat of the code.
-    -- You can now fuse the event and world, thing with pattern matching and boolean 
-    -- conditions. And yes, currying is lovely!
-    -- The more events you add, the more branches will there be
-    -- Possible there will be sub-branching too!
-    handleEvent :: Event -> World' a -> World' a
-    handleEvent event world'
-           | (EventKey (MouseButton LeftButton) Down _ pt@(x,y) ) <- event,
-              World' world robotSpeeds test                       <- world', 
-             ( abs x <  abs y)                                    = World' world robotSpeeds ('c':test)
-           | otherwise = world'
-
-    stepWorld' ::  Float -> World' a -> World' a
-    stepWorld' dt  = id
-
+Every problem and its visualization consists of the TRIPLE of functions = *(handleEvent, renderPicture, scheduler)*. 
+  #+BEGIN_SRC haskell :tangle codeHaskell-pho/src/SinglePackageRouting.hs
+  -- The <- is critical! For both event and world, since it represents some kind of IO event
+  -- Also you just discovered the lens problem! Why did you have to unpack so much!
+  -- This event-handler is going to represent the real meat of the code.
+  -- You can now fuse the event and world, thing with pattern matching and boolean 
+  -- conditions. And yes, currying is lovely!
+  -- The more events you add, the more branches will there be
+  -- Possible there will be sub-branching too!
+  -- generate random colors within the branches too!
+  handleEvent :: Event -> World' Float -> World' Float
+  handleEvent event world'
+         -- Left Mouse Button (Down) :: Insert robot onto canvas. Default speed is 1.0: 
+         -- TODO: Clears existing schedule
+         -- TODO: Generate a random hash-key sha1 as a unique id.
+         | (EventKey (MouseButton LeftButton) Down _ pt@(x,y)) <- event,
+           World' (World robots packages) robotSpeeds           <- world' = let  newRobot = Robot 16 (p2 (x,y)) in
+                                                                            World' (World (newRobot:robots) packages) (1.0:robotSpeeds) 
+         -- Right Mouse Button (Down) :: Insert package source/target onto 
+         -- canvas in successive-pairs TODO: Make new empty schedule
+         | (EventKey (MouseButton RightButton) Down _ pt@(x,y)) <- event,
+           World' (World robots packages) robotSpeeds            <- world' = let  newPackage = Package (p2 (x,y)) (p2 (x,y)) in
+                                                                             World' (World robots (package:packages)) robotSpeeds 
+         -- Select one or more robots or packages for moving/resizing velocity. 
+         -- TODO: Make new empty schedule: Use dumb point-location.
+         | (EventKey (MouseButton RightButton) Up _ pt@(x,y)) <- event,
+            World' (World robots (Package source' target'):packages) robotSpeeds <- world' = World' (World robots (Package source' p2 (x,y):packages)) robotSpeeds 
+         -- Do nothing
+         | otherwise = world'
  #+END_SRC
+
+#+BEGIN_SRC haskell :tangle codeHaskell-pho/src/SinglePackageRouting.hs
+  -- TODO: Critical: For good visualization, you need good pictures! 
+  -- Generate pictures individually. And then glue them together with 
+  -- this function.
+  renderWorld' :: World' Float -> Picture
+  renderWorld' (World' world speeds) = Pictures [map plotRobot (robots world), 
+                                                 map plotSourceOf (packages world)]
+
+  plotRobot :: Robot Float-> Picture
+  plotRobot (Robot _ initPosn) = (ThickCircle 5 5) # (Translate x y) 
+                                  where (x,y) = unp2 initPosn   
+
+  plotSourceOfPackage :: Package Float -> Picture
+  plotSourceOfPackage (Package source _) = Pictures (map moveXY [Text "s" , Circle 5 # Color (withAlpha 0.5 blue) ])
+                                           where (x,y) = unp2 source -- unpack Diagrams point
+                                                 moveXY = Translate x y
+
+  plotTargetOfPackage :: Package Float -> Picture
+  plotTargetOfPackage (Package _ target) = Pictures (map moveXY [Text "t" , Circle 5 # Color (withAlpha 0.5 blue) ])
+                                           where (x,y) = unp2 target -- unpack Diagrams point
+                                                 moveXY = Translate x y
+
+  -- Delete selected elements. If the source is deleted, its 
+         -- corresponding target is deleted too 
+         -- TODO: Make new empty schedule.
+         --  otherwise = world'
+         -- Increase velocity of selected elements if they are robots. 
+         -- TODO: Make new empty schedule
+         -- otherwise = world'
+         -- Depending on the key-press run the corresponding scheduler. 
+         -- and generate schedule 
+         -- TODO: Add this field to World. and generate new schedule.
+         -- otherwise = world' 
+#+END_SRC
+

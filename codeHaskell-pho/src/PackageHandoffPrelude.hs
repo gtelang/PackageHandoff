@@ -9,7 +9,6 @@ module PackageHandoffPrelude where
 import Diagrams.Prelude
 import qualified Data.Map as Map
 
-type Robots a    = [Robot a]
 type Packages a  = [Package a]
 
 data Package a = Package { source :: Point V2 a,
@@ -26,8 +25,8 @@ instance Eq (Robot a) where
    Robot idx1 _ == Robot idx2 _ = (idx1 == idx2)
 
 {- | World consists of only robots and packages. -}
-data World a = World { robots   :: Robots a, 
-                       packages :: Packages a
+data World a = World { robots   :: [Robot a], 
+                       packages :: [Package a]
                       } deriving (Show) 
              
 {- | Load carried across a link of the trajectory along with a description of 
@@ -35,7 +34,7 @@ data World a = World { robots   :: Robots a,
 data Load a =  -- Single package load, possibly give to the Robot inside Maybe functor  
              SPack (Package a, Maybe (Robot a))    
              -- Multi-package load, possibly give each to the Robot inside Maybe functor 
-           | MPack [(Packages a, Maybe (Robot a))]  
+           | MPack [([Package a], Maybe (Robot a))]  
              -- Zero Load, nothing to give to anybody!
            | Nil                                                      
              deriving (Show)
