@@ -6,12 +6,14 @@
 {-# LANGUAGE TypeFamilies              #-}
 {-# LANGUAGE GADTs                     #-}
 module PackageHandoffPrelude where
-import Diagrams.Prelude
+import Diagrams.Prelude hiding (Color)
+import Graphics.Gloss.Data.Color
 
 type Packages a  = [Package a]
 
 data Package a = Package { source :: Point V2 a,
-                           target :: Point V2 a
+                           target :: Point V2 a,
+                           color  :: Color
                          } deriving (Show)
 
 data Robot a = Robot { initPosition :: Point V2 a
