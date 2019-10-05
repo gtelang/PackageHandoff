@@ -23,7 +23,6 @@ library
                      , diagrams-svg
                      , palette  
                      , diagrams-canvas
-                     , bindings-gsl
                      , palette
                      , hmatrix-glpk
                      , reactive-banana
@@ -43,7 +42,6 @@ executable main
                      , diagrams-svg
                      , palette
                      , diagrams-canvas
-                     , bindings-gsl
                      , palette
                      , hmatrix-glpk
                      , reactive-banana
